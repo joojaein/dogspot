@@ -12,9 +12,13 @@
     <groupId>org.apache.tomcat</groupId>
     <artifactId>tomcat-servlet-api</artifactId>
     <version>9.0.13</version>
-</dependency>
+	</dependency>
 
-
+	<dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>9.0.1</version>
+     </dependency>
   
   </dependencies>
   

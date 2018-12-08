@@ -20,4 +20,9 @@
   <description>
      Welcome to Tomcat
   </description>
+  
+  <context-param>
+  	<param-name>x</param-name>
+  	<param-value>32</param-value>
+  </context-param>
 </web-app>

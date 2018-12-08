@@ -1,0 +1,121 @@
+/* reset */
+html, body, h1, h2, h3, h4, h5, h6, 
+ul, dl,fieldset, form, input,hr{
+    margin: 0px;
+    padding: 0px;
+}
+li{
+    list-style-type: none;
+    padding: 0px;
+}
+a{
+    text-decoration: none;
+}
+fieldset{
+    border: none;
+}
+table{
+    border-spacing: 0px;
+}
+
+
+/* basic */
+body, input{
+    font-family: Jua, HYµø≥ËM, sans-serif;
+    font-size: 11px;
+}
+
+
+
+
+/* component style */
+.hidden{
+    display: none !important;
+}
+.list{ 
+    display: flex;
+}
+/* .block-wrapping{
+    display: inline-block !important;
+} */
+
+
+/* layout */
+header {
+    position: sticky;
+    top: 0px;
+    height: 70px;
+    background: #002060;
+    border-bottom: 2px solid #ffffff;
+    width: 100%;
+    min-width: 1000px;
+    z-index :1; 
+}
+
+header img{
+    padding-top: 2px;
+    padding-left: 100px;
+}
+
+
+#mainmenu li{
+    padding-left: 20px;
+    line-height: 75px;
+    height: 70px;
+    width: 80px;
+    text-align: center;
+}
+#mainmenu li:first-child{
+    padding-left: 35px;
+}
+
+#mainmenu a{
+    font-size: 35px;
+    color: #ffffff;
+}
+
+#mainmenu a:hover{
+   font-size: 45px;
+}
+
+#membermenu ul{
+    position: absolute;
+    right : 70px;
+}
+#membermenu li{
+    line-height: 75px;
+    height: 70px;
+    width: 120px;
+    text-align: center;
+}
+#membermenu a{
+    font-size: 18px;
+    color: #ffffff;
+
+}
+#membermenu a:hover{
+    font-size: 28px;
+}
+
+#body{
+    
+    text-align:center; 
+
+    background: #ffffff;
+    /* width: 1530px; */
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;    
+
+    position: relative;
+
+}
+.center{
+    display:inline-block;
+}
+
+footer{
+    min-height: 100px;
+    background: #7F7F7F;
+}
