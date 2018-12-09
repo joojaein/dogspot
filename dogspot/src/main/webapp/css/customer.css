@@ -1,0 +1,90 @@
+@import url(basicStyle.css);
+
+main{
+    min-height: 650px;
+    min-width: 900px;
+}
+
+main>img{
+    height: 100px;
+    margin-top: 40px
+}
+
+#login-input-text{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#login-input-text input{
+    width: 50%;
+    height: 40px;
+    margin: 5px 0px;
+
+    border-radius: 5px;
+    border: 1px solid #002060;
+
+    font-size: 25px;
+    text-indent: 10px;
+}
+
+#login-input-text input::placeholder{
+    color: #002060 !important;
+    text-indent: 10px;
+}
+
+main>.btn{
+    width: 50%;
+    height: 80px;
+
+    background: #002060;
+    border: none;
+    border-radius: 10px;
+
+    color: #fff;
+    font-size: 30px;
+    line-height: 80px;
+
+}
+
+#login-input{
+    width: 50%;
+    height: 20px;
+    text-align: left;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#login-input>.chkbox{
+    width: 20px;
+    height: 20px;
+}
+#login-input div{
+    line-height: 30px;
+    height: 100%;
+    line-height: 22px;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+#login-input-etc{
+    width: 50%;
+    margin: 10px auto;
+}
+
+#login-input-etc input{
+    background: none;
+    border: black 1px solid;
+    width: 120px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 15px;
+    margin: 0px 5px;
+
+}
+
+main hr{
+    width: 50%;
+    margin: auto;
+    border: black 0px none;
+    border-top: black 1px solid;
+}

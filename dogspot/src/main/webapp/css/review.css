@@ -1,19 +1,7 @@
 @import url(basicStyle.css);
+
 /* component */
-input::placeholder{
-    color: #7F7F7F !important;
-}
 
-textarea::placeholder{
-    color: #7F7F7F !important;
-}
-input:focus { 
-    outline: none; 
-}
-
-textarea:focus { 
-    outline: none; 
-}
 
 .review-rank-flex {
 display: flex;
@@ -90,12 +78,12 @@ padding-top: 5px;
 }
 /* --------------------------------------------------------------------------------- */
 main{
-    width: 100%;
+    width: 1110px;
     position: relative; 
 }
 
 #review-search{
-    width:fit-content;
+    width: fit-content;
 }
 
 #review-search input{
@@ -146,53 +134,51 @@ main>input{
     top: 20px;
 }
 
-#review-list li{
-    width: 332px;  
+#review-list{
+   position: relative;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+
+    margin-bottom: 30px;
+}
+
+#review-list .review-div{
     position: relative;
 }
 
-#review-list .review-ul img{
-    width: 300px;
-    height: 300px;
+#review-list .review-div img{
+    width: 250px;
+    height: 250px; 
     padding: 0px 10px;
-}
-
-#review-list .review-ul a{
-    color: #000000;
 }
 
 #review-list .review-name{
     font-size: 15px;
-    text-indent: 20px;
+    text-indent: 10px;
+    width: 250px;
 }
 
 #review-list .review-title{
-    font-size: 25px;
-    text-indent: 20px;
-    padding-bottom: 20px;
-}
-
-#review-list .review-title{
-    font-size: 25px;
-    text-indent: 20px;
-    padding-bottom: 20px;
+    font-size: 20px;
+    text-indent: 10px;
+    width: 250px;
 }
 
 #review-list .review-list-hover{
-    height: 300px;
-    width: 300px;
-
-
+    height: 250px;
+    width: 250px;
     position: absolute;
     top: 0px;
-    left: 15px;
-
+    left: 10px;
     display: none;
 }
 
-#review-list .hover-back{
-    height: 300px;
-    width: 300px;
+.review-list-hover .hover-back{
+    height: 250px;
+    width: 250px;
     background: #000;
     opacity: 0.5;
 
@@ -202,21 +188,21 @@ main>input{
 
 }
 
-#review-list .review-list-hover div{
+.review-list-hover div{
 width: fit-content;
-margin: 100px auto;
+margin: 80px auto;
 color: #fff;
 position: relative;
 }
 
-#review-list .review-list-hover .list img{
+.review-list-hover img{
     width: 30px !important;
     height: 30px !important;
-    padding-right: 10px !important;
-    padding-bottom: 10px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
 }
 
-.review-list-hover .list dd{
+.review-list-hover dd{
     font-size: 15px;
     line-height: 25px;
 
@@ -438,6 +424,7 @@ line-height: 20px;
 .review-bottom div{
     font-size: 13px;
     margin-left: 10px;
+    margin-bottom: 5px;
 }
 
 .review-bottom input{
@@ -521,5 +508,4 @@ box-sizing: border-box;
     width: 435px;
     height: 435px;
 }
-
 

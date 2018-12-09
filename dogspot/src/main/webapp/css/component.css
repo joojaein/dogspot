@@ -1,0 +1,14 @@
+input::placeholder{
+    color: #7F7F7F !important;
+}
+
+textarea::placeholder{
+    color: #7F7F7F !important;
+}
+input:focus { 
+    outline: none; 
+}
+
+textarea:focus { 
+    outline: none; 
+}

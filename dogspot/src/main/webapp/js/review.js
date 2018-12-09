@@ -1,6 +1,6 @@
 window.addEventListener("load", function(){
 
-    var modals = document.querySelector("#modals");
+	var modals = document.querySelector("#modals");
     var modalBack = modals.querySelector(".modal-back");
 
     var dialogDetail = modals.querySelector("#modal-review-detail");
@@ -26,19 +26,18 @@ window.addEventListener("load", function(){
     var inputSpotReviewTitle = dialogSpot.querySelector(".review-report input");
     var ulSpotlist = reviewSpotCenter.querySelector("ul");
 
-    var tmpReviewListul = reviewList.querySelector("#review-list-ul-template");
-    var tmpReviewListli = reviewList.querySelector("#review-list-li-template");
+    var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");
     var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template")
     var tmpReviewSpot = reviewSpotCenter.querySelector("#review-spot-li-template")
 
-    var bind_li = function(li){
-        tempImg=li.querySelector(".review-mainImg");
-        tempName=li.querySelector(".review-name");
-        tempTitle=li.querySelector(".review-title");
+    var bind_reviewDiv = function(div){
+        tempImg=div.querySelector(".review-mainImg");
+        tempName=div.querySelector(".review-name");
+        tempTitle=div.querySelector(".review-title");
 
-        tempGoodInt=li.querySelector(".good-int");
-        tempCommentInt=li.querySelector(".cmt-int");
-        tempHitInt=li.querySelector(".hit-int");
+        tempGoodInt=div.querySelector(".good-int");
+        tempCommentInt=div.querySelector(".cmt-int");
+        tempHitInt=div.querySelector(".hit-int");
 
         tempImg.innerSrc="/images/reviewImg.png";
         tempName.innerText="1가가카페";
@@ -48,22 +47,12 @@ window.addEventListener("load", function(){
         tempCommentInt.innerText="10";
         tempHitInt.innerText="10";
 
-
-        var lis = reviewList.querySelectorAll("li")
-        if(lis.length%4==0){
-            ul=document.importNode(tmpReviewListul.content, true);
-            reviewList.append(ul);
-        }
-
-        var uls=reviewList.querySelectorAll("ul");
-        ul=uls[uls.length-1];
-        ul.appendChild(li);
-        reviewList.append(ul);
+        reviewList.append(div)
     }
-    
+
     for(var i=0;i<10; i++){
-        li=document.importNode(tmpReviewListli.content, true);
-        bind_li(li);
+        div=document.importNode(tmpReviewDiv.content, true);
+        bind_reviewDiv(div);
     }
 
     var bind_cmt = function(cmt){
@@ -119,15 +108,18 @@ window.addEventListener("load", function(){
 
     reviewList.addEventListener("mouseover", function (evt) {
         if (evt.target.nodeName == "IMG" ){
-            var reviewLis = reviewList.querySelectorAll("li");
-            for(var i=0; i<reviewLis.length; i++){
-                tempImg = reviewLis[i].querySelector("img");
+            var reviewDivs = reviewList.querySelectorAll(".review-div");
+            for(var i=0; i<reviewDivs.length; i++){
+                var tempImg = reviewDivs[i].querySelector("img");
                  if(tempImg==evt.target){
-                     tempSection = reviewLis[i].querySelector(".review-list-hover");
-                     tempSection.style.display = "unset";        
+                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
+                     tempSection.style.display = "unset";    
+                     console.log(i);
+    
                  }else{
-                    tempSection = reviewLis[i].querySelector(".review-list-hover");
+                    tempSection = reviewDivs[i].querySelector(".review-list-hover");
                     tempSection.style.display = "none";   
+                    console.log(i+" else");
                  }
 
             }
@@ -137,12 +129,12 @@ window.addEventListener("load", function(){
     reviewList.addEventListener("mouseout", function (evt) {
 
         if (evt.target.className == "hover-parency" ){
-            var reviewLis = reviewList.querySelectorAll("li");
-            for(var i=0; i<reviewLis.length; i++){
+            var reviewDivs = reviewList.querySelectorAll(".review-div");
+            for(var i=0; i<reviewDivs.length; i++){
                 
-                tempImg = reviewLis[i].querySelector(".hover-parency");
+                tempImg = reviewDivs[i].querySelector(".hover-parency");
                  if(tempImg==evt.target){
-                     tempSection = reviewLis[i].querySelector(".review-list-hover");
+                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
                      tempSection.style.display = "none";        
                  }
             }

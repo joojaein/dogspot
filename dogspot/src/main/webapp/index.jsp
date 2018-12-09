@@ -7,28 +7,43 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>welecome home!</h1>
-	getRemoteAddr:<%=request.getRemoteAddr()%>
-	getContentLength:<%=request.getContentLength()%>
-	getCharacterEncoding:<%=request.getCharacterEncoding()%>
-	getContentType:<%=request.getContentType()%>
-	getProtocol:<%=request.getProtocol()%>
-	getMethod:<%=request.getMethod()%>
-	getRequestURI:<%=request.getRequestURI()%>
-	getContextPath:<%=request.getContextPath()%>
-	getServerName:<%=request.getServerName()%>
-	getServerPort:<%=request.getServerPort()%>
-	
-	<form action="viewParameter.jsp" method="post">
-		이름:<input type="text" name="name" size="10"><br>
-		주소:<input type="text" name="address" size="30"><br>
-		좋아하는 동물:
-		<input type="checkbox" name="pet" value="dog">
-		<input type="checkbox" name="pet" value="cat">
-		<input type="checkbox" name="pet" value="pig">
-		<br>
-		<input type="submit" value="전송">
+<html>
 
-	</form>
+<head>
+    <script src="../js/index.js"></script>
+    <title>DogSpot</title>
+    <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
+    <link href="../css/index.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+
+<jsp:include page="views/inc/header.jsp"/>
+
+    <section id="body">
+        <div class="center">
+            <h1 class="hidden">바디</h1>
+            <main>
+                <img src="images/indexLogo.png"><br/>
+                <input type="text">
+                <section class="top6">
+                    <template>
+                        <a href="">
+                             <img src="images/reviewImg.png">
+                             <label>서울</label>
+                        </a>
+                    </template>
+                    
+                </section>
+            </main>
+        </div>
+    </section>
+   <jsp:include page="views/inc/footer.jsp"/>
+
+
+   
+</body>
+
+</html>
 </body>
 </html>
