@@ -1,5 +1,3 @@
-@import url(component.css);
-
 /* reset */
 html, body, h1, h2, h3, h4, h5, h6, 
 ul, dl,fieldset, form, input,hr{
@@ -11,8 +9,10 @@ li{
     padding: 0px;
 }
 a{
+    color: #7F7F7F;
     text-decoration: none;
 }
+
 fieldset{
     border: none;
 }
@@ -26,9 +26,6 @@ body, input{
     font-family: Jua, HYµø≥ËM, sans-serif;
     font-size: 11px;
 }
-
-
-
 
 /* component style */
 .hidden{
@@ -51,7 +48,7 @@ header {
     border-bottom: 2px solid #ffffff;
     width: 100%;
     min-width: 1000px;
-    z-index :1; 
+    z-index :5; 
 }
 
 header img{
@@ -104,8 +101,8 @@ header img{
     text-align:center; 
 
     background: #ffffff;
-    /* width: 1530px; */
     width: 100%;
+    min-height: 800px;
 
     margin-left: auto;
     margin-right: auto;    
@@ -118,6 +115,7 @@ header img{
 }
 
 footer{
+    margin-top: 60px;
     min-height: 100px;
     background: #7F7F7F;
 }

@@ -1,4 +1,5 @@
 @import url(basicStyle.css);
+@import url(component.css);
 main{
     min-height: 650px;
     min-width: 900px;
@@ -161,6 +162,16 @@ font-weight: bold;
     text-align: right;
 }
 
+#join-ul .addr-li{
+    margin-top: 20px ;
+    margin-bottom: 5px;
+}
+
+#join-ul .addr-li ~ li{
+    margin :5px 0px;
+    height: 30px;
+}
+
 #join-ul .joinbtn{
     padding: 5px 30px;
     font-size: 20px;
@@ -169,7 +180,7 @@ font-weight: bold;
     border-radius: 10px;
     background: #002060;
     color: #fff;
-    margin-bottom: 60px;
+    margin-top: 30px;
 }
 
 #idpw>section{

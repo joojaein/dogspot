@@ -5,6 +5,7 @@ input::placeholder{
 textarea::placeholder{
     color: #7F7F7F !important;
 }
+
 input:focus { 
     outline: none; 
 }
@@ -16,3 +17,86 @@ textarea:focus {
 .btn{
     cursor: pointer !important;
 }
+
+.btn-indigo{
+    background: #002060;
+    border-radius: 5px;
+    border:none;
+}
+
+.btn-white{
+    background: #fff;
+    border-radius: 5px;
+    border:#002060;
+}
+
+/* text */
+.text-gray{
+    color: #7F7F7F !important;
+}
+
+.text-indigo{
+    color: #002060 !important;
+}
+
+.text-white{
+    color: #fff !important;
+}
+
+.text-hashtag {
+    color: #0000ff !important;
+    padding: 5px 0px !important;
+    font-size: 15px !important;
+    line-height: 15px;
+    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+}
+
+.text-overflow-ellipsis{
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow:ellipsis !important;
+    text-align: left !important;
+}
+/* --------------------------------------------------------------------------------- */
+
+
+/* component */
+.review-rank-flex {
+    display: flex;
+    padding-top: 5px;
+    }
+    
+    .review-rank img{
+        width: 20px !important;
+        height: 20px !important;
+        padding-left: 10px !important;
+    }
+    
+    .review-rank dd{
+        font-size: 15px;
+        line-height: 25px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    
+    .review-report :first-child{
+        width: 90%;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    
+    .review-report p:last-child{
+        font-size: 15px;
+        font-weight: normal;
+        margin: 0px; 
+    }
+    .review-report textarea:last-child{
+        font-size: 15px;
+        font-weight: normal;
+        margin : 0px 10px; 
+        border: none;
+        width: 90%;
+        resize: none;
+        overflow-y: hidden;
+        height: 370px; 
+    }

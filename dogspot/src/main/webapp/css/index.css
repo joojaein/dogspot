@@ -1,4 +1,5 @@
 @import url(basicStyle.css);
+@import url(component.css);
 
 main{
     min-height: 650px;
@@ -32,9 +33,6 @@ main input{
 
     margin-bottom: 30px;
 }
-
-
-
 
 .top6 a{
     position: relative;
