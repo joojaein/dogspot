@@ -1,0 +1,229 @@
+
+/* ================= admin-spot-list =================== */
+
+.data-func{
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 30px;
+}
+
+.data-func input:last-child{
+    margin-left: 220px;
+}
+
+.data-search{
+    width: 550px;
+    height: 33px;
+    border: 1px solid #7F7F7F;
+    border-radius: 5px;
+    box-shadow: 1px 1px #818181;
+} 
+
+.empty-btn{
+    width: 60px;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+    cursor: pointer;
+}
+
+
+table{
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 50px;
+    border: none;
+    width: 100%;
+    font-family: '¸¼Àº °íµñ';
+}
+
+thead th{
+    width: 150px;
+    height: 25px;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    border-top: #948a54 2px solid;
+    border-bottom: rgb(226, 221, 193) 1px solid;
+
+}
+
+thead th:last-child{
+    width: 90px;
+}
+
+
+tbody td{
+    border-bottom: rgb(226, 221, 193) 1px solid;
+    height: 40px;
+    text-align: center;
+}
+
+
+tbody td input{
+    width: 40px;
+    height: 23px;
+    border-radius: 10px;
+    line-height: 20px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+    cursor: pointer;
+}
+
+.page{
+    padding-top: 50px;
+    padding-left: 400px;
+    font-family: ¸¼Àº °íµñ;
+}
+
+.page img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.page ul{
+    font-size: 15px;
+}
+.page li{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.page a{
+    vertical-align: middle;
+}
+
+.page li:first-child a{
+    color: red;
+    font-weight: bold;
+}
+
+/* ================= admin-spot-reg =================== */
+
+
+.data-title{
+    font-size: 27px;
+    text-decoration: underline;
+    color: #002060;
+    text-align: left;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+}
+
+.data-add{
+    text-align: left;
+}
+
+ .data-add li{
+    font-size: 19px;
+    vertical-align: middle;
+    line-height: 50px;
+} 
+
+.data-add input[type="text"]{
+    width: 200px;
+    height: 30px;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+#input-small{
+    width: 150px;
+}
+
+#input-big{
+    width: 500px;
+}
+
+.width-front{
+    width: 10%;
+    text-align: right;
+    padding-right: 10px;
+}
+.width-back{
+    width: 90%;
+}
+
+.left-addr{
+    margin-left: 30px;
+}
+
+.right-addr{
+    padding-right: 7px;
+}
+
+.left-url{
+    margin-left: 58px;
+}
+
+.right-url{
+    padding-right: 7px;
+}
+
+
+.select{
+    width: 65px;
+    height: 30px;
+    font-size: 15px;
+    vertical-align: middle;
+    border: #002060 1px solid;
+}
+
+.full-btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    background: #002060;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+#img-area{
+    width: 150px;
+    height: 80px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+} 
+
+.long-area{
+    width: 600px;
+    margin-left: 100px;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: Jua;
+}
+.short-area{
+    width: 300px;
+    vertical-align: middle;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+    font-family: Jua;
+}
+
+
+#reg-btn{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    padding-right: 150px;
+}
+
