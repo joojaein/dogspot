@@ -12,3 +12,7 @@ input:focus {
 textarea:focus { 
     outline: none; 
 }
+
+.btn{
+    cursor: pointer !important;
+}

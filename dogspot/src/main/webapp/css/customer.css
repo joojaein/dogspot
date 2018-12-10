@@ -1,5 +1,4 @@
 @import url(basicStyle.css);
-
 main{
     min-height: 650px;
     min-width: 900px;
@@ -87,4 +86,87 @@ main hr{
     margin: auto;
     border: black 0px none;
     border-top: black 1px solid;
+}
+
+#join-logo{
+    height: 100px;
+    margin-top: 10px;
+margin-bottom: 20px;
+}
+
+#join-ul{
+    width: 80%;
+    margin: auto;
+}
+
+#join-ul li{
+margin: 20px 0px;
+height: 30px;
+}
+
+#join-ul li input{
+    border-radius: 5px;
+}
+
+#join-ul .join-label{
+    width: 17%;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 15px;
+    line-height: 35px;
+}
+
+#join-ul .join-label div{
+display: inline-block;
+}
+
+#join-ul .join-input-text{
+    width: 83%;
+}
+
+#join-ul .join-input-text div{
+line-height: 30px;
+font-weight: bold;
+}
+
+#join-ul .join-input-text input{
+    flex-grow: 6;  
+    border: black 1px solid;
+    margin: 0px 10px;
+}
+
+#join-ul .addr{
+    width: 100px !important;  
+    flex-grow: unset !important;
+    /* border: black 1px solid;
+    margin: 0px 10px; */
+}
+
+#join-ul .join-input-text .btn{
+    flex-grow: 1;  
+
+    padding: 0px 10px;
+    font-size: 15px;
+    line-height: 30px;
+    border: none;
+    background: #002060;
+    color: #fff;
+}
+
+#join-ul .empty{
+    width: 200px;  
+}
+
+#join-ul input::placeholder{
+    text-align: right;
+}
+
+#join-ul .joinbtn{
+    padding: 5px 30px;
+    font-size: 20px;
+    line-height: 30px;
+    border: none;
+    border-radius: 10px;
+    background: #002060;
+    color: #fff;
 }

@@ -46,11 +46,6 @@ padding-top: 5px;
 }
 
 
-.btn{
-    cursor: pointer !important;
-}
-
-
 
 /* --------------------------------------------------------------------------------- */
 /* text */
@@ -67,7 +62,7 @@ padding-top: 5px;
     padding: 5px 0px !important;
     font-size: 15px !important;
     line-height: 15px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, sans-serif;
 }
 
 .text-overflow-ellipsis{
@@ -343,7 +338,7 @@ dialog{
 .review-center {
     width: 95%;
     height: 450px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, sans-serif;
     font-size: 15px;
     margin-left: 10px;
     overflow-y: scroll; 
@@ -370,7 +365,7 @@ line-height: 20px;
     border: none;
     background: none;
     min-height: 35px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, sans-serif;
     text-indent: 10px;
 }
 
