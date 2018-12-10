@@ -1,0 +1,37 @@
+
+.empty-btn{
+    width: 60px;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+    cursor: pointer;
+}
+
+
+.select{
+    width: 65px;
+    height: 30px;
+    font-size: 15px;
+    vertical-align: middle;
+    border: #002060 1px solid;
+}
+
+.full-btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    background: #002060;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+}

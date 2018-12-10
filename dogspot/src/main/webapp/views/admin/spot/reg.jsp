@@ -5,14 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>DogSpot</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 <link href="../../../css/adminSpot.css" type="text/css" rel="stylesheet" />
-<link href="../../../css/basicStyle.css" type="text/css"
-	rel="stylesheet" />
-<link href="../../../css/commonAside.css" type="text/css"
-	rel="stylesheet" />
+<link href="../../../css/basicStyle.css" type="text/css" rel="stylesheet" />
+<link href="../../../css/commonAside.css" type="text/css" rel="stylesheet" />
+<link href="../../../css/share.css" type="text/css"rel="stylesheet" />
 </head>
 <body>
 	<jsp:include page="../../inc/header.jsp" />

@@ -19,21 +19,6 @@
     box-shadow: 1px 1px #818181;
 } 
 
-.empty-btn{
-    width: 60px;
-    margin-left: 20px;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 14px;
-    line-height: 30px;
-    font-weight: bold;
-    background: white;
-    color: #002060;
-    border: #002060 1px solid;
-    cursor: pointer;
-}
-
-
 table{
     padding-top: 20px;
     padding-left: 20px;
@@ -171,28 +156,6 @@ tbody td input{
     padding-right: 7px;
 }
 
-
-.select{
-    width: 65px;
-    height: 30px;
-    font-size: 15px;
-    vertical-align: middle;
-    border: #002060 1px solid;
-}
-
-.full-btn{
-    width: 70px;
-    height: 30px;
-    border-radius: 10px;
-    font-size: 16px;
-    line-height: 30px;
-    font-weight: bold;
-    background: #002060;
-    color: white;
-    cursor: pointer;
-    margin-left: 20px;
-    vertical-align: middle;
-}
 
 #img-area{
     width: 150px;
