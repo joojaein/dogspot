@@ -29,6 +29,7 @@ aside a{
 aside a:hover{
     font-size: 22px;
     color: #002060;
+    text-decoration: underline;
 }
 aside img{
     width: 90px;
