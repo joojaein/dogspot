@@ -1,0 +1,148 @@
+/* ===================== spot-list ====================== */
+
+#search-list select{
+    margin-right: 30px;
+}
+
+ #search-list input[type="number"]{
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    border: #002060 1px solid;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.big-data-search{
+    width: 700px;
+    height: 38px;
+    border: 1px solid #7F7F7F;
+    border-radius: 5px;
+    box-shadow: 1px 1px #818181;
+}
+
+.content{
+    font-size: 20px!important;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+.content-bold{
+    font-size: 20px!important;
+    font-weight: bold;
+    padding-bottom: 10px;
+    color: #7F7F7F;
+    vertical-align: middle;
+}
+
+#wid-front{
+    width: 55%;
+    height: 100%;
+}
+
+#wid-back{
+    width: 45%;
+    height: 100%;
+    position: absolute;
+    /* position: relative; */
+}
+
+.img-list{
+    width: 250px;
+    height: 180px;
+}
+
+.box{
+    width: 450px;
+    margin-left: 20px;
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: Jua;
+}
+
+#tog{
+    position: absolute;
+    right: 10px;
+}
+
+#favo{
+   right: 0px;
+   top: -20px;
+}
+
+.favorite{
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.large-main{
+    min-width: 1350px;
+    min-height: 800px;
+}
+
+        /* ========== toggle button ============ */
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+        
+        .slider.round:before {
+            border-radius: 50%;
+        }
