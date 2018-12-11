@@ -40,6 +40,6 @@ window.addEventListener("load", function(){
 
 window.addEventListener("load", function(){
     var main = document.getElementById("detail-large-main");
-    main.style.width = window.screen.width;
+    main.style.width = document.body.clientWidth;
 });
 
