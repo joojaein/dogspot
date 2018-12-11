@@ -21,7 +21,7 @@
 
 			<section class="list">
 
-				<main id="search-list" class="large-main">
+				<main id="search-list" class="list-large-main">
 				<h1 class="hidden">메인</h1>
 				<div class="left top">
 					<input type="text" name="search" class="big-data-search" />
@@ -54,16 +54,18 @@
 
 				<div class="list">
 					<div class="content-bold">53개의 검색결과</div>
-					<!-- <fieldset class="right"> 
-                            <input type="radio" id="min-pri" name="price" value="min-price" checked>
-                            <label>최소가격</label>
-                            <input type="radio" id="max-pri" name="price" value="max-price">
-                            <label>최대가격</label>
-                        </fieldset> -->
-					<span id="tog"> <label class="switch"> <input
-							type="checkbox" /> <span class="slider round"></span>
-					</label>
-					</span>
+					<fieldset class="right" id="tog">
+						<input type="radio" id="min-pri" name="price" value="min-price"
+							checked> <label>최소가격&nbsp;&nbsp;&nbsp;</label> <input
+							type="radio" id="max-pri" name="price" value="max-price">
+						<label>최대가격</label>
+					</fieldset>
+					<!-- <span id="tog">
+                            <label class="switch">
+                                <input type="checkbox" />
+                                <span class="slider round"></span>
+                            </label>
+                        </span>  -->
 
 				</div>
 				<div class="list">
@@ -141,8 +143,7 @@
 
 		</div>
 	</section>
-
-<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="../inc/footer.jsp" />
 
 </body>
 </html>

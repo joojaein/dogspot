@@ -16,44 +16,80 @@
 <body>
 <jsp:include page="../inc/header.jsp" />
 	<section id="body">
+
 		<div class="center">
+
 			<h1 class="hidden">바디</h1>
 			<section class="list">
 
-				<main>
+				<main id="detail-large-main">
 				<h1 class="hidden">메인</h1>
-				<section class="data-menu">
+				<section>
 					<h1 class="hidden">장소 상세리스트</h1>
-
 					<div class="list" id="img-arg">
-						<div class="list center width-half">
-							<img src="../../images/room1.png" class="width-full">
+						<div class="width-half rela">
+							<img src="../../images/room1.png" id="img-pos"
+								class="width-full height-full abso">
 						</div>
-						<div class="center width-quarter">
-							<div class="height-half">
-								<img src="../../images/room1.png" class="width-full">
-							</div>
-							<div class="height-half">
-								<img src="../../images/room1.png" class="width-full">
-							</div>
 
-						</div>
-						<div class="cente width-quarter">
+						<div class="width-quarter">
 							<div class="height-half">
-								<img src="../../images/room1.png" class="width-full">
+								<img src="../../images/room1.png" id="img-pos"
+									class="width-full height-full">
 							</div>
 							<div class="height-half">
-								<img src="../../images/room1.png" class="width-full">
+								<img src="../../images/room1.png" id="img-pos"
+									class="width-full height-full">
 							</div>
 						</div>
+
+						<div class="width-quarter">
+							<div class="height-half">
+								<img src="../../images/room1.png" id="img-pos"
+									class="width-full height-full">
+							</div>
+							<div class="height-half">
+								<img src="../../images/room1.png" id="img-pos"
+									class="width-full height-full">
+							</div>
+						</div>
+
 					</div>
 
-					<section class="spot-detail">
-						<h1>혜정이네 집</h1>
 
-						<div class="right">
-							<span>최근 업데이트: 2018.09.21</span> <input type="button"
-								name="modify" value="수정요청" class="empty-btn" />
+					<!-- <div class="list" id="img-arg">
+                            <div class="width-half">
+                                <img src="../images/room1.png" class="width-full height-full" >
+                            </div>
+
+                            <div class="width-quarter">
+                                <div class="height-half">
+                                    <img src="../images/room1.png" class="width-full height-full" >
+                                </div>
+                                <div class="height-half">
+                                    <img src="../images/room1.png" class="width-full height-full" >
+                                </div>
+                            </div>
+
+                            <div class="width-quarter">
+                                <div class="height-half">
+                                   <img src="../images/room2.png" class="width-full height-full" >
+                                </div>
+                                <div class="height-half">
+                                   <img src="../images/room2.png" class="width-full height-full" >
+                                </div>
+                            </div>
+
+                        </div>  -->
+
+					<section class="spot-detail height-full" id="spot-info">
+						<div class="list">
+							<div id="detail-title">혜정이네 집</div>
+
+							<div id="detail-sub">
+								<span>최근 업데이트: 2018.09.21</span> <input type="button"
+									name="modify" value="수정요청" class="empty-btn" />
+							</div>
 						</div>
 						<div class="left content">
 							<span class="content-bold">주소&nbsp;</span> <span class="content">인천시
@@ -111,13 +147,19 @@
 						</div>
 						<hr />
 
-						<div class="left list">
+						<div class="left list rela">
 							<div>
 								<img src="../../images/profile.png" id="profile">
 							</div>
 							<div>
 								<span class="content-bold block">OㅡO24u</span> <span
 									class="block">2018.09.12</span>
+							</div>
+							<div class="abso" id="comment-icon">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png" class="icon"></span>
+								<span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							</div>
 						</div>
 						<div class="left">
@@ -131,40 +173,50 @@
 						<div class="left">
 							<span class="hashtag">#힐링</span>
 						</div>
-						<div class="right">
-							<span><img src="../../images/likesImg.png" class="icon"></span>
-							<span>10</span> <span><img src="../../images/commentsImg.png"
-								class="icon"></span> <span>10</span> <span><img
-								src="../../images/hitImg.jpg" class="icon"></span> <span>10</span>
-						</div>
+
 						<hr size="1px" />
-						<div class="left">
-							<span class="bold">hm.1664</span> <span>백퍼공감!</span>
+
+
+						<div class="left list rela">
+							<div>
+								<img src="../../images/profile.png" id="profile">
+							</div>
+							<div>
+								<span class="content-bold block">OㅡO24u</span> <span
+									class="block">2018.09.12</span>
+							</div>
+							<div class="abso" id="comment-icon">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png" class="icon"></span>
+								<span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</div>
 						</div>
 						<div class="left">
-							<span class="bold">laaaaani</span> <span>아우 이뻐이뻐! 너무 이뻐요ㅜㅜ</span>
+							<span class="review-title">휴양림 저렴하게 잘 다녀왔네요</span>
+						</div>
+
+						<div class="left">
+							<span>다른 펜션들에 비해 저렴한 것 같기도 하고.. 생각보다 관리도 잘 되어 있구요~ 아가들하고
+								자연에서 힐링 잘 하고 왔습니다~ </span>
 						</div>
 						<div class="left">
-							<span class="bold">neurisalaaaaanilon</span> <span>저도 네마리
-								다둥이 키우고 있어요!! 넘나 귀여운~~ 소통해여~!</span>
+							<span class="hashtag">#힐링</span>
 						</div>
+
+						<hr size="1px" />
+
 
 					</section>
 
 				</section>
 
-
-
 				</main>
 			</section>
 
 
-
-
-
 		</div>
 	</section>
-
 	<jsp:include page="../inc/footer.jsp" />
 
 </body>

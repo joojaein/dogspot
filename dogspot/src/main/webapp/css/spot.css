@@ -1,103 +1,28 @@
-/* ===================== spot-list ====================== */
-
-#search-list select{
-    margin-right: 30px;
-}
-
- #search-list input[type="number"]{
-    width: 80px;
-    height: 30px;
-    font-size: 15px;
-    border: #002060 1px solid;
-    border-radius: 5px;
-    vertical-align: middle;
-}
-
-.big-data-search{
-    width: 700px;
-    height: 38px;
-    border: 1px solid #7F7F7F;
-    border-radius: 5px;
-    box-shadow: 1px 1px #818181;
-}
-
-.content{
-    font-size: 20px!important;
-    padding-bottom: 10px;
-    vertical-align: middle;
-}
-.content-bold{
-    font-size: 20px!important;
-    font-weight: bold;
-    padding-bottom: 10px;
-    color: #7F7F7F;
-    vertical-align: middle;
-}
-
-#wid-front{
-    width: 55%;
-    height: 100%;
-}
-
-#wid-back{
-    width: 45%;
-    height: 100%;
-    position: absolute;
-    /* position: relative; */
-}
-
-.img-list{
-    width: 250px;
-    height: 180px;
-}
-
-.box{
-    width: 450px;
-    margin-left: 20px;
-    border: #000000 solid 1px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-family: Jua;
-}
-
-#tog{
-    position: absolute;
-    right: 10px;
-}
-
-#favo{
-   right: 0px;
-   top: -20px;
-}
-
-.favorite{
-    width: 30px;
-    height: 30px;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-}
-
-.large-main{
-    min-width: 1350px;
-    min-height: 800px;
-}
 
 
 /* ========== spot detail ============= */
 
 .spot-detail{
-    padding-left: 200px;
-    padding-right: 200px;
+    padding-left: 150px;
+    padding-right: 150px;
     font-family: ¸¼Àº °íµñ;
+    /* padding-bottom: 100px; */
 }
 
-.spot-detail h1{
+#detail-title{
     font-size: 40px;
     text-align: left;
     padding-top: 30px;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+
+#detail-sub{
+    font-size: 15px;
+    padding-top: 30px;
+    position: absolute;
+    right: 140px;
+    vertical-align: bottom;
 }
 
 .spot-detail span{
@@ -134,10 +59,9 @@
     margin-right: 2px;
 }
 
-.heigth-half{
+.height-half{
     height: 50%;
-    margin-bottom: 2px;
-    margin-top: 2px;
+    padding-bottom: 2px;
 }
 
 .width-quarter{
@@ -148,21 +72,117 @@
 
 .width-full{
     width: 100%;
+    margin-top: 2px;
 }
 .heigth-full{
     height: 100%;
 }
 
 #img-arg{
-    max-height: 700px;
+    height: 450px;
+    width: 100%;
 }
 
+#comment-icon{
+    right: 0px;
+    top: 10px;
+}
 
+#img-pos{
+    left:0;
+    top:0;
+    height: 100%;
+    /* border: red solid 5px; */
+}
 
+#spot-info{
+    top:480px;
+}
+
+#detail-large-main{
+    /* width: 1440px; */
+    /* width: 100%; */
+    min-height: 800px;
+}
+
+/* ===================== spot-list ====================== */
+
+#search-list select{
+    margin-right: 30px;
+}
+
+ #search-list input[type="number"]{
+    width: 80px;
+    height: 30px;
+    font-size: 15px;
+    border: #002060 1px solid;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+.big-data-search{
+    width: 700px;
+    height: 38px;
+    border: 1px solid #7F7F7F;
+    border-radius: 5px;
+    box-shadow: 1px 1px #818181;
+}
+
+#wid-front{
+    width: 55%;
+    height: 100%;
+}
+
+#wid-back{
+    width: 45%;
+    height: 100%;
+    position: absolute;
+    /* position: relative; */
+}
+
+.img-list{
+    width: 250px;
+    height: 180px;
+}
+
+.box{
+    width: 450px;
+    margin-left: 20px;
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: Jua;
+}
+
+#tog{
+    position: absolute;
+    right: 10px;
+    font-size: 17px;
+}
+
+#favo{
+   right: 0px;
+   top: -20px;
+}
+
+.favorite{
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.list-large-main{
+    min-width: 1350px;
+    min-height: 800px;
+}
 
         /* ========== toggle button ============ */
 
-        .switch {
+        /* .switch {
             position: relative;
             display: inline-block;
             width: 60px;
@@ -213,11 +233,10 @@
             transform: translateX(26px);
         }
         
-        /* Rounded sliders */
         .slider.round {
             border-radius: 34px;
         }
         
         .slider.round:before {
             border-radius: 50%;
-        }
+        } */

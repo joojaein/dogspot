@@ -67,14 +67,16 @@
 
 .content{
     font-size: 20px!important;
-    padding-bottom: 10px;
-    vertical-align: middle;
+    /* padding-bottom: 10px; */
+    vertical-align: middle!important;
 }
 .content-bold{
     font-size: 20px!important;
     font-weight: bold;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     vertical-align: middle;
+    height: 20px;
+    line-height: 30px;
 }
 
 .block{
