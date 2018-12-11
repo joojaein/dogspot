@@ -25,7 +25,7 @@ table{
     padding-right: 50px;
     border: none;
     width: 100%;
-    font-family: '¸¼Àº °íµñ';
+    font-family: 'ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½';
 }
 
 thead th{
@@ -63,33 +63,6 @@ tbody td input{
     cursor: pointer;
 }
 
-.page{
-    padding-top: 50px;
-    padding-left: 400px;
-    font-family: ¸¼Àº °íµñ;
-}
-
-.page img{
-    width: 20px;
-    cursor: pointer;
-}
-
-.page ul{
-    font-size: 15px;
-}
-.page li{
-    padding-left: 3px;
-    padding-right: 3px;
-}
-
-.page a{
-    vertical-align: middle;
-}
-
-.page li:first-child a{
-    color: red;
-    font-weight: bold;
-}
 
 /* ================= admin-spot-reg =================== */
 

@@ -73,59 +73,77 @@
 						<section class="top left">
 
 							<div class="list top">
-								<div class="rela">
-									<img src="../../images/room1.png" class="img-list">
-									<div id="favo" class="abso top">
-										<input type="button" value="♡" class="favorite" />
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div id="favo" class="abso top">
+											<input type="button" value="♡" class="favorite" />
+										</div>
+		
 									</div>
-
-								</div>
-								<div class="box">
-									<div>혜정이네 집</div>
-									<div>
-										<span><img src="../../images/house.png" class="icon"></span>
-										<span>인천시 계양구 계산새로</span>
+									<div class="box">
+										<div id="list-font-big">혜정이네 집</div>
+										<div>
+											<div id="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span>인천시 계양구 계산새로
+											</div>
+										</div>
+										<div id="list-font-small">10,000원~20,000원</div>
+										<div class="right top" id="per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
 									</div>
-									<div>10,000원~20,000원</div>
+		
 								</div>
-
-							</div>
-							<div class="list top">
-								<div class="rela">
-									<img src="../../images/room1.png" class="img-list">
-									<div id="favo" class="abso top">
-										<input type="button" value="♡" class="favorite" />
+								<div class="list top">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div id="favo" class="abso top">
+											<input type="button" value="♡" class="favorite" />
+										</div>
+		
 									</div>
-
-								</div>
-								<div class="box">
-									<div>혜정이네 집</div>
-									<div>
-										<span><img src="../../images/house.png" class="icon"></span>
-										<span>인천시 계양구 계산새로</span>
+									<div class="box">
+										<div id="list-font-big">혜정이네 집</div>
+										<div>
+											<div id="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span>인천시 계양구 계산새로
+											</div>
+										</div>
+										<div id="list-font-small">10,000원~20,000원</div>
+										<div class="right top" id="per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
 									</div>
-									<div>10,000원~20,000원</div>
+		
 								</div>
-
-							</div>
-							<div class="list top">
-								<div class="rela">
-									<img src="../../images/room1.png" class="img-list">
-									<div id="favo" class="abso top">
-										<input type="button" value="♡" class="favorite" />
+								<div class="list top">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div id="favo" class="abso top">
+											<input type="button" value="♡" class="favorite" />
+										</div>
+		
 									</div>
-
-								</div>
-								<div class="box">
-									<div>혜정이네 집</div>
-									<div>
-										<span><img src="../../images/house.png" class="icon"></span>
-										<span>인천시 계양구 계산새로</span>
+									<div class="box">
+										<div id="list-font-big">혜정이네 집</div>
+										<div>
+											<div id="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span>인천시 계양구 계산새로
+											</div>
+										</div>
+										<div id="list-font-small">10,000원~20,000원</div>
+										<div class="right top" id="per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
 									</div>
-									<div>10,000원~20,000원</div>
+		
 								</div>
-
-							</div>
 
 
 						</section>

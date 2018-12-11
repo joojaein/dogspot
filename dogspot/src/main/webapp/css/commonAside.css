@@ -1,29 +1,36 @@
+
+
+
+
 main{
-
     position: relative;
-    min-width: 950px;
-    min-height: 800px;
- }
+     min-width: 950px;
+     min-height: 800px;
 
+ } 
 
 aside{
     position: relative;   
     min-width: 200px;
     display: inline-block;
     min-height: 800px;
+    /* background: palevioletred; */
+    /*top:100px;*/
 }
 
 aside nav{
     padding-top: 50px;
+
 }
 
 aside li{
     height: 30px;
     padding-bottom: 20px;
-}
 
+}
 aside a{
     font-size: 20px;
+    color: #7F7F7F;
 }
 
 aside a:hover{
@@ -34,13 +41,13 @@ aside a:hover{
 aside img{
     width: 90px;
 }
-
 aside div{
     padding-bottom: 40px;
     font-size: 17px;
 }
 
  #mypage-title{
+  
     padding-top:70px;
     padding-bottom: 10px;
     padding-left: 30px;
@@ -52,25 +59,34 @@ aside div{
 #boxlist{
     position: relative;
     padding-top:100px;
-    padding-left: 105px;
+    padding-left: 50px;
+    
 }
 #boxlist a{
     padding-right: 15px;
-    color:#002060;
+    color: #002060;
 }
 
-#boximg {
-    width: 190px;
-    height: 142px;
-    padding-top: 20px;
-    background:url(/images/testbox.png)no-repeat left center;
-    font-size: 25px;
- }
 
+#boximg {
+    width: 210px;
+    height: 130px;
+    padding-top: 20px;
+    /*background:url(/images/testbox.png)no-repeat left center;*/
+    font-size: 25px;
+    border: #002060 1.5px solid;
+    border-radius: 30px;
+ } 
+#boximg:hover{
+ 
+    background-color: #002060;
+    color: white;
+  
+    border-radius: 30px;
+}
  #boximg img{
     width: 150px;
  }
- 
  #boximg:last-child{
     padding-right: 0px;
  }

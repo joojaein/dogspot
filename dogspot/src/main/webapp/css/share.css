@@ -61,7 +61,7 @@
 }
 
 .icon{
-    width: 20px;
+    width: 21px;
     padding-left: 1px;
 }
 
@@ -81,4 +81,52 @@
 
 .block{
     display: block;
+}
+
+
+.page{
+    padding-top: 50px;
+    padding-left: 400px;
+    font-family: ���� ���;
+}
+
+.page img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.page ul{
+    font-size: 15px;
+}
+.page li{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.page a{
+    vertical-align: middle;
+}
+
+.page li:first-child a{
+    color: red;
+    font-weight: bold;
+}
+
+
+#list-font-big{
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+#list-font-small{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#per{
+    margin-right: 10px;
+}
+
+.hashtag{
+    color: #002060;
 }

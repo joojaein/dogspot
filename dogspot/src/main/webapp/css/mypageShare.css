@@ -1,0 +1,44 @@
+.img-list{
+    width: 250px;
+    height: 180px;
+}
+
+.favorite{
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+    color: red;
+}
+#favo{
+    right: 0px;
+    top: -20px;
+ }
+
+.box{
+    width: 450px;
+    margin-left: 20px;
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: Jua;
+}
+
+#my-list{
+    left: 140px;
+}
+
+ #comm-icon{
+    right: 230px;
+} 
+
+.mypage-click{
+ 
+    background-color: #002060;
+    color: white;
+  
+    border-radius: 30px;
+}
