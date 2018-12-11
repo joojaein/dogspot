@@ -84,6 +84,48 @@
     min-width: 1350px;
     min-height: 800px;
 }
+/* ========== spot detail ============= */
+
+.spot-detail{
+    padding-left: 200px;
+    padding-right: 200px;
+    font-family: ¸¼Àº °íµñ;
+}
+
+.spot-detail h1{
+    font-size: 40px;
+    text-align: left;
+    padding-top: 30px;
+}
+
+.spot-detail span{
+    font-size: 15px;
+    line-height: 40px;
+}
+
+
+.review-title{
+    font-size: 17px!important;
+}
+
+.hashtag{
+    color: #002060;
+}
+
+.bold{
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.detail-icon{
+    width: 45px;
+    vertical-align: middle;
+}
+
+#profile{
+    width: 80px;
+}
+
 
         /* ========== toggle button ============ */
 
