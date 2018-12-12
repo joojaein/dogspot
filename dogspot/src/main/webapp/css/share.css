@@ -1,0 +1,132 @@
+
+.empty-btn{
+    width: 60px;
+    margin-left: 20px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+    cursor: pointer;
+}
+
+
+.select{
+    width: 65px;
+    height: 30px;
+    font-size: 15px;
+    vertical-align: middle;
+    border: #002060 1px solid;
+}
+
+.full-btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    background: #002060;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+
+.right{
+    text-align: right!important;;
+}
+
+.left{
+    text-align: left!important;
+}
+
+.bottom{
+    margin-bottom: 20px!important;
+}
+
+.top{
+    margin-top: 20px!important;
+}
+
+.rela{
+    position: relative;
+}
+
+.abso{
+    position: absolute;
+}
+
+.icon{
+    width: 21px;
+    padding-left: 1px;
+}
+
+.content{
+    font-size: 20px!important;
+    /* padding-bottom: 10px; */
+    vertical-align: middle!important;
+}
+.content-bold{
+    font-size: 20px!important;
+    font-weight: bold;
+    /* padding-bottom: 10px; */
+    vertical-align: middle;
+    height: 20px;
+    line-height: 30px;
+}
+
+.block{
+    display: block;
+}
+
+
+.page{
+    padding-top: 50px;
+    padding-left: 400px;
+    font-family: ���� ���;
+}
+
+.page img{
+    width: 20px;
+    cursor: pointer;
+}
+
+.page ul{
+    font-size: 15px;
+}
+.page li{
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.page a{
+    vertical-align: middle;
+}
+
+.page li:first-child a{
+    color: red;
+    font-weight: bold;
+}
+
+
+#list-font-big{
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+#list-font-small{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#per{
+    margin-right: 10px;
+}
+
+.hashtag{
+    color: #002060;
+}
