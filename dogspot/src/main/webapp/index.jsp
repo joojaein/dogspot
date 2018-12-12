@@ -15,7 +15,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
 	rel="stylesheet">
-<link href="../css/index.css" type="text/css" rel="stylesheet" />
+<link href="../css/index.css"  type="text/css" rel="stylesheet" />
 </head>
 <body>
 
