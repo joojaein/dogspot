@@ -47,8 +47,8 @@ dialog{
 }
 
 .review-detail-image img{
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: 600px;
 }
 
 .review-detail-image a{
@@ -88,28 +88,31 @@ dialog{
     right: 0px;
 }
 
-.review-top input{
+.review-top ul input{
     font-size: 15px;
     width: fit-content;
     margin: 0px 10px;
     background: none;
     border:none;
     border-radius: 5px;
-
+    position: absolute;
+    margin-top: 25px; 
+    right: 0px;
 }
 
-.review-top input:last-child{
+
+.review-top ul input:last-child{
     position: absolute;
     right: 0px;
     margin-top: 20px; 
     padding: 0px 10px;
     font-size: 20px;
     height: 30px; 
-    background:#fff;
+    background: #fff;
     border: #BFBFBF solid 1px;   
 } 
 
-.review-top ul input:last-child{
+/* .review-top ul input:last-child{
     position: relative;
     margin-top: 20px; 
     padding: 0px 10px;
@@ -117,7 +120,7 @@ dialog{
     height: 30px; 
     background: #BFBFBF;
     border:none;   
-} 
+}  */
 
 .review-center {
     width: 95%;

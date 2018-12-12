@@ -1,0 +1,49 @@
+#chart-option{
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 60px;
+}
+
+#chart-option div{
+    font-family: Jua, HY동녘M, sans-serif !important;
+    display: inline-block;
+    width: fit-content;
+    margin: 0px 5px;
+    text-align: left;
+    font-size: 15px;
+    height: 20px;
+}
+
+#chart-option div select{
+    font-family: Jua, HY동녘M, sans-serif !important;
+    font-size: 15px;
+    width: 65px;
+    border-radius: 5px;
+    border: #002060 1px solid;
+    height: 20px;
+    vertical-align: middle;
+}
+#chart-option div input{
+    vertical-align: middle;
+}
+
+#chart-option .date-div{
+    margin: 0px;
+}
+
+#chart-option .date-div input{
+    border-radius: 5px;
+    border: #002060 1px solid;
+    text-align: center;
+    font-size: 15px;
+    height: 20px;
+}
+
+#chart{
+    text-align: right;
+    margin-top: 10px;
+}
+
+#chart div{
+    display: inline-block;
+}

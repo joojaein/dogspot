@@ -13,6 +13,9 @@ input:focus {
 textarea:focus { 
     outline: none; 
 }
+select:focus {
+    outline: none; 
+}
 
 .btn{
     cursor: pointer !important;
@@ -48,7 +51,7 @@ textarea:focus {
     padding: 5px 0px !important;
     font-size: 15px !important;
     line-height: 15px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, sans-serif;
 }
 
 .text-overflow-ellipsis{

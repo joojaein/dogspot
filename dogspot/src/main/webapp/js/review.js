@@ -19,6 +19,9 @@ window.addEventListener("load", function(){
     var btnFile=dialogImg.querySelector(".reg1-top input[type='file']");
     var btnUppage=dialogSpot.querySelector(".review-spot-list img")
     var btnDownpage=dialogReport.querySelector(".review-spot-list img")
+    var btnUpdateReview = dialogDetail.querySelector("input[value='수정']")
+    var btnDelReview = dialogDetail.querySelector("input[value='삭제']")
+    var btnEtcReview = dialogDetail.querySelector("input[value='...']")
 
     var textareasReportReviewContent = dialogReport.querySelector("textarea");
     var inputReportReviewTitle = dialogReport.querySelector(".review-report input");
@@ -29,7 +32,7 @@ window.addEventListener("load", function(){
     var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");
     var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template")
     var tmpReviewSpot = reviewSpotCenter.querySelector("#review-spot-li-template")
-
+       
     var bind_reviewDiv = function(div){
         tempImg=div.querySelector(".review-mainImg");
         tempName=div.querySelector(".review-name");
@@ -114,12 +117,10 @@ window.addEventListener("load", function(){
                  if(tempImg==evt.target){
                      tempSection = reviewDivs[i].querySelector(".review-list-hover");
                      tempSection.style.display = "unset";    
-                     console.log(i);
     
                  }else{
                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
                     tempSection.style.display = "none";   
-                    console.log(i+" else");
                  }
 
             }
@@ -194,13 +195,78 @@ window.addEventListener("load", function(){
         textareasReportReviewContent.focus();
     }
 
-
-
     inputSpotReviewTitle.onclick = function(evt){
         closeModal();
         modalBack.style.display = "unset";
         dialogReport.showModal();
         inputReportReviewTitle.focus();
     }
-    
+
+    var btnSpeed=20;
+    var btnEtcColor = 255;
+    var moveUpdateBtnInter;
+    btnEtcReview.onclick = function(evt){
+        var color = window.getComputedStyle(btnEtcReview,null).getPropertyValue('background-color'); 
+        if(color=="rgb(191, 191, 191)"){
+            btnEtcReview.style.backgroundColor = "rgb(255,255,255)";
+            btnEtcColor=255;
+            moveUpdateBtn();
+        }else{
+            btnEtcReview.style.backgroundColor = "rgb(191, 191, 191)";
+            btnEtcColor=191;
+            moveUpdateBtn();
+        }
+    }
+
+    function moveUpdateBtn(){  	
+    	moveUpdateBtnInter = setInterval(function(){            
+            if(btnEtcColor==255){
+            	var updateRightStr = window.getComputedStyle(btnUpdateReview,null).getPropertyValue('right'); 
+                var updateRight=JSON.parse(updateRightStr.substring(0,updateRightStr.indexOf("p")));
+
+                var delRightStr = window.getComputedStyle(btnDelReview,null).getPropertyValue('right'); 
+                var delRight=JSON.parse(delRightStr.substring(0,delRightStr.indexOf("p")));
+
+                if(delRight>0){
+                	delRight=delRight-btnSpeed;
+                	if(delRight<=0)
+                		delRight=0;
+                	btnDelReview.style.right=delRight+"px";
+                }else{
+                	updateRight=updateRight-btnSpeed;
+                	if(updateRight<=0){
+                		updateRight=0;
+                	}
+                	btnUpdateReview.style.right=updateRight+"px";
+                }
+                
+                if(updateRight==0)
+                	clearInterval(moveUpdateBtnInter);
+                
+            }else{
+            	 var updateRightStr = window.getComputedStyle(btnUpdateReview,null).getPropertyValue('right'); 
+                 var updateRight=JSON.parse(updateRightStr.substring(0,updateRightStr.indexOf("p")));
+
+                 var delRightStr = window.getComputedStyle(btnDelReview,null).getPropertyValue('right'); 
+                 var delRight=JSON.parse(delRightStr.substring(0,delRightStr.indexOf("p")));
+
+                 if(updateRight<90){
+                 	updateRight=updateRight+btnSpeed;
+                 	if(updateRight>=90)
+                 		updateRight=90;
+                 	btnUpdateReview.style.right=updateRight+"px";
+                 }else{
+                 	delRight=delRight+btnSpeed;
+                 	if(delRight>=50){
+                 		delRight=50;
+                 	}
+                 	btnDelReview.style.right=delRight+"px";
+                 }
+                 
+                 if(delRight==50)
+                 	clearInterval(moveUpdateBtnInter);
+            }	
+        }, 50);
+    };
+
 });

@@ -12,8 +12,7 @@
 		<section class="modal-section list">
 			<h1 class="hidden">디테일모달</h1>
 			<section class="review-detail-image">
-				<img src="/images/reviewImg.png"> <a href=""> <</a> <a href="">>
-				</a>
+				<img src="/images/reviewImg.png"> <a href="">&lt;</a> <a href="">&gt;</a>
 			</section>
 			<section class="review-detail-contents">
 				<section class="review-top list">
@@ -118,7 +117,7 @@
 		<section class="modal-section list">
 			<h1 class="hidden">내용입력모달</h1>
 			<section class="review-detail-image">
-				<img src="/imafges/reviewImg.png"> <a href=""><</a> <a href="">></a>
+				<img src="/images/reviewImg.png"> <a href="">&lt;</a> <a href="">&gt;</a>
 			</section>
 			<section class="review-detail-contents">
 				<section class="review-top list">
@@ -155,7 +154,7 @@
 		<section class="modal-section list">
 			<h1 class="hidden">장소선택모달</h1>
 			<section class="review-detail-image">
-				<img src="/images/reviewImg.png"> <a href=""><</a> <a href="">></a>
+				<img src="/images/reviewImg.png"> <a href="">&lt;</a> <a href="">&gt;</a>
 			</section>
 			<section class="review-detail-contents">
 				<section class="review-top list">
