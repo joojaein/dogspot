@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>DogSpot</title>
         <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
-        <link href="../../css/spot.css" type="text/css" rel="stylesheet" />
+		<link href="../../css/spot.css" type="text/css" rel="stylesheet" />
         <link href="../../css/basicStyle.css" type="text/css" rel="stylesheet" />
         <link href="../../css/share.css" type="text/css" rel="stylesheet" />
-        <script src="../../js/spot.js"></script>
+		<script src="../../js/spot.js"></script>
+		<script src="../../js/spotSize.js"></script>
+		<script src="../../js/spotDetail.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc&libraries=services"></script>
         <meta charset="utf-8"/>
 </head>
@@ -23,38 +25,34 @@
 			<section class="list">
 
 				<main id="detail-large-main">
-				<h1 class="hidden">메인</h1>
-				<section>
-					<h1 class="hidden">장소 상세리스트</h1>
-					<div class="list" id="img-arg">
-						<div class="width-half rela">
-							<img src="../../images/room1.png" id="img-pos"
-								class="width-full height-full abso">
+					<h1 class="hidden">메인</h1>
+					<section>
+						<input type="button" value="저장 ♡" class="favorite abso" id="favo-detail" />
+						<h1 class="hidden">장소 상세리스트</h1>
+						<div class="list" id="img-arg">
+							<div class="width-half rela" id="img1">
+								<img src="../../images/room1.png" id="img-pos">
+							</div>
+	
+							<div class="width-quarter">
+								<div class="height-half" id="img2">
+									<img src="../../images/room3.png" id="img-pos">
+								</div>
+								<div class="height-half" id="img3">
+									<img src="../../images/room4.png" id="img-pos">
+								</div>
+							</div>
+	
+							<div class="width-quarter">
+								<div class="height-half" id="img4">
+									<img src="../../images/room5.png" id="img-pos">
+								</div>
+								<div class="height-half" id="img5">
+									<img src="../../images/room6.png" id="img-pos">
+								</div>
+							</div>
+	
 						</div>
-
-						<div class="width-quarter">
-							<div class="height-half">
-								<img src="../../images/room1.png" id="img-pos"
-									class="width-full height-full">
-							</div>
-							<div class="height-half">
-								<img src="../../images/room1.png" id="img-pos"
-									class="width-full height-full">
-							</div>
-						</div>
-
-						<div class="width-quarter">
-							<div class="height-half">
-								<img src="../../images/room1.png" id="img-pos"
-									class="width-full height-full">
-							</div>
-							<div class="height-half">
-								<img src="../../images/room1.png" id="img-pos"
-									class="width-full height-full">
-							</div>
-						</div>
-
-					</div>
 
 
 					<!-- <div class="list" id="img-arg">
@@ -218,6 +216,41 @@
 		</div>
 	</section>
 	<jsp:include page="../inc/footer.jsp" />
+
+	<section class="modal-back">
+		<h1 class="hidden">모달 백</h1>
+	</section>
+	<dialog id="img-modal" class="modal-img">
+		<img class="modal-x" src="../../images/exit.png">
+		<form method="dialog">
+			<section class="modal-imgs">
+				<h1 class="hidden">이미지리스트 모달</h1>
+				<div><img src="../../images/room1.png" class="bigimg" id="modal-img1"></div>
+				<div id="smallimg list">
+					<img src="../../images/room2.png" class="smallimg" id="modal-img2">
+					<img src="../../images/room3.png" class="smallimg" id="modal-img3">
+					<img src="../../images/room4.png" class="smallimg" id="modal-img4">
+					<img src="../../images/room5.png" class="smallimg" id="modal-img5">
+					<img src="../../images/room6.png" class="smallimg" id="modal-img6">
+				</div>
+			</section>
+
+		</form>
+	</dialog>
+	
+	<dialog id="spot-modify-modal" class="modal">
+		<form method="dialog">
+			<img class="modal-x" src="../../images/exit.png">
+			<section>
+				<h1 class="hidden">수정요청 모달</h1>
+				<div id="modal-title">수정 요청</div>
+				<input type="text" id="modal-small-box" placeholder="제목" />
+				<textarea placeholder="내용" id="modal-big-box" style="resize: none"></textarea>
+				<input type="submit" id="send-btn" class="full-btn" value="보내기" />
+			</section>
+
+		</form>
+	</dialog>
 
 </body>
 </html>

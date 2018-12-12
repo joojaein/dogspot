@@ -77,13 +77,13 @@ aside div{
     border: #002060 1.5px solid;
     border-radius: 30px;
  } 
-#boximg:hover{
+/* #boximg:hover{
  
     background-color: #002060;
     color: white;
   
     border-radius: 30px;
-}
+} */
  #boximg img{
     width: 150px;
  }
