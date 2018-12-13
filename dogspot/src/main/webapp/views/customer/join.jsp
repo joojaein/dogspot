@@ -24,8 +24,8 @@
 							<div>아이디</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text"> <input class="btn" type="button"
-								value="중복확인">
+                            <input type="text" minlength="5" required="required" placeholder="5자이상"> 
+                            <input class="btn" type="button" value="중복확인">
 							<div class="empty"></div>
 						</section>
 					</li>
@@ -35,7 +35,7 @@
 							<div>비밀번호</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="text" minlength="6" required="required" placeholder="6자이상 / 숫자,영문조합">
 							<div class="empty"></div>
 						</section>
 					</li>
@@ -45,7 +45,7 @@
 							<div>비밀번호 재확인</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="text" required="required" >
 							<div class="empty"></div>
 						</section>
 					</li>
@@ -55,7 +55,7 @@
 							<div>비밀번호 찾기 질문</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="text" required="required" >
 						</section>
 					</li>
 	
@@ -64,7 +64,7 @@
 							<div>비밀번호 찾기 답변</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="text" required="required" >
 						</section>
 					</li>
 	
@@ -73,7 +73,7 @@
 							<div>이름</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="text" required="required" >
 						</section>
 					</li>
 	
@@ -82,7 +82,7 @@
 							<div>이메일</div>
 						</section>
 						<section class="list join-input-text">
-							<input type="text">
+							<input type="email">
 						</section>
 					</li>
 	

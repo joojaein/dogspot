@@ -13,7 +13,7 @@
 <body>
 
 	<jsp:include page="../inc/header.jsp" />
-
+	
 	<section id="body">
 		<div class="center">
 			<h1 class="hidden">바디</h1>

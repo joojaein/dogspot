@@ -3,6 +3,7 @@ window.addEventListener("load", function(){
 	var modals = document.querySelector("#modals");
     var modalBack = modals.querySelector(".modal-back");
 
+    var dialogDrag = modals.querySelector("#modal-review-reg-dragdrop");
     var dialogDetail = modals.querySelector("#modal-review-detail");
     var dialogImg = modals.querySelector("#modal-review-reg-img");
     var dialogReport = modals.querySelector("#modal-review-reg-report");
@@ -156,7 +157,7 @@ window.addEventListener("load", function(){
 
     btnAddReview.onclick = function(evt){
         modalBack.style.display = "unset";
-        dialogImg.showModal();
+        dialogDrag.showModal();
     }
 
     btnFileUpload.onclick = function(){
