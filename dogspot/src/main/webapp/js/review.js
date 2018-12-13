@@ -3,7 +3,6 @@ window.addEventListener("load", function(){
 	var modals = document.querySelector("#modals");
     var modalBack = modals.querySelector(".modal-back");
 
-    var dialogDrag = modals.querySelector("#modal-review-reg-dragdrop");
     var dialogDetail = modals.querySelector("#modal-review-detail");
     var dialogImg = modals.querySelector("#modal-review-reg-img");
     var dialogReport = modals.querySelector("#modal-review-reg-report");
@@ -16,8 +15,8 @@ window.addEventListener("load", function(){
 
     var btnAddReview=document.querySelector("main>input");
     var btnUploadImg=dialogImg.querySelector(".reg1-top input[type='button']")
-    var btnFileUpload=dialogImg.querySelector(".reg1-top img");
-    var btnFile=dialogImg.querySelector(".reg1-top input[type='file']");
+    //var btnFileUploadInDnd=dialogDnd.querySelector(".reg1-top div");
+    var btnFileUpload=dialogImg.querySelector(".reg1-top div");
     var btnUppage=dialogSpot.querySelector(".review-spot-list img")
     var btnDownpage=dialogReport.querySelector(".review-spot-list img")
     var btnUpdateReview = dialogDetail.querySelector("input[value='수정']")
@@ -153,19 +152,19 @@ window.addEventListener("load", function(){
 
     }, true);
 
-
-
     btnAddReview.onclick = function(evt){
         modalBack.style.display = "unset";
-        dialogDrag.showModal();
+        dialogImg.showModal();
     }
-
+  
     btnFileUpload.onclick = function(){
         var evt = new MouseEvent("click", {
 			"view":window,
 			"bubbles":true,
 			"cancelable":true
 		});
+        var btnFile=dialogImg.querySelector(".reg1-top input[type='file']");
+
 		btnFile.dispatchEvent(evt);
     }
 

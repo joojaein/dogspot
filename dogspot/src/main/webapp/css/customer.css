@@ -1,5 +1,6 @@
 @import url(basicStyle.css);
 @import url(component.css);
+
 main{
     min-height: 650px;
     min-width: 900px;
@@ -96,7 +97,7 @@ margin-bottom: 20px;
 }
 
 #join-ul{
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
 
@@ -111,7 +112,7 @@ height: 30px;
 }
 
 #join-ul .join-label{
-    width: 17%;
+    width: 20%;
     text-align: right;
     margin-right: 10px;
     font-size: 15px;
@@ -132,47 +133,40 @@ font-weight: bold;
 }
 
 #join-ul .join-input-text input{
-    flex-grow: 6;  
+    /* flex-grow: 3;   */
+    width : 100%;
     border: black 1px solid;
     margin: 0px 10px;
     font-size: 15px;
 }
 
-#join-ul .addr{
-    width: 100px !important;  
-    flex-grow: unset !important;
-    /* border: black 1px solid;
-    margin: 0px 10px; */
-}
-
 #join-ul .join-input-text .btn{
-    flex-grow: 1;  
-
+    /* flex-grow: 1;   */
+	width:fit-content !important;
     padding: 0px 10px;
     font-size: 15px;
     line-height: 30px;
     border: none;
     background: #002060;
     color: #fff;
+    text-indent:0px;
 }
 
-#join-ul .empty{
-    width: 200px;  
+#join-ul .half input{
+    width : 50% !important;
+    margin-right: 0px;
+}
+
+#join-ul .quarter input{
+    width : 30% ;
+    text-align: center;
+    text-indent: 0px;
+    margin-right: 0px;
 }
 
 #join-ul .addr-li ~ li input::placeholder{
     text-align: right;
-}
-
-#join-ul .addr-li{
-    margin-top: 20px ;
-    margin-bottom: 5px;
-}
-
-#join-ul .addr-li ~ li{
-    margin :5px 0px;
-    height: 30px;
-}
+} 
 
 #join-ul .joinbtn{
     padding: 5px 30px;
@@ -187,6 +181,14 @@ font-weight: bold;
 
 #join-ul li input::placeholder{
     font-size: 12px;
+}
+
+#layer{
+	display: none;
+    position:fixed;
+    width:500px;
+    height: 500px;
+    z-index: 1;
 }
 
 #idpw>section{
