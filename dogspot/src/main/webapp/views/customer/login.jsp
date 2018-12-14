@@ -22,7 +22,7 @@
 						placeholder="PASSWORD" />
 				</section>
 	
-				<input class="btn" type="button" value="로그인" />
+				<input class="btn" type="submit" value="로그인" />
 				<br />
 	
 				<section id="login-input" class="list">
@@ -32,8 +32,8 @@
 	
 				<hr />
 				<section id="login-input-etc">
-					<input type="button" value="ID/PW 찾기" /> <input type="button"
-						value="회원가입" />
+					<input class="btn" type="submit" value="ID/PW 찾기" /> 
+					<input class="btn" type="submit" value="회원가입" />
 				</section>
 			</main>
 		</div>

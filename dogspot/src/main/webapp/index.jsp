@@ -10,13 +10,12 @@
 <html>
 
 <head>
-<script src="../js/index.js"></script>
 <title>DogSpot</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
-	rel="stylesheet">
+<script src="../js/index.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 <link href="../css/index.css"  type="text/css" rel="stylesheet" />
 </head>
+
 <body>
 
 	<jsp:include page="views/inc/header.jsp" />

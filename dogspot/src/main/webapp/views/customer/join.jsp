@@ -115,7 +115,7 @@
 						</section>
 					</li>
 	
-					<input class="btn joinbtn" type="button" value="가입하기">
+					<input class="btn joinbtn" type="submit" value="가입하기">
 				</ul>
 			</main>
 		</div>

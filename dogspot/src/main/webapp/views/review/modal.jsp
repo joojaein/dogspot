@@ -156,7 +156,7 @@
 				<section class="review-top list">
 					<img src="/images/profile.png">
 					<div>dogstpot</div>
-					<input class="btn" type="button" value="리뷰등록">
+					<input class="btn" type="submit" value="리뷰등록">
 				</section>
 				<section class="review-center">
 					<hr class="review-hr" />
@@ -193,7 +193,7 @@
 				<section class="review-top list">
 					<img src="/images/profile.png">
 					<div>dogstpot</div>
-					<input class="btn" type="button" value="리뷰등록">
+					<input class="btn" type="submit" value="리뷰등록">
 				</section>
 				<section class="review-center">
 					<hr class="review-hr" />
