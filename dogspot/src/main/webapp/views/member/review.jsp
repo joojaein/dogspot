@@ -27,7 +27,7 @@
 
 						<ul>
 							<li><a href="">즐겨찾기</a></li>
-							<li><a href="">리뷰</a></li>
+							<li><a href="" class="idx-page">리뷰</a></li>
 							<li><a href="">좋아요</a></li>
 							<li><a href="">댓글</a></li>
 							<li><a href="">최근 본 목록</a></li>
@@ -44,22 +44,22 @@
 				<section id="boxlist">
 					<div class="list">
 						<a href="">
-							<div id="boximg">
+							<div class="boximg">
 								즐겨찾기
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg" class="mypage-click">
+							<div class="boximg mypage-click">
 								리뷰
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								좋아요
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								댓글
 								<div>30</div>
 							</div>
@@ -78,63 +78,154 @@
 
 					<div class="list top">
 						<div class="rela">
-							<img src="../../images/dog1.png" class="img-list">
+							<img src="../../images/ver.jpg" class="img-list">
 
 						</div>
 						<div class="box">
-							<div id="list-font-big">가을 산책</div>
+							<div class="list-font-big">가을 산책</div>
 
-							<div id="list-font-small">기분이가 좋아요~~</div>
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
 							<div class="top hashtag">
 								<span>#멍스타그램</span> <span>#콧물맛</span>
 							</div>
-							<div class="top" id="per">
-								<span><img src="../../images/house.png" class="icon abso"
-									id=""> </span>
-								<div class="abso" id="comm-icon">
-									<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<span><img src="../../images/commentsImg.png"
-										class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
-										src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								</div>
+
+
+							<div class="list-font-small">
+								<span><img src="../../images/house.png" class="icon"></span>
+								<!-- <span class="dog-size">&nbsp;숙박</span> -->
+							</div>
+
+							<div class="right per">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png"
+									class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							</div>
 						</div>
 					</div>
 
 					<div class="list top">
 						<div class="rela">
-							<img src="../../images/dog1.png" class="img-list">
+							<img src="../../images/ver.jpg" class="img-list">
 
 						</div>
 						<div class="box">
-							<div id="list-font-big">가을 산책</div>
+							<div class="list-font-big">가을 산책</div>
 
-							<div id="list-font-small">기분이가 좋아요~~</div>
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
 							<div class="top hashtag">
 								<span>#멍스타그램</span> <span>#콧물맛</span>
 							</div>
-							<div class="top" id="per">
-								<span><img src="../../images/house.png" class="icon abso"
-									id=""> </span>
-								<div class="abso" id="comm-icon">
-									<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<span><img src="../../images/commentsImg.png"
-										class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
-										src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								</div>
+
+
+							<div class="list-font-small">
+								<span><img src="../../images/house.png" class="icon"></span>
+								<!-- <span class="dog-size">&nbsp;숙박</span> -->
+							</div>
+
+							<div class="right per">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png"
+									class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							</div>
 						</div>
 					</div>
 
 					<div class="list top">
 						<div class="rela">
+							<img src="../../images/ver.jpg" class="img-list">
+
+						</div>
+						<div class="box">
+							<div class="list-font-big">가을 산책</div>
+
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
+							<div class="top hashtag">
+								<span>#멍스타그램</span> <span>#콧물맛</span>
+							</div>
+
+
+							<div class="list-font-small">
+								<span><img src="../../images/house.png" class="icon"></span>
+								<!-- <span class="dog-size">&nbsp;숙박</span> -->
+							</div>
+
+							<div class="right per">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png"
+									class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="list top">
+						<div class="rela">
+							<img src="../../images/ver.jpg" class="img-list">
+
+						</div>
+						<div class="box">
+							<div class="list-font-big">가을 산책</div>
+
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
+							<div class="top hashtag">
+								<span>#멍스타그램</span> <span>#콧물맛</span>
+							</div>
+
+
+							<div class="list-font-small">
+								<span><img src="../../images/house.png" class="icon"></span>
+								<!-- <span class="dog-size">&nbsp;숙박</span> -->
+							</div>
+
+							<div class="right per">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png"
+									class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="list top">
+						<div class="rela">
+							<img src="../../images/ver.jpg" class="img-list">
+
+						</div>
+						<div class="box">
+							<div class="list-font-big">가을 산책</div>
+
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
+							<div class="top hashtag">
+								<span>#멍스타그램</span> <span>#콧물맛</span>
+							</div>
+
+
+							<div class="list-font-small">
+								<span><img src="../../images/house.png" class="icon"></span>
+								<!-- <span class="dog-size">&nbsp;숙박</span> -->
+							</div>
+
+							<div class="right per">
+								<img src="../../images/likesImg.png" class="icon"> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span><img src="../../images/commentsImg.png"
+									class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span> <span><img
+									src="../../images/hitImg.jpg" class="icon"></span> <span>10&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							</div>
+						</div>
+					</div>
+
+				
+					<!-- <div class="list top">
+						<div class="rela">
 							<img src="../../images/dog1.png" class="img-list">
 
 						</div>
 						<div class="box">
-							<div id="list-font-big">가을 산책</div>
+							<div class="list-font-big">가을 산책</div>
 
-							<div id="list-font-small">기분이가 좋아요~~</div>
+							<div class="list-font-small content-overflow">기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~기분이가 좋아요~~</div>
 							<div class="top hashtag">
 								<span>#멍스타그램</span> <span>#콧물맛</span>
 							</div>
@@ -149,7 +240,9 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
+
+			
 
 				</section>
 

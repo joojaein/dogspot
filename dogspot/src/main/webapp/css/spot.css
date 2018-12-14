@@ -40,11 +40,6 @@
     padding-right: 10px;
 }
 
-.detail-icon{
-    width: 45px;
-    vertical-align: middle;
-}
-
 #profile{
     width: 80px;
 }
@@ -97,11 +92,11 @@
     top: 10px;
 }
 
-#img-pos{
-    left:0;
-    top:0;
-    height: 100%;
-    width: 100%;
+.img-pos{
+    left:0!important;
+    top:0!important;
+    height: 100%!important;
+    width: 100%!important;
     /* border: red solid 5px; */
 }
 
@@ -143,57 +138,41 @@
     height: 100%;
 }
 
-#wid-back{
-    width: 45%;
-    height: 100%;
-    position: absolute;
+/* 지도크기 */
+.wid-back{
+    /* width: 45%; */
+    /* height: 100%; */
+    position: fixed;
+    right: 20px;
     /* position: relative; */
 }
-.img-list{
-    width: 250px;
-    height: 180px;
-}
+
+
 .box{
-    width: 450px;
+    width: 550px;
     margin-left: 20px;
+    margin-right: 20px;
     border: #000000 solid 1px;
     border-radius: 5px;
     font-size: 18px;
     font-family: Jua;
 }
 
+/* .box{
+    width: 450px;
+    margin-left: 20px;
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: Jua;
+} */
+
 #tog{
-    position: absolute;
+    position: fixed;
     right: 50px;
     font-size: 17px;
 }
 
-#favo{
-   right: 0px;
-   top: -20px;
-}
-
-#favo-detail{
-    right: 10px;
-    top: 10px;
-    background: white;
-    border: #000000 solid 1px;
-    border-radius: 10px;
-    width: 80px;
-    height: 38px;
-    font-size: 20px;
- }
-
-.favorite{
-    width: 30px;
-    height: 30px;
-    font-weight: bold;
-    background: rgba(255, 255, 255, 0);
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-    z-index: 7;
-}
 
 .list-large-main{
     min-width: 1350px;

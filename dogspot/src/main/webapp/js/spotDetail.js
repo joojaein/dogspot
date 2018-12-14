@@ -39,6 +39,7 @@ window.addEventListener("load", function(){
             //console.log("evt:"+evt.target.src);
             if(imgs[i].src==evt.target.src){
                 imgDialog.showModal();
+                modalBack.style.display = "unset";
                 modalImgs[0].src = evt.target.src;
             }
         }
@@ -75,5 +76,25 @@ window.addEventListener("load", function(){
         if(evt.target.className!="modal-x") return;     
         closeModal();
     }, true);
+
+    var favoBtn = document.querySelector("#favo-detail");
+
+    // favoBtn.addEventListener("click", function(evt){
+    //     alert(evt.target.nodeName);
+    // },true);
+
+    favoBtn.onclick = function(evt){
+        
+        if(evt.target.value != "★"){
+            evt.target.value = "★";
+            favoBtn.style.color = "yellow";
+            favoBtn.style.fontSize = "24px";
+            return;
+        }
+        evt.target.value = "저장 ☆";
+        favoBtn.style.color = "black";
+        favoBtn.style.fontSize = "20px";
+    };
+
 });
 

@@ -10,10 +10,11 @@
 <link href="../../../css/basicStyle.css" type="text/css" rel="stylesheet" />
 <link href="../../../css/commonAside.css" type="text/css" rel="stylesheet" />
 <link href="../../../css/share.css" type="text/css"rel="stylesheet" />
+<!-- <script src="../../../js/spotReg.js"></script> -->
+<!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js??autoload=false"></script> -->
 </head>
 <body>
 	<jsp:include page="../../inc/header.jsp" />
-
 	<section id="body">
 		<div class="center">
 			<h1 class="hidden">바디</h1>
@@ -70,28 +71,29 @@
 
 							<li class="list"><span class="width-front">주소</span> <span
 								class="width-back"><input type="text" name="addr"
-									id="input-big" /> <input type="button" name="addr-btn"
-									value="주소검색" class="full-btn" /></span></li>
+									class="input-big" />
+									<!-- <input type="button" name="addr-btn" value="주소검색" class="full-btn" id="addr-btn" /></span>	 -->
+								</li>
 
-							<li class="list">
+							<!-- <li class="list">
 								<div class="left-addr">
 									<span class="right-addr">상세주소</span> <span><input
-										type="text" name="addr-detail" id="input-big" /></span>
+										type="text" name="addr-detail" class="input-big" /></span>
 								</div>
-							</li>
+							</li> -->
 							<li class="list"><span class="width-front">영업시간</span>
 								<div class="width-back">
-									<input type="text" name="open" id="input-small"
+									<input type="text" name="open" class="input-small"
 										placeholder="open" /> <input type="text" name="close"
-										id="input-small" placeholder="close" />
+										class="input-small" placeholder="close" />
 									<textarea class="short-area" name="time-etc"
 										style="resize: none" placeholder="기타"></textarea>
 								</div></li>
 
 							<li class="list"><span class="width-front">가격대</span> <span
 								class="width-back"> <input type="text" name="min-price"
-									id="input-small" placeholder="최저가격" /> <input type="text"
-									name="max-price" id="input-small" placeholder="최고가격" /> <textarea
+								class="input-small" placeholder="최저가격" /> <input type="text"
+									name="max-price" class="input-small" placeholder="최고가격" /> <textarea
 										class="short-area" name="price-etc" style="resize: none"
 										placeholder="기타"></textarea>
 							</span></li>
@@ -100,7 +102,7 @@
 							<li class="list">
 								<div class="left-url">
 									<span class="right-url">URL</span> <span><input
-										type="text" name="url" id="input-big" /></span>
+										type="text" name="url" class="input-big" /></span>
 								</div>
 
 							</li>
@@ -123,8 +125,8 @@
 
 							<li class="list"><span class="width-front">견체중</span> <span
 								class="width-back"> <input type="text" name="min-weight"
-									id="input-small" placeholder="최저무게" /> <input type="text"
-									name="max-weight" id="input-small" placeholder="최고무게" /> <textarea
+								class="input-small" placeholder="최저무게" /> <input type="text"
+									name="max-weight" class="input-small" placeholder="최고무게" /> <textarea
 										class="short-area" name="weight-etc" style="resize: none"
 										placeholder="기타"></textarea></span></li>
 
