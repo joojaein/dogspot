@@ -79,8 +79,16 @@
 
 	<jsp:include page="../inc/footer.jsp" />
 
-	<jsp:include page="modal.jsp" />
-
+	<section id="modals">
+		<h1 class="hidden">모달</h1>
+		<section class="modal-back">
+			<h1 class="hidden">모달 백</h1>
+		</section>
+		<jsp:include page="modalReviewDetail.jsp" />
+		<jsp:include page="modalReviewRegImg.jsp" />
+		<jsp:include page="modalReviewRegContent.jsp" />	
+	</section>
+	
 </body>
 
 </html>
