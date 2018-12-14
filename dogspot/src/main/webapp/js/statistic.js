@@ -53,6 +53,7 @@ window.addEventListener("load", function () {
     chartOpts.addEventListener("click", function (evt) {
         if (evt.target.nodeName != "INPUT") return;
         if (evt.target.className != "checkbox") return;
+        
         createData();
     });
 

@@ -1,3 +1,8 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding//src/main/webapp/css/adminSpot.css=UTF-8
+=======
+encoding//src/main/webapp/css/basicStyle.css=UTF-8
+>>>>>>> refs/remotes/origin/master
 encoding//src/main/webapp/css/review.css=UTF-8
+encoding//src/main/webapp/css/reviewModal.css=UTF-8

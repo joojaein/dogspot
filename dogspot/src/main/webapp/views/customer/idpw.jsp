@@ -4,9 +4,8 @@
 <html>
 <head>
 <title>DogSpot</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
-	rel="stylesheet">
+<script src="../../js/idpw.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 <link href="../../css/customer.css" type="text/css" rel="stylesheet" />
 </head>
 <body>

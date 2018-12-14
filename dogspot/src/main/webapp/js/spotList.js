@@ -102,7 +102,6 @@ window.addEventListener("load", function(){
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
-
          
             // // 마커가 지도 위에 표시되도록 설정합니다
             marker.setMap(map);

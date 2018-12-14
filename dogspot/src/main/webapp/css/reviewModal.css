@@ -91,41 +91,43 @@ dialog{
 .review-top ul input{
     font-size: 15px;
     width: fit-content;
-    margin: 0px 10px;
     background: none;
     border:none;
     border-radius: 5px;
     position: absolute;
+    right: 0px;    
+    margin: 0px 0px;
     margin-top: 25px; 
-    right: 0px;
 }
-
 
 .review-top ul input:last-child{
     position: absolute;
     right: 0px;
-    margin-top: 20px; 
     padding: 0px 10px;
     font-size: 20px;
     height: 30px; 
     background: #fff;
-    border: #BFBFBF solid 1px;   
+    border: #BFBFBF solid 1px;  
+    margin: 0px 10px;
+    margin-top: 20px;   
 } 
 
-/* .review-top ul input:last-child{
-    position: relative;
+.review-top input{
+    position: absolute;
+    right: 10px;
     margin-top: 20px; 
-    padding: 0px 10px;
+    padding: 0px 10px; 
     font-size: 20px;
     height: 30px; 
-    background: #BFBFBF;
-    border:none;   
-}  */
+    background: #fff;
+    border: #BFBFBF solid 1px;   
+    border-radius: 5px;
+}
 
 .review-center {
     width: 95%;
     height: 450px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: å ì™ì˜™å ï¿½, å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½, sans-serif;
     font-size: 15px;
     margin-left: 10px;
     overflow-y: scroll; 
@@ -151,7 +153,7 @@ line-height: 20px;
     border: none;
     background: none;
     min-height: 35px;
-    font-family: °íµñ, ¸¼Àº °íµñ, sans-serif;
+    font-family: å ì™ì˜™å ï¿½, å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½, sans-serif;
     text-indent: 10px;
 }
 
@@ -223,14 +225,16 @@ line-height: 20px;
 }
 
 .reg1-top img{
-    margin: 3px 20px;
     width: 45px;
 }
 
 .reg1-top div{
-    padding: 0px 30px;
+    margin: 3px 20px;
+    padding: 0;
     font-size: 10px;
     color: #7F7F7F;
+    width: 45px;
+    text-align: center;
 }
 
 .reg1-top input{
@@ -248,9 +252,9 @@ line-height: 20px;
 }
 
 .side-imgs{
-width: 55%;
+width: 530px;
 height: 90%;
-padding: 20px 0px;
+padding: 15px 10px;
 box-sizing: border-box;
 }
 
@@ -260,6 +264,7 @@ box-sizing: border-box;
 
 .side-imgs .reviewImg li{
     padding: 0px 3px;
+    position: relative;
 }
 
 .side-imgs .reviewImg img{
@@ -267,24 +272,27 @@ box-sizing: border-box;
     height: 165px;
 }
 
-.title-img{
-    width: 45%;
-    height: 90%;
+.side-imgs ul:first-child li:first-child img:last-child{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 169px;
+} 
+
+.dnd{
+	width:470px;
+	text-align: center;
+    font-family: ë§‘ì€ ê³ ë”•;
 }
 
-.title-img img{
-    position: absolute;
-    top: 110px;
-    right: 20px;
-    width: 430px;
-    height: 430px;
+.dnd img{
+		margin-top: 130px;
 }
 
-.title-img img:last-child{
-    position: absolute;
-    top: 110px;
-    right: 20px;
-    width: 435px;
-    height: 435px;
+.dnd div{
+	font-size : 18px;
+}
+.dnd div:last-child{
+	font-size : 10px;
 }
 

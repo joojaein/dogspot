@@ -5,33 +5,28 @@ window.addEventListener("load", function(){
 
     var dialogDetail = modals.querySelector("#modal-review-detail");
     var dialogImg = modals.querySelector("#modal-review-reg-img");
-    var dialogReport = modals.querySelector("#modal-review-reg-report");
-    var dialogSpot = modals.querySelector("#modal-review-reg-spot");
-    var dialogArr = [dialogDetail,dialogImg,dialogReport,dialogSpot];
-
+    var dialogContent = modals.querySelector("#modal-review-reg-content");
+    var dialogArr = [dialogDetail,dialogImg,dialogContent];
+    
     var reviewList=document.querySelector("#review-list");
     var reviewDetailCenter=document.querySelector("#modal-review-detail .review-center");
-    var reviewSpotCenter=document.querySelector("#modal-review-reg-spot .review-center");
 
     var btnAddReview=document.querySelector("main>input");
-    var btnUploadImg=dialogImg.querySelector(".reg1-top input[type='button']")
-    var btnFileUpload=dialogImg.querySelector(".reg1-top img");
-    var btnFile=dialogImg.querySelector(".reg1-top input[type='file']");
-    var btnUppage=dialogSpot.querySelector(".review-spot-list img")
-    var btnDownpage=dialogReport.querySelector(".review-spot-list img")
-    var btnUpdateReview = dialogDetail.querySelector("input[value='수정']")
-    var btnDelReview = dialogDetail.querySelector("input[value='삭제']")
-    var btnEtcReview = dialogDetail.querySelector("input[value='...']")
-
-    var textareasReportReviewContent = dialogReport.querySelector("textarea");
-    var inputReportReviewTitle = dialogReport.querySelector(".review-report input");
-    var textareasSpotReviewContent = dialogSpot.querySelector("textarea");
-    var inputSpotReviewTitle = dialogSpot.querySelector(".review-report input");
-    var ulSpotlist = reviewSpotCenter.querySelector("ul");
+    var btnUploadImg=dialogImg.querySelector(".reg1-top input[type='button']");
+    var btnFileUpload=dialogImg.querySelector(".reg1-top div");
+    var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");
+    
+    var btnUpdateReview = dialogDetail.querySelector("input[value='수정']");
+    var btnDelReview = dialogDetail.querySelector("input[value='삭제']");
+    var btnEtcReview = dialogDetail.querySelector("input[value='...']");
+    
+    var textareaReviewContent = dialogContent.querySelector("textarea");
+    var inputReviewTitle = dialogContent.querySelector(".review-report input");
+    var ulSpotlist = dialogContent.querySelector(".review-spot-list ul");
+    var inputSpot = dialogContent.querySelector(".review-spot-list input[type='text']");
 
     var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");
-    var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template")
-    var tmpReviewSpot = reviewSpotCenter.querySelector("#review-spot-li-template")
+    var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template");
        
     var bind_reviewDiv = function(div){
         tempImg=div.querySelector(".review-mainImg");
@@ -50,9 +45,9 @@ window.addEventListener("load", function(){
         tempCommentInt.innerText="10";
         tempHitInt.innerText="10";
 
-        reviewList.append(div)
-    }
-
+        reviewList.append(div);
+    };
+    
     for(var i=0;i<10; i++){
         div=document.importNode(tmpReviewDiv.content, true);
         bind_reviewDiv(div);
@@ -64,7 +59,7 @@ window.addEventListener("load", function(){
         tempId.innerText="아이디";
         tempContent.innerText="내용";
         reviewDetailCenter.append(cmt);  
-    }
+    };
 
     for(var i=0;i<15;i++){
         cmt=document.importNode(tmpReviewComment.content, true);
@@ -75,15 +70,16 @@ window.addEventListener("load", function(){
     var bind_spot = function(spot){
         tempSpot = spot.querySelector("a");
         tempSpot.innerText="가가카페";
-        
         ulSpotlist.append(spot);
-    }
+    };
 
     for(var i=0; i<5; i++){
-        spot=document.importNode(tmpReviewSpot.content, true);
-        bind_spot(spot);
-    }
-
+        var a = document.createElement("a");
+        var li = document.createElement("li");
+        a.href="";
+        li.appendChild(a);
+        bind_spot(li);
+    };
 
     var closeModal = function(){
         for(var i=0; i<dialogArr.length; i++){
@@ -122,7 +118,6 @@ window.addEventListener("load", function(){
                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
                     tempSection.style.display = "none";   
                  }
-
             }
         }     
     }, true);
@@ -145,61 +140,79 @@ window.addEventListener("load", function(){
     ulSpotlist.addEventListener("click", function(evt){
          if (evt.target.nodeName != "A" ) return;
          evt.preventDefault();
-         closeModal();
-         modalBack.style.display = "unset";
-         dialogReport.showModal();
-         textareasReportReviewContent.focus();
+         var imgName = btnPageUpDown.src;
+         if(imgName.indexOf("Up")>=0){
+         	imgName=imgName.replace("Up","Down");
+             btnPageUpDown.src=imgName;
+         }
+
+         ulSpotlist.classList.add("hidden");
+         inputSpot.classList.add("hidden");
+         inputReviewTitle.focus();
+
+         var label = dialogContent.querySelector(".review-spot-list label");
+         label.innerText=evt.target.innerText;
 
     }, true);
-
-
 
     btnAddReview.onclick = function(evt){
         modalBack.style.display = "unset";
         dialogImg.showModal();
     }
-
+  
     btnFileUpload.onclick = function(){
         var evt = new MouseEvent("click", {
 			"view":window,
 			"bubbles":true,
 			"cancelable":true
 		});
+        var btnFile=dialogImg.querySelector(".reg1-top input[type='file']");
 		btnFile.dispatchEvent(evt);
     }
 
     btnUploadImg.onclick = function(evt){
         closeModal();
         modalBack.style.display = "unset";
-        dialogReport.showModal();
+        dialogContent.showModal();
     }
 
-    btnUppage.onclick = function(evt){
+    btnPageUpDown.onclick = function(evt){
+    	    	
         evt.preventDefault();
-        closeModal();
-        modalBack.style.display = "unset";
-        dialogReport.showModal();
+        var imgName = evt.target.src;
+
+        if(imgName.indexOf("Down")>=0){
+        	imgName=imgName.replace("Down","Up");
+            ulSpotlist.classList.remove("hidden");
+            inputSpot.classList.remove("hidden");
+        }else{
+        	imgName=imgName.replace("Up","Down");
+            ulSpotlist.classList.add("hidden");
+            inputSpot.classList.add("hidden");
+        }
+        btnPageUpDown.src=imgName;
     }
 
-    btnDownpage.onclick = function(evt){
-        evt.preventDefault();
-        closeModal();
-        modalBack.style.display = "unset";
-        dialogSpot.showModal();
-    }
-     
-    textareasSpotReviewContent.onclick = function(evt){
-        closeModal();
-        modalBack.style.display = "unset";
-        dialogReport.showModal();
-        textareasReportReviewContent.focus();
+    textareaReviewContent.onclick = function(evt){
+        var imgName = btnPageUpDown.src;
+        if(imgName.indexOf("Up")>=0){
+    	imgName=imgName.replace("Up","Down");
+        btnPageUpDown.src=imgName;
+        }
+
+       ulSpotlist.classList.add("hidden");
+       inputSpot.classList.add("hidden");
     }
 
-    inputSpotReviewTitle.onclick = function(evt){
-        closeModal();
-        modalBack.style.display = "unset";
-        dialogReport.showModal();
-        inputReportReviewTitle.focus();
+    inputReviewTitle.onclick = function(evt){
+        var imgName = btnPageUpDown.src;
+        if(imgName.indexOf("Up")>=0){
+        	imgName=imgName.replace("Up","Down");
+            btnPageUpDown.src=imgName;
+            }
+
+        ulSpotlist.classList.add("hidden");
+        inputSpot.classList.add("hidden");
     }
 
     var btnSpeed=20;
