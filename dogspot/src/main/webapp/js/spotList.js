@@ -9,7 +9,6 @@ window.addEventListener("load", function(){
         //console.log(evt.target.nodeName);
         //alert(evt.target.id);
         //alert("favo"+favoBtns[0].id);
-
         for(var i=0; i<favoBtns.length;i++){
             if(evt.target.id==favoBtns[i].id){
                 if(favoBtns[i].value != "★"){
