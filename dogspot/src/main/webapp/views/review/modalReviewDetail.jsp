@@ -46,15 +46,16 @@
 				<section class="review-bottom">
 					<dl class="review-rank review-rank-flex">
 						<dt>
-							<img src="/images/likesImg.png">
+							<img class="btn good-true-icon hidden" src="/images/goodTrueIcon.png">
+							<img class="btn good-false-icon" src="/images/goodFalseIcon.png">
 						</dt>
 						<dd>10</dd>
 						<dt>
-							<img src="/images/commentsImg.png">
+							<img src="/images/commentIcon.png">
 						</dt>
 						<dd>10</dd>
 						<dt>
-							<img src="/images/hitImg.png">
+							<img src="/images/hitIcon.png">
 						</dt>
 						<dd>10</dd>
 					</dl>

@@ -37,37 +37,38 @@
 
 				<template id="review-list-div-template">
 				<div class="review-div">
-					<a class="review-mainImg" href=""> <img
-						src="/images/reviewImg.png" />
-						<section class="review-list-hover">
-
+					<a class="review-mainImg" href=""> 
+						<img class="review-img" src="/images/reviewImg.png" />
+						<section class="review-list-hover hidden">
+	
 							<section class="hover-back"></section>
-
+	
 							<div class="text-white">
 								<dl class="list">
 									<dt>
-										<img src="/images/likesImg.png">
+										<img class="good-true-icon hidden" src="/images/goodTrueIcon.png">
+										<img class="good-false-icon" src="/images/goodFalseIcon.png">
 									</dt>
 									<dd class="good-int"></dd>
 								</dl>
 								<dl class="list">
 									<dt>
-										<img src="/images/commentsImg.png">
+										<img src="/images/commentIcon.png">
 									</dt>
 									<dd class="cmt-int"></dd>
 								</dl>
 								<dl class="list">
 									<dt>
-										<img src="/images/hitImg.png">
+										<img src="/images/hitIcon.png">
 									</dt>
 									<dd class="hit-int"></dd>
 								</dl>
 							</div>
-
+	
 							<section class="hover-parency"></section>
-
+	
 						</section>
-					</a>
+						</a>
 					<div class="review-name text-overflow-ellipsis"></div>
 					<div class="review-title text-overflow-ellipsis"></div>
 				</div>

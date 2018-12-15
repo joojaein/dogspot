@@ -11,19 +11,25 @@ window.addEventListener("load", function(){
     var reviewList=document.querySelector("#review-list");
     var reviewDetailCenter=document.querySelector("#modal-review-detail .review-center");
 
-    var btnAddReview=document.querySelector("main>input");
-    var btnUploadImg=dialogImg.querySelector(".reg1-top input[type='button']");
-    var btnFileUpload=dialogImg.querySelector(".reg1-top div");
-    var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");
-    
     var btnUpdateReview = dialogDetail.querySelector("input[value='수정']");
     var btnDelReview = dialogDetail.querySelector("input[value='삭제']");
     var btnEtcReview = dialogDetail.querySelector("input[value='...']");
     
+    var btnGoodTrueIcon = dialogDetail.querySelector(".good-true-icon")
+    var btnGoodFalseIcon = dialogDetail.querySelector(".good-false-icon")
+    
+    var btnAddReview=document.querySelector("main>input");
+    
+    var btnImgUpload=dialogImg.querySelector(".reg1-top input[type='button']");
+    var btnFileUpload=dialogImg.querySelector(".reg1-top div");
+    
+    var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");			
     var textareaReviewContent = dialogContent.querySelector("textarea");
     var inputReviewTitle = dialogContent.querySelector(".review-report input");
     var ulSpotlist = dialogContent.querySelector(".review-spot-list ul");
     var inputSpot = dialogContent.querySelector(".review-spot-list input[type='text']");
+    var btnReviewUpload=dialogContent.querySelector("input[value='리뷰등록']");
+    var hashTag = dialogContent.querySelector(".text-hashtag");
 
     var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");
     var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template");
@@ -48,11 +54,31 @@ window.addEventListener("load", function(){
         reviewList.append(div);
     };
     
-    for(var i=0;i<10; i++){
+    for(var i=0;i<40; i++){
         div=document.importNode(tmpReviewDiv.content, true);
         bind_reviewDiv(div);
     }
+    
+	function getCurrentScrollPercentage(){
+	    var scrolled_value = window.scrollY
+	    var viewport_height = window.innerHeight;
+		var doc_TotalHeight = document.body.clientHeight;
+		  return (scrolled_value + viewport_height) / doc_TotalHeight * 100
+	}
+    
+    document.addEventListener("scroll", function(){
+    	var currentScrollPercentage = getCurrentScrollPercentage();
+    	var testCnt = reviewList.querySelectorAll(".review-div").length;
+    	console.log(currentScrollPercentage  + " / "+ testCnt);
 
+    	if(currentScrollPercentage >= 100){
+    		  for(var i=0;i<40; i++){
+    		        div=document.importNode(tmpReviewDiv.content, true);
+    		        bind_reviewDiv(div);
+    		   }
+    	}
+    });
+    
     var bind_cmt = function(cmt){
         tempId = cmt.querySelector(".cmt-id");
         tempContent = cmt.querySelector(".cmt-content");
@@ -105,37 +131,34 @@ window.addEventListener("load", function(){
         dialogDetail.showModal();
     }, true); 
 
+    reviewList.addEventListener("mouseout", function (evt) {
+    	if(evt.target.className == "hover-parency"){
+        	var reviewDivs = reviewList.querySelectorAll(".review-div");
+
+    		for(var i=0; i<reviewDivs.length; i++){               
+            	tempSection = reviewDivs[i].querySelector(".review-list-hover");
+                tempSection.classList.add("hidden");
+            }
+    	}
+    	
+        event.stopPropagation();
+    }, true);   
+    
     reviewList.addEventListener("mouseover", function (evt) {
         if (evt.target.nodeName == "IMG" ){
             var reviewDivs = reviewList.querySelectorAll(".review-div");
             for(var i=0; i<reviewDivs.length; i++){
-                var tempImg = reviewDivs[i].querySelector("img");
+                var tempImg = reviewDivs[i].querySelector(".review-img");
                  if(tempImg==evt.target){
                      tempSection = reviewDivs[i].querySelector(".review-list-hover");
-                     tempSection.style.display = "unset";    
-    
+                     tempSection.classList.remove("hidden");
                  }else{
                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
-                    tempSection.style.display = "none";   
-                 }
+                    tempSection.classList.add("hidden");
+                   }
             }
         }     
     }, true);
-
-    reviewList.addEventListener("mouseout", function (evt) {
-
-        if (evt.target.className == "hover-parency" ){
-            var reviewDivs = reviewList.querySelectorAll(".review-div");
-            for(var i=0; i<reviewDivs.length; i++){
-                
-                tempImg = reviewDivs[i].querySelector(".hover-parency");
-                 if(tempImg==evt.target){
-                     tempSection = reviewDivs[i].querySelector(".review-list-hover");
-                     tempSection.style.display = "none";        
-                 }
-            }
-        }     
-    }, true);   
 
     ulSpotlist.addEventListener("click", function(evt){
          if (evt.target.nodeName != "A" ) return;
@@ -170,7 +193,7 @@ window.addEventListener("load", function(){
 		btnFile.dispatchEvent(evt);
     }
 
-    btnUploadImg.onclick = function(evt){
+    btnImgUpload.onclick = function(evt){
         closeModal();
         modalBack.style.display = "unset";
         dialogContent.showModal();
@@ -193,17 +216,6 @@ window.addEventListener("load", function(){
         btnPageUpDown.src=imgName;
     }
 
-    textareaReviewContent.onclick = function(evt){
-        var imgName = btnPageUpDown.src;
-        if(imgName.indexOf("Up")>=0){
-    	imgName=imgName.replace("Up","Down");
-        btnPageUpDown.src=imgName;
-        }
-
-       ulSpotlist.classList.add("hidden");
-       inputSpot.classList.add("hidden");
-    }
-
     inputReviewTitle.onclick = function(evt){
         var imgName = btnPageUpDown.src;
         if(imgName.indexOf("Up")>=0){
@@ -214,8 +226,89 @@ window.addEventListener("load", function(){
         ulSpotlist.classList.add("hidden");
         inputSpot.classList.add("hidden");
     }
+    
+    textareaReviewContent.onclick = function(evt){
+        var imgName = btnPageUpDown.src;
+        if(imgName.indexOf("Up")>=0){
+    	imgName=imgName.replace("Up","Down");
+        btnPageUpDown.src=imgName;
+        }
 
-    var btnSpeed=20;
+       ulSpotlist.classList.add("hidden");
+       inputSpot.classList.add("hidden");
+    }
+    
+    
+    var readyHash=false;
+    
+    var setHashTag = function(){
+    	
+        var tempText = textareaReviewContent.value;
+        var tempHash="";
+        while(true){
+            var tempBegin = tempText.indexOf("#");
+            if(tempBegin<0) break;
+            
+            tempText = tempText.substring(tempBegin);
+            //if(tempText.length==1) break;
+            
+            var tempEnd = tempText.indexOf(" ");
+            if(tempEnd<0) break;
+
+            tempHash+=tempText.substring(0, tempEnd)+" ";
+            tempText = tempText.substring(tempEnd);
+        }
+
+        if(tempHash==""){
+            hashTag.innerText = "#해시태그 ";
+        }else{
+            hashTag.innerText = tempHash;
+        }
+    };
+    
+    textareaReviewContent.onkeyup = function(evt){
+
+    	var key = evt.keyCode;
+    	console.log(key);
+    	var temp="";
+    	if(key==51){ //'#'
+    		if(readyHash){
+                textareaReviewContent.value = textareaReviewContent.value.substring(0,textareaReviewContent.value.length-1);
+                textareaReviewContent.value +=" #";
+    			setHashTag();
+    		}
+    		readyHash=true;
+    	}
+    	else if(key==32 && readyHash==true){//' '
+			setHashTag();
+    		readyHash=false;
+        }
+    	else if(key==13 && readyHash==true){
+    		textareaReviewContent.value = textareaReviewContent.value.substring(0,textareaReviewContent.value.length-1);
+            textareaReviewContent.value +=" \n";
+ 			setHashTag();
+    	}
+    	else if(key ==8){ //backspace
+			setHashTag();
+    	}
+    	
+    }; 
+    
+    btnReviewUpload.onclick = function(){
+        closeModal();
+    };
+
+    btnGoodTrueIcon.onclick = function(){
+        btnGoodTrueIcon.classList.add("hidden");
+        btnGoodFalseIcon.classList.remove("hidden");
+    };
+
+    btnGoodFalseIcon.onclick = function(){
+        btnGoodFalseIcon.classList.add("hidden");
+        btnGoodTrueIcon.classList.remove("hidden");
+    };
+
+    var btnSpeed=40;
     var btnEtcColor = 255;
     var moveUpdateBtnInter;
     btnEtcReview.onclick = function(evt){
@@ -282,4 +375,5 @@ window.addEventListener("load", function(){
         }, 50);
     };
 
+ 
 });

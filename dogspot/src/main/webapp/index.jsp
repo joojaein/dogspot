@@ -28,7 +28,7 @@
 			<input type="text">
 			<section class="top6">
 				<template> <a href=""> <img
-					src="images/reviewImg.png"> <label>서울</label>
+					src="images/testprofile.png"> <label>서울</label>
 				</a> </template>
 
 			</section>
