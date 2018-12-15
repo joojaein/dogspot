@@ -35,7 +35,7 @@
 				
 				<hr class="review-hr" />
 				<section class="review-bottom">
-					<div class="text-hashtag">#해시태그</div>
+					<div class="text-hashtag">#해시태그&nbsp</div>
 				</section>
 			</section>
 		</section>

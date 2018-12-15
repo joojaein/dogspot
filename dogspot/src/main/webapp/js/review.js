@@ -29,7 +29,8 @@ window.addEventListener("load", function(){
     var ulSpotlist = dialogContent.querySelector(".review-spot-list ul");
     var inputSpot = dialogContent.querySelector(".review-spot-list input[type='text']");
     var btnReviewUpload=dialogContent.querySelector("input[value='리뷰등록']");
-    
+    var hashTag = dialogContent.querySelector(".text-hashtag");
+
     var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");
     var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template");
        
@@ -215,17 +216,6 @@ window.addEventListener("load", function(){
         btnPageUpDown.src=imgName;
     }
 
-    textareaReviewContent.onclick = function(evt){
-        var imgName = btnPageUpDown.src;
-        if(imgName.indexOf("Up")>=0){
-    	imgName=imgName.replace("Up","Down");
-        btnPageUpDown.src=imgName;
-        }
-
-       ulSpotlist.classList.add("hidden");
-       inputSpot.classList.add("hidden");
-    }
-
     inputReviewTitle.onclick = function(evt){
         var imgName = btnPageUpDown.src;
         if(imgName.indexOf("Up")>=0){
@@ -236,6 +226,73 @@ window.addEventListener("load", function(){
         ulSpotlist.classList.add("hidden");
         inputSpot.classList.add("hidden");
     }
+    
+    textareaReviewContent.onclick = function(evt){
+        var imgName = btnPageUpDown.src;
+        if(imgName.indexOf("Up")>=0){
+    	imgName=imgName.replace("Up","Down");
+        btnPageUpDown.src=imgName;
+        }
+
+       ulSpotlist.classList.add("hidden");
+       inputSpot.classList.add("hidden");
+    }
+    
+    
+    var readyHash=false;
+    
+    var setHashTag = function(){
+    	
+        var tempText = textareaReviewContent.value;
+        var tempHash="";
+        while(true){
+            var tempBegin = tempText.indexOf("#");
+            if(tempBegin<0) break;
+            
+            tempText = tempText.substring(tempBegin);
+            //if(tempText.length==1) break;
+            
+            var tempEnd = tempText.indexOf(" ");
+            if(tempEnd<0) break;
+
+            tempHash+=tempText.substring(0, tempEnd)+" ";
+            tempText = tempText.substring(tempEnd);
+        }
+
+        if(tempHash==""){
+            hashTag.innerText = "#해시태그 ";
+        }else{
+            hashTag.innerText = tempHash;
+        }
+    };
+    
+    textareaReviewContent.onkeyup = function(evt){
+
+    	var key = evt.keyCode;
+    	console.log(key);
+    	var temp="";
+    	if(key==51){ //'#'
+    		if(readyHash){
+                textareaReviewContent.value = textareaReviewContent.value.substring(0,textareaReviewContent.value.length-1);
+                textareaReviewContent.value +=" #";
+    			setHashTag();
+    		}
+    		readyHash=true;
+    	}
+    	else if(key==32 && readyHash==true){//' '
+			setHashTag();
+    		readyHash=false;
+        }
+    	else if(key==13 && readyHash==true){
+    		textareaReviewContent.value = textareaReviewContent.value.substring(0,textareaReviewContent.value.length-1);
+            textareaReviewContent.value +=" \n";
+ 			setHashTag();
+    	}
+    	else if(key ==8){ //backspace
+			setHashTag();
+    	}
+    	
+    }; 
     
     btnReviewUpload.onclick = function(){
         closeModal();
