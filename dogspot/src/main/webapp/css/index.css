@@ -57,4 +57,5 @@ main input{
 .top6 a img{
     width : 300px;
     height : 150px;
+    object-fit : cover;
 }
