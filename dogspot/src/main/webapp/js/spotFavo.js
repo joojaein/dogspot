@@ -14,7 +14,7 @@ window.addEventListener("load", function(){
             if(evt.target.id==favoBtns[i].id){
                 if(favoBtns[i].value != "★"){
                     favoBtns[i].value = "★";
-                    favoBtns[i].style.color = "yellow";
+                    favoBtns[i].style.color = "#ffb617";
                     return;
                 }
                 else{

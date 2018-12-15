@@ -87,7 +87,7 @@ window.addEventListener("load", function(){
         
         if(evt.target.value != "★"){
             evt.target.value = "★";
-            favoBtn.style.color = "yellow";
+            favoBtn.style.color = "#ffb617";
             favoBtn.style.fontSize = "24px";
             return;
         }

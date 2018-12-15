@@ -30,7 +30,7 @@
 
 				</div>
 
-				<div class="left top bottom">
+				<div class="left top bottom" id="filter">
 					<select name="local" class="select">
 						<option value="">지역</option>
 						<option value="서울">서울</option>
@@ -48,8 +48,8 @@
 						<option value="소형견">소형견</option>
 						<option value="중형견">중형견</option>
 						<option value="대형견">대형견</option>
-					</select> <input type="number" name="min-price" placeholder="최소가격" /> <span
-						class="content">~</span> <input type="number" name="max-price"
+					</select> <input type="text" name="min-price" placeholder="최소가격" /> <span
+						class="content">~</span> <input type="text" name="max-price"
 						placeholder="최대가격" />
 				</div>
 
@@ -87,13 +87,13 @@
 										<div>
 											<div class="list-font-small">
 												<span><img src="../../images/house.png" class="icon">
-												</span><span id="addr1">인천시 계양구 계산새로</span>
+												</span><span id="addr1">서울시 광진구 능동로</span>
 											</div>
 										</div>
 										<div class="list-font-small">
 											<span id="min1">10,000원</span>
 											<span>~</span>
-											<span>20,000원</span>
+											<span id="max1">20,000원</span>
 										</div>
 										<div class="list-font-small">
 											<span><img src="../../images/small.png" class="detail-icon"></span>
@@ -126,7 +126,7 @@
 										<div class="list-font-small">
 											<span id="min2">20,000원</span>
 											<span>~</span>
-											<span>30,000원</span>
+											<span id="max2">30,000원</span>
 										</div>
 										<div class="list-font-small"><img src="" class="detail-icon">&nbsp;</div>
 
@@ -156,7 +156,7 @@
 										<div class="list-font-small">
 											<span id="min3">15,000원</span>
 											<span>~</span>
-											<span>25,000원</span>
+											<span id="max3">25,000원</span>
 										</div>
 										<div class="list-font-small">
 											<span><img src="../../images/small.png" class="detail-icon"></span>
@@ -184,13 +184,13 @@
 										<div>
 											<div class="list-font-small">
 												<span><img src="../../images/house.png" class="icon">
-												</span><span id="addr4">서울시 마포구</span>
+												</span><span id="addr4">경기도 안성시</span>
 											</div>
 										</div>
 										<div class="list-font-small">
 											<span id="min4">18,000원</span>
 											<span>~</span>
-											<span>28,000원</span>
+											<span id="max4">28,000원</span>
 										</div>
 										<div class="list-font-small">
 											<span><img src="../../images/small.png" class="detail-icon"></span>
@@ -224,7 +224,7 @@
 										<div class="list-font-small">
 											<span id="min5">14,000원</span>
 											<span>~</span>
-											<span>24,000원</span>
+											<span id="max5">24,000원</span>
 										</div>
 										<div class="list-font-small">
 											<span><img src="../../images/small.png" class="detail-icon"></span>
