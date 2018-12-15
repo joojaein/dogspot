@@ -9,8 +9,10 @@
         <link href="../../css/spot.css" type="text/css" rel="stylesheet" />
         <link href="../../css/basicStyle.css" type="text/css" rel="stylesheet" />
         <link href="../../css/share.css" type="text/css" rel="stylesheet" />
-        <script src="../../js/spot.js"></script>
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc&libraries=services"></script>
+		<!-- <script src="../../js/spot.js"></script> -->
+		<script src="../../js/spotList.js"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc&libraries=services"></script>
+		<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script> -->
         <meta charset="utf-8"/>
 </head>
 <body>
@@ -68,28 +70,67 @@
                         </span>  -->
 
 				</div>
-				<div class="list">
+				<div class="list" id="spot-main">
 					<div id="wid-front">
-						<section class="top left">
+						<section class="top left" id="list-add">
 
 							<div class="list top">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
-										<div id="favo" class="abso top">
-											<input type="button" value="♡" class="favorite" />
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" id="favo1" />
 										</div>
 		
 									</div>
 									<div class="box">
-										<div id="list-font-big">혜정이네 집</div>
+										<div class="list-font-big">혜정이네 집입니다^^</div>
 										<div>
-											<div id="list-font-small">
+											<div class="list-font-small">
 												<span><img src="../../images/house.png" class="icon">
-												</span>인천시 계양구 계산새로
+												</span><span id="addr1">인천시 계양구 계산새로</span>
 											</div>
 										</div>
-										<div id="list-font-small">10,000원~20,000원</div>
-										<div class="right top" id="per">
+										<div class="list-font-small">
+											<span id="min1">10,000원</span>
+											<span>~</span>
+											<span>20,000원</span>
+										</div>
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon"></span>
+											<span class="dog-size">&nbsp;소형견</span>
+										</div>
+
+										<div class="right per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
+									</div>
+								</div>
+								
+								<div class="list top">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" id="favo2" />
+										</div>
+		
+									</div>
+									<div class="box">
+										<div class="list-font-big">인경이네 집</div>
+										<div>
+											<div class="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span><span id="addr2">서울시 동대문구 답십리로</span>
+											</div>
+										</div>
+										<div class="list-font-small">
+											<span id="min2">20,000원</span>
+											<span>~</span>
+											<span>30,000원</span>
+										</div>
+										<div class="list-font-small"><img src="" class="detail-icon">&nbsp;</div>
+
+										<div class="right per">
 											<img src="../../images/per.png" class="icon">
 											<span>&nbsp;10</span>
 										</div>
@@ -99,45 +140,30 @@
 								<div class="list top">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
-										<div id="favo" class="abso top">
-											<input type="button" value="♡" class="favorite" />
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" id="favo3" />
 										</div>
 		
 									</div>
 									<div class="box">
-										<div id="list-font-big">혜정이네 집</div>
+										<div class="list-font-big">재인이네 집입니다~~~</div>
 										<div>
-											<div id="list-font-small">
+											<div class="list-font-small">
 												<span><img src="../../images/house.png" class="icon">
-												</span>인천시 계양구 계산새로
+												</span><span id="addr3">서울시 광진구 군자로</span>
 											</div>
 										</div>
-										<div id="list-font-small">10,000원~20,000원</div>
-										<div class="right top" id="per">
-											<img src="../../images/per.png" class="icon">
-											<span>&nbsp;10</span>
+										<div class="list-font-small">
+											<span id="min3">15,000원</span>
+											<span>~</span>
+											<span>25,000원</span>
 										</div>
-									</div>
-		
-								</div>
-								<div class="list top">
-									<div class="rela">
-										<img src="../../images/room1.png" class="img-list">
-										<div id="favo" class="abso top">
-											<input type="button" value="♡" class="favorite" />
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon"></span>
+											<span class="dog-size">&nbsp;소형견</span>
 										</div>
-		
-									</div>
-									<div class="box">
-										<div id="list-font-big">혜정이네 집</div>
-										<div>
-											<div id="list-font-small">
-												<span><img src="../../images/house.png" class="icon">
-												</span>인천시 계양구 계산새로
-											</div>
-										</div>
-										<div id="list-font-small">10,000원~20,000원</div>
-										<div class="right top" id="per">
+
+										<div class="right per">
 											<img src="../../images/per.png" class="icon">
 											<span>&nbsp;10</span>
 										</div>
@@ -145,12 +171,81 @@
 		
 								</div>
 
+								<div class="list top">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" id="favo4" />
+										</div>
+		
+									</div>
+									<div class="box">
+										<div class="list-font-big">혜정이네 집입니다^^</div>
+										<div>
+											<div class="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span><span id="addr4">서울시 마포구</span>
+											</div>
+										</div>
+										<div class="list-font-small">
+											<span id="min4">18,000원</span>
+											<span>~</span>
+											<span>28,000원</span>
+										</div>
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon"></span>
+											<span class="dog-size">&nbsp;소형견</span>
+										</div>
+
+										<div class="right per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
+									</div>
+		
+								</div>
+
+								<div class="list top">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" id="favo5" />
+										</div>
+		
+									</div>
+									<div class="box">
+										<div class="list-font-big">혜정이네 집입니다^^</div>
+										<div>
+											<div class="list-font-small">
+												<span><img src="../../images/house.png" class="icon">
+												</span><span id="addr5">서울시 성동구 성수일로</span>
+											</div>
+										</div>
+										<div class="list-font-small">
+											<span id="min5">14,000원</span>
+											<span>~</span>
+											<span>24,000원</span>
+										</div>
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon"></span>
+											<span class="dog-size">&nbsp;소형견</span>
+										</div>
+
+										<div class="right per">
+											<img src="../../images/per.png" class="icon">
+											<span>&nbsp;10</span>
+										</div>
+									</div>
+		
+								</div>
+						
+								
 
 						</section>
 					</div>
-					<div id="wid-back abso">
-						<div id="map" class="rela top"
-							style="width: 600px; height: 600px;"></div>
+					<div class="wid-back">
+						<div id="map" class="top"
+							style="width: 600px; height: 450px;"></div>
 
 					</div>
 				</div>

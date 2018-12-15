@@ -27,28 +27,28 @@
 				<main id="detail-large-main">
 					<h1 class="hidden">메인</h1>
 					<section>
-						<input type="button" value="저장 ♡" class="favorite abso" id="favo-detail" />
+						<input type="button" value="저장 ☆" class="favorite abso" id="favo-detail" />
 						<h1 class="hidden">장소 상세리스트</h1>
 						<div class="list" id="img-arg">
 							<div class="width-half rela" id="img1">
-								<img src="../../images/room1.png" id="img-pos">
+								<img src="../../images/room1.png" class="img-pos">
 							</div>
 	
 							<div class="width-quarter">
 								<div class="height-half" id="img2">
-									<img src="../../images/room3.png" id="img-pos">
+									<img src="../../images/room3.png" class="img-pos">
 								</div>
 								<div class="height-half" id="img3">
-									<img src="../../images/room4.png" id="img-pos">
+									<img src="../../images/room4.png" class="img-pos">
 								</div>
 							</div>
 	
 							<div class="width-quarter">
 								<div class="height-half" id="img4">
-									<img src="../../images/room5.png" id="img-pos">
+									<img src="../../images/room5.png" class="img-pos">
 								</div>
 								<div class="height-half" id="img5">
-									<img src="../../images/room6.png" id="img-pos">
+									<img src="../../images/room6.png" class="img-pos">
 								</div>
 							</div>
 	
