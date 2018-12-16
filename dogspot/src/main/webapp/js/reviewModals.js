@@ -6,7 +6,10 @@ window.addEventListener("load", function(){
     dialogDetail = modals.querySelector("#modal-review-detail");
     dialogImg = modals.querySelector("#modal-review-reg-img");
     dialogContent = modals.querySelector("#modal-review-reg-content");
-    dialogArr = [dialogDetail,dialogImg,dialogContent];
+    dialogReviewComplain = modals.querySelector("#modal-review-complain");
+    dialogCommentComplain = modals.querySelector("#modal-comment-complain");
+    
+    dialogArr = [dialogDetail,dialogImg,dialogContent,dialogReviewComplain,dialogCommentComplain];
     
     closeModal = function(){
         for(var i=0; i<dialogArr.length; i++){
