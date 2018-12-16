@@ -4,7 +4,12 @@
 <html>
 
 <head>
+    <script src="../../js/reviewModals.js"></script>
     <script src="../../js/review.js"></script>
+    <script src="../../js/dialogDetail.js"></script>
+    <script src="../../js/dialogImg.js"></script>
+    <script src="../../js/dialogContent.js"></script>
+    
     <title>DogSpot</title>
     <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
     <link href="../../css/review.css" type="text/css" rel="stylesheet" />

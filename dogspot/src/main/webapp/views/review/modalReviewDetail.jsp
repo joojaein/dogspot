@@ -39,6 +39,9 @@
 						<div>
 							<a href="">삭제</a>
 						</div>
+						<div>
+							<a href="">신고</a>
+						</div>
 					</section>
 					</template>
 				</section>
