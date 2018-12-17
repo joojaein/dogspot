@@ -39,23 +39,7 @@ public class JdbcIndexService implements IndexService {
 				
 				Spot spot = new Spot(
 						rs2.getInt("ID"),
-						rs2.getString("NAME"),
-						rs2.getString("ADDR"),
-						rs2.getString("PHONE"),
-						rs2.getString("TIME"),
-						rs2.getString("TIME_ETC"),
-						rs2.getString("DOGSIZE"),
-						rs2.getString("DOGSIZE_ETC"),
-						rs2.getString("DOGWEIGHT"),
-						rs2.getString("DOGWEIGHT_ETC"),
-						rs2.getString("PRICE_MIN"),
-						rs2.getString("PRICE_MAX"),
-						rs2.getString("PRICE_ETC"),
-						rs2.getString("URL"),
-						rs2.getString("ETC"),
-						rs2.getDate("REGDATE"),
-						rs2.getInt("THEMEID"),
-						rs2.getString("THEME_ETC"));
+						rs2.getString("NAME"));
 				list.add(spot);		
 			}
 			

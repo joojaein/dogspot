@@ -25,6 +25,19 @@ public class Spot {
 	public Spot() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Spot(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Spot(int id, String name, String addr) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.addr = addr;
+	}
 
 	public Spot(int id, String name, String addr, String phone, String time, String timeETC, String dogsize,
 			String dogsizeETC, String dogweight, String dogweightETC, String priceMin, String priceMax, String priceETC,

@@ -185,6 +185,10 @@ padding-left :10px;
     line-height: 25px;
     color: #000000;
 }
+.review-spot-list li{    
+	width: 90%;;    
+}
+
 
 .review-spot-list li:first-child{
     margin-top: 5px;
