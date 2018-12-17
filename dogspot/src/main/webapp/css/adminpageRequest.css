@@ -1,0 +1,70 @@
+.detail-page-list{
+    display: flex;
+    padding-top: 25px;
+    
+}
+
+.detail-page-list ul{
+    padding-left: 30px;
+    font-size: 25px;
+    color: #7F7F7F;
+   flex: 1;
+}
+ .detail-page-list li{
+    margin-right: 20px;
+
+} 
+
+.editBtn{ 
+    padding-right: 110px;
+    text-align: right;
+    
+    position: absolute;
+    right: 0px;
+}
+.editBtn input {
+    width: 80px;
+    height: 30px;
+    background: #FFFFFF;
+    border: #002060 1px solid;
+    border-radius: 10px;
+    color:#002060;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 30px;
+
+}
+input[type="checkbox"]{
+    margin-top: 10px;
+}
+/* input[type="checkbox"] {
+    display: none};
+input[type="checkbox"] + label {
+    width: 20px; 
+    height: 20px;
+    background: #002060;
+    cursor: pointer;
+    border-radius: 3px;
+
+}
+
+input[type="checkbox"]:checked + label{
+    background: url(/images/check.png) #002060 no-repeat
+}
+
+input[type="checkbox"] + label span{
+    display: block;
+} */
+
+.herepage{
+    color: #002060;
+}
+
+ input::placeholder{
+    text-align: center;
+}
+.extable td:first-child{
+    width: auto;
+    /* background: pink; */
+    text-align: center;
+}
