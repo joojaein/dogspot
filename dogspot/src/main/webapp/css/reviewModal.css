@@ -34,6 +34,13 @@ dialog{
     margin : auto;
 }
 
+.complain-modal{
+    top: 150px !important;
+    border-radius: 30px !important;
+    width: 400px !important;
+    height: 330px !important;
+}
+
 .review-hr{
     margin-left: 10px;
     width: 90%;
@@ -144,9 +151,14 @@ dialog{
     font-weight: bolder;
 }
 
-.review-center .comments a{
+.review-center .comments input{
 font-size: 10px;
 line-height: 20px;
+border : none;
+background : none;
+min-height : 0px;
+text-indent : 0px;
+padding-left :10px;
 }
 
 .review-center input{
@@ -296,3 +308,46 @@ box-sizing: border-box;
 	font-size : 10px;
 }
 
+.modal-title{
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.modal-small-box{
+    margin-top: 10px;
+    width: 400px;
+    height: 30px;
+    border: #000000 solid 1px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.modal-big-box{
+    margin-top: 12px;
+    width: 395px;
+    height: 170px;
+    border: #000000 solid 1px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Jua;
+}
+
+.send-btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    background: #002060;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-left: 170px;
+}
+
+
+}

@@ -22,7 +22,7 @@
 		<div class="center">
 			<h1 class="hidden">바디</h1>
 			<main> 
-				<img id="join-logo" src="../images/indexLogo.png" />
+				<img id="join-logo" src="/images/indexLogo.png" />
 				<br />
 				<ul id="join-ul">
 					<li class="list">

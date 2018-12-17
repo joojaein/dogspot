@@ -4,7 +4,14 @@
 <html>
 
 <head>
+    <script src="../../js/reviewModals.js"></script>
     <script src="../../js/review.js"></script>
+    <script src="../../js/dialogDetail.js"></script>
+    <script src="../../js/dialogImg.js"></script>
+    <script src="../../js/dialogContent.js"></script>
+    <script src="../../js/dialogReviewComplain.js"></script>
+    <script src="../../js/dialogCommentComplain.js"></script>
+    
     <title>DogSpot</title>
     <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
     <link href="../../css/review.css" type="text/css" rel="stylesheet" />
@@ -88,6 +95,8 @@
 		<jsp:include page="modalReviewDetail.jsp" />
 		<jsp:include page="modalReviewRegImg.jsp" />
 		<jsp:include page="modalReviewRegContent.jsp" />	
+		<jsp:include page="modalReviewComplain.jsp" />	
+		<jsp:include page="modalCommentComplain.jsp" />	
 	</section>
 	
 </body>

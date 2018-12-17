@@ -1,0 +1,115 @@
+table{
+    width: 900px;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 50px;
+    font-family: 맑은고, JOA;
+    text-align: center;
+    table-layout: fixed;
+}
+
+table td{
+    width: 16%;
+    text-align: center;
+    white-space:nowrap;  text-overflow:ellipsis; overflow:hidden;
+
+}
+
+thead td{
+    font-size: 20px;
+    height: 40px;
+    text-align: center;
+    text-align: center;
+    border-top:2px solid #948A54;
+    border-bottom: 1px solid rgb(226, 221, 193)
+}
+
+
+tbody td{
+    border-bottom: 1px solid rgb(226, 221, 193);
+    height: 42px !important;
+     width:14%; 
+    font-size: 14px;
+ 
+}
+ table td:first-child{
+    width:36%;
+    padding-left: 30px;
+    text-align: left;
+}
+table td:last-child{
+  width:8%; 
+}
+
+tbody td input{
+    width: 40px;
+    height: 23px;
+    border-radius: 10px;
+    line-height: 25px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+}
+
+.page_move{
+    display: flex;
+    padding-top: 50px;
+    padding-left: 400px;
+}
+.page_move ul{
+   
+    font-size: 15px;
+    font-family: 맑은고딕;
+}
+.page_move li{
+   margin: 0px 10px 0px 10px;
+}
+.page_move img{
+    width: 20px;
+}
+.page_move li:first-child a{
+    color: red;
+    font-weight: bold;
+}
+
+.nameinput{
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+}
+
+.chginput,.chginput2{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.chginput2 textarea{
+
+    height: 280px;
+    width: 580px;
+    border: #002060 1px solid;
+    border-radius: 10px;
+}
+
+#contents{
+    background: rgb(223, 223, 223);
+    display: table-row;
+    height: 150px;
+    display: none;    
+}
+
+.contentsul li{
+    margin-left: 15px;
+    font-weight: bold;
+}
+.contentsul li:first-child{
+    margin-left: 15px;
+    margin-right: 250px;
+    padding-bottom: 20px;
+    font-size: 20px;
+
+}
+#contents div{
+    margin-left: 15px;
+}
+

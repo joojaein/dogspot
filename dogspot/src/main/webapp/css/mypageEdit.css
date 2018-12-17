@@ -1,0 +1,72 @@
+.mypassword{
+
+     width: 100%;
+     height: 100px;
+     text-align: left;
+     font-size: 20px;
+     padding-left: 180px;
+ }
+ 
+ .mypassword div{
+ 
+     /* padding-left: 50px; */
+     padding-bottom: 10px;
+     padding-top: 10px;
+ }
+ 
+ .mypassword input{
+     width: 580px;
+     /* margin-left: 50px; */
+ 
+     height: 30px;
+     border: #002060 1px solid;
+     border-radius: 10px;
+ }
+ .address{
+     display: flex;  
+ }
+ .address li{
+    margin-left: 0px;
+    padding-left: 0px;
+ }
+ .address li:last-child input{
+    margin-left: 10px;
+ }
+ .address li:first-child{
+    margin-right: 10px;
+ }
+ .address input[type="text"]{
+     width: 400px;
+ }
+ .noneaddress input{
+    margin-left: 10px;
+ }
+
+ .searchaddress input{
+    font-family: �룍��;
+    font-size: 15px;
+    background: #002060;
+    color: #ffffff;
+    width: 120px;
+
+ }
+ .eidtcomplbtn{
+    padding-top: 30px;
+    padding-left: 250px;
+ }
+ .eidtcomplbtn input{
+    border: #002060 1px solid;
+    border-radius: 10px;
+    background: #002060;
+    color: #FFFFFF;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    font-family: �룍��;
+    font-weight: bold;
+    
+}
+.placeholderalign input::placeholder{
+   text-align: left;
+   padding-left: 10px;
+}

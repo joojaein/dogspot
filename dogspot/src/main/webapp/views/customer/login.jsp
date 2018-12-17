@@ -15,7 +15,7 @@
 		<div class="center">
 			<h1 class="hidden">바디</h1>
 			<main> 
-				<img src="../images/indexLogo.png" />
+				<img src="/images/indexLogo.png" />
 				<br />
 				<section id="login-input-text">
 					<input type="text" placeholder="ID" /><br /> <input type="password"

@@ -15,6 +15,7 @@
 					<ul class="list">
 						<input class="btn" type="button" value="수정">
 						<input class="btn" type="button" value="삭제">
+						<input class="btn" type="button" value="신고">
 						<input class="btn" type="button" value="...">
 					</ul>
 				</section>
@@ -33,12 +34,9 @@
 					<section class="comments list">
 						<div class="cmt-id"></div>
 						<div class="cmt-content"></div>
-						<div>
-							<a href="">수정</a>
-						</div>
-						<div>
-							<a href="">삭제</a>
-						</div>
+						<input class="btn text-gray" type="button" value="수정">
+						<input class="btn text-gray" type="button" value="삭제">
+						<input class="btn text-gray" type="button" value="신고">
 					</section>
 					</template>
 				</section>

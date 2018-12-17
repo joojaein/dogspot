@@ -1,0 +1,57 @@
+.writeBtn{
+   
+    padding-right: 120px;
+    text-align: right;
+    padding-top: 80px;
+    position: absolute;
+    right: 0px;
+    top:260px;
+   
+   
+}
+.writeBtn input {
+    width: 80px;
+    height: 30px;
+    background: #FFFFFF;
+    border: #002060 1px solid;
+    border-radius: 10px;
+    color:#002060;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 30px;
+
+}
+
+.regcontent{
+    padding-left: 170px;
+    padding-top: 20px;
+}
+.chginput,.chginput2{
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+.regcontent input{
+   
+    width: 580px;
+    height: 30px;
+    border: #002060 1px solid;
+    border-radius: 10px;
+}
+
+.askbtn{
+    padding-left: 70px;
+    
+}
+
+.askbtn input{
+    border: #002060 1px solid;
+    border-radius: 10px;
+    background: #002060;
+    color: #FFFFFF;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    font-family: 돋움;
+    font-weight: bold;
+
+}

@@ -15,7 +15,7 @@
         <div class="center">
             <h1 class="hidden">바디</h1>
             <main>
-                <img id="join-logo" src="../images/indexLogo.png"/><br/>
+                <img id="join-logo" src="/images/indexLogo.png"/><br/>
                 <section id="idpw">                
                     <section id="idpw-id">
                         <div>아이디 찾기</div>
