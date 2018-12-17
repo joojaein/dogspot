@@ -34,6 +34,13 @@ dialog{
     margin : auto;
 }
 
+.complain-modal{
+    top: 150px !important;
+    border-radius: 30px !important;
+    width: 400px !important;
+    height: 330px !important;
+}
+
 .review-hr{
     margin-left: 10px;
     width: 90%;
@@ -47,8 +54,8 @@ dialog{
 }
 
 .review-detail-image img{
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: 600px;
 }
 
 .review-detail-image a{
@@ -88,41 +95,46 @@ dialog{
     right: 0px;
 }
 
-.review-top input{
+.review-top ul input{
     font-size: 15px;
     width: fit-content;
-    margin: 0px 10px;
     background: none;
     border:none;
     border-radius: 5px;
-
+    position: absolute;
+    right: 0px;    
+    margin: 0px 0px;
+    margin-top: 25px; 
 }
 
-.review-top input:last-child{
+.review-top ul input:last-child{
     position: absolute;
     right: 0px;
-    margin-top: 20px; 
     padding: 0px 10px;
     font-size: 20px;
     height: 30px; 
-    background:#fff;
-    border: #BFBFBF solid 1px;   
+    background: #fff;
+    border: #BFBFBF solid 1px;  
+    margin: 0px 10px;
+    margin-top: 20px;   
 } 
 
-.review-top ul input:last-child{
-    position: relative;
+.review-top input{
+    position: absolute;
+    right: 10px;
     margin-top: 20px; 
-    padding: 0px 10px;
+    padding: 0px 10px; 
     font-size: 20px;
     height: 30px; 
-    background: #BFBFBF;
-    border:none;   
-} 
+    background: #fff;
+    border: #BFBFBF solid 1px;   
+    border-radius: 5px;
+}
 
 .review-center {
     width: 95%;
     height: 450px;
-    font-family: ∞ÌµÒ, ∏º¿∫ ∞ÌµÒ, sans-serif;
+    font-family: Âç†ÏèôÏòôÂç†ÔøΩ, Âç†ÏèôÏòôÂç†ÏèôÏòô Âç†ÏèôÏòôÂç†ÔøΩ, sans-serif;
     font-size: 15px;
     margin-left: 10px;
     overflow-y: scroll; 
@@ -139,16 +151,21 @@ dialog{
     font-weight: bolder;
 }
 
-.review-center .comments a{
+.review-center .comments input{
 font-size: 10px;
 line-height: 20px;
+border : none;
+background : none;
+min-height : 0px;
+text-indent : 0px;
+padding-left :10px;
 }
 
 .review-center input{
     border: none;
     background: none;
     min-height: 35px;
-    font-family: ∞ÌµÒ, ∏º¿∫ ∞ÌµÒ, sans-serif;
+    font-family: Âç†ÏèôÏòôÂç†ÔøΩ, Âç†ÏèôÏòôÂç†ÏèôÏòô Âç†ÏèôÏòôÂç†ÔøΩ, sans-serif;
     text-indent: 10px;
 }
 
@@ -220,14 +237,16 @@ line-height: 20px;
 }
 
 .reg1-top img{
-    margin: 3px 20px;
     width: 45px;
 }
 
 .reg1-top div{
-    padding: 0px 30px;
+    margin: 3px 20px;
+    padding: 0;
     font-size: 10px;
     color: #7F7F7F;
+    width: 45px;
+    text-align: center;
 }
 
 .reg1-top input{
@@ -245,9 +264,9 @@ line-height: 20px;
 }
 
 .side-imgs{
-width: 55%;
+width: 530px;
 height: 90%;
-padding: 20px 0px;
+padding: 15px 10px;
 box-sizing: border-box;
 }
 
@@ -257,6 +276,7 @@ box-sizing: border-box;
 
 .side-imgs .reviewImg li{
     padding: 0px 3px;
+    position: relative;
 }
 
 .side-imgs .reviewImg img{
@@ -264,24 +284,70 @@ box-sizing: border-box;
     height: 165px;
 }
 
-.title-img{
-    width: 45%;
-    height: 90%;
-}
-
-.title-img img{
+.side-imgs ul:first-child li:first-child img:last-child{
     position: absolute;
-    top: 110px;
-    right: 20px;
-    width: 430px;
-    height: 430px;
+    top:0px;
+    left:0px;
+    width: 169px;
+} 
+
+.dnd{
+	width:470px;
+	text-align: center;
+    font-family: ÎßëÏùÄ Í≥†Îîï;
 }
 
-.title-img img:last-child{
-    position: absolute;
-    top: 110px;
-    right: 20px;
-    width: 435px;
-    height: 435px;
+.dnd img{
+		margin-top: 130px;
 }
 
+.dnd div{
+	font-size : 18px;
+}
+.dnd div:last-child{
+	font-size : 10px;
+}
+
+.modal-title{
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+.modal-small-box{
+    margin-top: 10px;
+    width: 400px;
+    height: 30px;
+    border: #000000 solid 1px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.modal-big-box{
+    margin-top: 12px;
+    width: 395px;
+    height: 170px;
+    border: #000000 solid 1px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Jua;
+}
+
+.send-btn{
+    width: 70px;
+    height: 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: bold;
+    background: #002060;
+    color: white;
+    cursor: pointer;
+    margin-left: 20px;
+    vertical-align: middle;
+    margin-top: 15px;
+    margin-left: 170px;
+}
+
+
+}

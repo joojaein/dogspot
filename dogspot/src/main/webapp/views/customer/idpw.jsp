@@ -4,9 +4,8 @@
 <html>
 <head>
 <title>DogSpot</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
-	rel="stylesheet">
+<script src="../../js/idpw.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 <link href="../../css/customer.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -16,7 +15,7 @@
         <div class="center">
             <h1 class="hidden">바디</h1>
             <main>
-                <img id="join-logo" src="../images/indexLogo.png"/><br/>
+                <img id="join-logo" src="/images/indexLogo.png"/><br/>
                 <section id="idpw">                
                     <section id="idpw-id">
                         <div>아이디 찾기</div>

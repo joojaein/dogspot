@@ -1,0 +1,28 @@
+@import url(basicStyle.css);
+@import url(commonAside.css);
+@import url(component.css);
+@import url(chart.css);
+
+#statistic-table{
+    display: inline-block;
+    width: 800px;
+    margin-top: 30px;
+}
+
+#statistic-table thead tr{
+    background: #7F7F7F;
+    color: #fff;
+}
+
+#statistic-table td{
+    width:120px;
+    text-align: center;
+    font-size: 15px;
+
+    font-family: 맑은 고딕;
+    font-weight: bold;
+}
+
+#statistic-table td:first-child{
+    width: 200px;
+}

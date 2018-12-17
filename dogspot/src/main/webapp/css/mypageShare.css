@@ -1,9 +1,4 @@
-.img-list{
-    width: 250px;
-    height: 180px;
-}
-
-.favorite{
+/* .favorite{
     width: 30px;
     height: 30px;
     font-weight: bold;
@@ -12,23 +7,10 @@
     cursor: pointer;
     font-size: 25px;
     color: red;
-}
-#favo{
-    right: 0px;
-    top: -20px;
- }
-
-.box{
-    width: 450px;
-    margin-left: 20px;
-    border: #000000 solid 1px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-family: Jua;
-}
+} */
 
 #my-list{
-    left: 140px;
+    left: 50px;
 }
 
  #comm-icon{
@@ -41,4 +23,22 @@
     color: white;
   
     border-radius: 30px;
+}
+
+.idx-page{
+    font-size: 22px;
+    color: #002060;
+    text-decoration: underline;
+    
+}
+
+
+.box{
+    width: 676px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: #000000 solid 1px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: Jua;
 }

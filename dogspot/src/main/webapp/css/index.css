@@ -41,9 +41,9 @@ main input{
 .top6 a label{
     position: absolute;
     background: #000;
-    opacity: 0.5;
+    opacity: 0.7;
     left: 0px;
-    bottom: 0px;
+    bottom: 4px;
     width: 100%;
     text-align: left;
     text-indent: 10px;
@@ -57,4 +57,5 @@ main input{
 .top6 a img{
     width : 300px;
     height : 150px;
+    object-fit : cover;
 }

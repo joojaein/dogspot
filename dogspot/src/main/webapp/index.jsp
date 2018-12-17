@@ -10,13 +10,12 @@
 <html>
 
 <head>
-<script src="../js/index.js"></script>
 <title>DogSpot</title>
-<link
-	href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean"
-	rel="stylesheet">
-<link href="../css/index.css" type="text/css" rel="stylesheet" />
+<script src="../js/index.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
+<link href="../css/index.css"  type="text/css" rel="stylesheet" />
 </head>
+
 <body>
 
 	<jsp:include page="views/inc/header.jsp" />
@@ -29,7 +28,7 @@
 			<input type="text">
 			<section class="top6">
 				<template> <a href=""> <img
-					src="images/reviewImg.png"> <label>서울</label>
+					src="images/testprofile.png"> <label>서울</label>
 				</a> </template>
 
 			</section>
