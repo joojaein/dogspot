@@ -1,0 +1,44 @@
+.show-page-list{
+    display: flex;
+    padding-top: 25px;
+}
+.show-page-list ul{
+    padding-left: 30px;
+    font-size: 22px;
+    color: #7F7F7F;
+   flex: 1;
+}
+ .show-page-list li{
+    margin-right: 20px;
+
+} 
+
+.show-page-list a:hover{
+    color: #002060;
+}
+.stopBtn{
+    /* padding-top: 30px; */
+    padding-right: 120px;
+}
+.stopBtn input{
+    border: #002060 1px solid;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #002060;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    font-family: 돋움;
+    font-weight: bold;
+    
+}
+
+input[type="checkbox"]{
+    margin-top: 15px;
+}
+
+.extable td:first-child{
+    width: 80px;
+    /* background: pink; */
+    text-align: center;
+}

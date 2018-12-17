@@ -1,0 +1,43 @@
+.adpassword{
+    padding-top: 120px;
+     width: 100%;
+     height: 100px;
+     text-align: left;
+     font-size: 20px;
+ }
+ 
+ .adpassword div{
+ 
+     padding-left: 150px;
+     padding-bottom: 10px;
+     padding-top: 10px;
+ }
+ 
+ .adpassword input{
+     width: 580px;
+     margin-left: 145px;
+ 
+     height: 30px;
+     border: #002060 1px solid;
+     border-radius: 10px;
+ }
+
+.adeditbtn{
+    padding-top: 100px;
+    position: absolute;
+    left: 410px;
+   
+}
+.adeditbtn input{
+    width: 80px;
+    height: 30px;
+    background: #002060;
+    border: #002060 1px solid;
+    border-radius: 10px;
+    color:#FFFFFF;
+    font-style: 돋움;
+    font-size: 15px;
+    line-height: 30px;
+    
+}
+

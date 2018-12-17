@@ -1,0 +1,100 @@
+
+
+.qbody td input[type="checkbox"]{
+    background-color: #FFFFFF;
+}
+#qnacontent{
+    padding-bottom: 50px;
+    border-bottom:  1px solid rgb(182, 182, 184);
+}
+
+#question{
+    padding-left: 50px;
+}
+
+#question li{
+    height: 100px;
+    line-height: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 돋움;
+    
+   
+}    
+#question:first-child img{
+    margin-top:5px;
+    padding-right: 10px;
+}
+
+.questionspot{
+    padding-left: 550px;
+}
+
+.questionspot2{
+    padding-left: 10px;
+
+}
+#quecnt{
+    padding-top: 15px;
+    text-align: left;
+    font-size: 23px;
+    padding-left: 70px;
+    /* padding-bottom: 50px;
+    border-bottom: #7F7F7F 0.5px solid; */
+}
+
+
+
+
+
+.regcontent2{
+    background: rgb(235, 238, 243);
+    width: auto;
+    margin-top: 15px;
+    
+    padding-left: 180px;
+    padding-top: 15px;
+    padding-bottom: 18px;
+}
+.regcontent2 input{
+   
+    width: 580px;
+    height: 30px;
+    border: #002060 1px solid;
+    border-radius: 10px;
+}
+
+.ansbtn{
+    padding-top: 30px;
+    padding-right: 130px;
+}
+.ansbtn input{
+    border: #002060 1px solid;
+    border-radius: 10px;
+    background: #002060;
+    color: #FFFFFF;
+    height: 30px;
+    width: 80px;
+    font-size: 15px;
+    font-family: 돋움;
+    font-weight: bold;
+    
+}
+
+#answerbtn{
+    /*background: pink;*/
+    padding-top: 30px;
+    padding-left: 650px;
+}
+#answerbtn input{
+    width: 80px;
+    height: 30px;
+    background: #FFFFFF;
+    border: #002060 1px solid;
+    border-radius: 10px;
+    color:#002060;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 30px;
+    
+}

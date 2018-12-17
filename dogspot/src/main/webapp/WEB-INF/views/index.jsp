@@ -18,7 +18,7 @@
 
 <body>
 
-	<jsp:include page="views/inc/header.jsp" />
+	<jsp:include page="inc/header.jsp" />
 
 	<section id="body">
 		<div class="center">
@@ -36,7 +36,7 @@
 		</div>
 	</section>
 	
-	<jsp:include page="views/inc/footer.jsp" />
+	<jsp:include page="inc/footer.jsp" />
 
 </body>
 </html>

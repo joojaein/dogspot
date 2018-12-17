@@ -285,10 +285,16 @@ function draw_map(flag){
         	
             // 정상적으로 검색이 완료됐으면 
         	//console.log("00."+cnt+","+addr);
+        	
             if (status === daum.maps.services.Status.OK) {
             	//console.log("01."+cnt+","+addr);
                 var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
+                for(var i=0; i<addrs.length;i++){
+                 	if(addr==addrs[i]){
+                 		cnt=i;
+                     	console.log(addr);
+                     }
+                 }
                 markersPos.push(coords);
                 //alert(markersPos.length);
 
@@ -310,12 +316,7 @@ function draw_map(flag){
                 //console.log("1."+cnt+","+addr);
              	
                 //console.log("dsfdsfsdfsdf: "+addr+"dfdsf:"+addrs[cnt]);
-                for(var i=0; i<addrs.length;i++){
-                	if(addr==addrs[i]){
-                		cnt=i;
-                    	console.log(addr);
-                    }
-                }
+               
                 
                 if(flag==1){
                

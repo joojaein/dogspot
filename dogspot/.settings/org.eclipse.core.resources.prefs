@@ -2,16 +2,23 @@
 <<<<<<<=HEAD
 >>>>>>>=refs/remotes/origin/master
 eclipse.preferences.version=1
+<<<<<<< HEAD
+encoding//src/main/webapp/css/adminpageQna.css=UTF-8
+encoding//src/main/webapp/css/commonAdminMypage.css=UTF-8
+encoding//src/main/webapp/css/mypageEdit.css=UTF-8
+=======
 encoding//src/main/webapp/css/adminSpot.css=UTF-8
 encoding//src/main/webapp/css/basicStyle.css=UTF-8
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 encoding//src/main/webapp/css/component.css=UTF-8
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> refs/remotes/origin/master
+>>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
 >>>>>>> refs/remotes/origin/master
 encoding//src/main/webapp/css/review.css=UTF-8
 encoding//src/main/webapp/css/reviewModal.css=UTF-8
+encoding//src/main/webapp/css/share.css=UTF-8
 encoding//src/main/webapp/css/spot.css=UTF-8
