@@ -52,11 +52,13 @@
 						<ul>
 							<li class="list"><span class="width-front">장소명</span> <span
 								class="width-back"><input type="text" name="spot-name" />
-									<span>카페</span> <input type="checkbox" name="cafe" /> <span>식당</span>
-									<input type="checkbox" name="food" /> <span>숙박</span> <input
-									type="checkbox" name="room" /> <span>놀이터</span> <input
-									type="checkbox" name="play" /> <input type="text"
-									name="spot-theme" placeholder="상세분류" /> </span></li>
+								
+									<span>&nbsp;카페</span> <input type="radio" id="cafe" name="theme" /> <span>&nbsp;식당</span>
+									<input type="radio" id="food" name="theme" /> <span>&nbsp;숙박</span> <input
+									type="radio" id="room" name="theme" /> <span>&nbsp;놀이터</span> <input
+									type="radio" id="play" name="theme" /> 
+									
+									<input type="text" name="spot-theme" placeholder="상세분류" /> </span></li>
 
 
 							<li class="list"><span class="width-front">연락처</span> <span
@@ -65,9 +67,17 @@
 										<option value="02">02</option>
 										<option value="031">031</option>
 										<option value="031">032</option>
+										<option value="031">033</option>
+										<option value="031">041</option>
+										<option value="031">042</option>
+										<option value="031">0505</option>
+										<option value="031">051</option>
+										<option value="031">052</option>
+										<option value="031">053</option>
+										<option value="031">064</option>
 										<option value="070">070</option>
 								</select> <input type="text" name="phone-two"
-									placeholder=" '-' 빼고 입력해주세요" /></span></li>
+									placeholder=" '-' 포함해서 입력해주세요" /></span></li>
 
 							<li class="list"><span class="width-front">주소</span> <span
 								class="width-back"><input type="text" name="addr"
@@ -116,9 +126,9 @@
 							<div class="data-title">Pet</div>
 
 							<li class="list"><span class="width-front">견크기</span> <span
-								class="width-back"> <span>소형견</span> <input
-									type="checkbox" name="small" /> <span>중형견</span> <input
-									type="checkbox" name="medium" /> <span>대형견</span> <input
+								class="width-back"> <span>&nbsp;소형견</span> <input
+									type="checkbox" name="small" /> <span>&nbsp;중형견</span> <input
+									type="checkbox" name="medium" /><span>&nbsp;대형견</span> <input
 									type="checkbox" name="big" /> <textarea class="short-area"
 										name="size-etc" style="resize: none" placeholder="기타"></textarea></span>
 							</li>

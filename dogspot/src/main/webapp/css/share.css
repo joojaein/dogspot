@@ -34,6 +34,7 @@
     cursor: pointer;
     margin-left: 20px;
     vertical-align: middle;
+    border: none;
 }
 
 .right{
@@ -87,7 +88,7 @@
 .page{
     padding-top: 50px;
     padding-left: 450px;
-    font-family: ���� ���;
+    font-family: 占쏙옙占쏙옙 占쏙옙占�;
 }
 
 .page img{
@@ -183,6 +184,7 @@ select:focus {
     width: 80px;
     height: 38px;
     font-size: 20px;
+    z-index:1;
  }
 
 .favorite{

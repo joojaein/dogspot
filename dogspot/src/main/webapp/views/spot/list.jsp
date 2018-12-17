@@ -72,9 +72,44 @@
 				</div>
 				<div class="list" id="spot-main">
 					<div id="wid-front">
-						<section class="top left" id="list-add">
+						<section class="top left list-add">
+						<template class="spot-list-template">
+							<div class="list top list-div">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" data-id="1" />
+										</div>
+		
+									</div>
+									<div class="box">
+										<div class="list-font-big list-title">text</div>
+										<div>
+											<div class="list-font-small">
+												<span><img src="../../images/house.png" class="icon list-theme">
+												</span><span class="list-addr">text</span>
+											</div>
+										</div>
+										<div class="list-font-small">
+											<span class="list-min">text</span>
+											<span>~</span>
+											<span class="list-max">text</span>
+										</div>
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon list-size-img"></span>
+											<span class="dog-size list-size">&nbsp;text</span>
+										</div>
 
-							<div class="list top">
+										<div class="right per">
+											<img src="../../images/reviewIcon.jpg" class="icon">
+											<span class="list-review">&nbsp;text</span>
+										</div>
+									</div>
+								</div>
+							</template>
+							<!-- 
+							
+								<div class="list top">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
 										<div class="abso top favo">
@@ -83,10 +118,10 @@
 		
 									</div>
 									<div class="box">
-										<div class="list-font-big">혜정이네 집입니다^^</div>
+										<div class="list-font-big" id="list-title">혜정이네 집입니다^^</div>
 										<div>
 											<div class="list-font-small">
-												<span><img src="../../images/house.png" class="icon">
+												<span><img src="../../images/house.png" class="icon" id="list-theme">
 												</span><span id="addr1">서울시 광진구 능동로</span>
 											</div>
 										</div>
@@ -96,17 +131,17 @@
 											<span id="max1">20,000원</span>
 										</div>
 										<div class="list-font-small">
-											<span><img src="../../images/small.png" class="detail-icon"></span>
-											<span class="dog-size">&nbsp;소형견</span>
+											<span><img src="../../images/small.png" class="detail-icon" id="list-size-img"></span>
+											<span class="dog-size" id="list-size">&nbsp;소형견</span>
 										</div>
 
 										<div class="right per">
-											<img src="../../images/per.png" class="icon">
-											<span>&nbsp;10</span>
+											<img src="../../images/reviewIcon.jpg" class="icon">
+											<span id="list-review">&nbsp;10</span>
 										</div>
 									</div>
 								</div>
-								
+							
 								<div class="list top">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
@@ -236,10 +271,9 @@
 											<span>&nbsp;10</span>
 										</div>
 									</div>
-		
 								</div>
 						
-								
+								 -->
 
 						</section>
 					</div>
