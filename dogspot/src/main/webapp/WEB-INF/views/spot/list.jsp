@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +16,7 @@
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc&libraries=services"></script>
 		<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script> -->
         <meta charset="utf-8"/>
+        
 </head>
 <body>
 <jsp:include page="../inc/header.jsp" />
@@ -25,8 +28,11 @@
 
 				<main id="search-list" class="list-large-main">
 				<h1 class="hidden">메인</h1>
+				<form name="filter-box" > <!-- method="post" -->
 				<div class="left top">
-					<input type="text" name="search" class="big-data-search" />
+					<!--  <input type="text" name="search" class="big-data-search" id="enter" onkeydown="JavaScript:Enter_Check();" />-->
+					<input type="text" name="search" class="big-data-search" id="enter" autocomplete="off"
+					 onkeydown="javascript:if(event.keyCode==13) form.submit();" />
 
 				</div>
 
@@ -37,6 +43,12 @@
 						<option value="대전">대전</option>
 						<option value="경기">경기</option>
 						<option value="부산">부산</option>
+						<option value="강원">강원</option>
+						<option value="제주">제주</option>
+						<option value="인천">인천</option>
+						<option value="전라">전라</option>
+						<option value="경상">경상</option>
+						<option value="충청">충청</option>
 					</select> <select name="spot" class="select">
 						<option value="">장소</option>
 						<option value="숙박">숙박</option>
@@ -52,10 +64,11 @@
 						class="content">~</span> <input type="text" name="max-price"
 						placeholder="최대가격" />
 				</div>
+				</form>
 
 
 				<div class="list">
-					<div class="content-bold">53개의 검색결과</div>
+					<div class="content-bold">${fn:length(list)} 개의 검색결과</div>
 					<fieldset class="right" id="tog">
 						<input type="radio" id="min-pri" name="price" value="min-price"
 							checked> <label>최소가격&nbsp;&nbsp;&nbsp;</label> <input
@@ -73,7 +86,48 @@
 				<div class="list" id="spot-main">
 					<div id="wid-front">
 						<section class="top left list-add">
-						<template class="spot-list-template">
+						<!-- <template class="spot-list-template"> -->
+						
+							<!-- <div class="list top list-div">
+									<div class="rela">
+										<img src="../../images/room1.png" class="img-list">
+										<div class="abso top favo">
+											<input type="button" value="☆" class="favorite" data-id="1" />
+										</div>
+		
+									</div>
+									
+									<div class="box">
+									
+										<div class="list-font-big list-title">제목</div>
+									
+										<div>
+											<div class="list-font-small">
+												<span><img src="../../images/house.png" class="icon list-theme">
+												</span><span class="list-addr">주소</span>
+											</div>
+										</div>
+										<div class="list-font-small">
+											<span class="list-min">최소가격</span>
+											<span>~</span>
+											<span class="list-max">최대가격</span>
+										</div>
+										<div class="list-font-small">
+											<span><img src="../../images/small.png" class="detail-icon list-size-img"></span>
+											<span class="dog-size list-size">&nbsp;사이즈</span>
+										</div>
+
+										<div class="right per">
+											<img src="../../images/reviewIcon.jpg" class="icon">
+											<span class="list-review">&nbsp;리뷰갯수 </span>
+										</div>
+										
+									</div>
+									
+								</div> -->
+							
+						
+						<c:forEach var="n" items="${list}">
 							<div class="list top list-div">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
@@ -82,31 +136,40 @@
 										</div>
 		
 									</div>
+									
 									<div class="box">
-										<div class="list-font-big list-title">text</div>
+									
+										<div class="list-font-big list-title">${n.name}</div>
+									
 										<div>
 											<div class="list-font-small">
 												<span><img src="../../images/house.png" class="icon list-theme">
-												</span><span class="list-addr">text</span>
+												</span><span class="list-addr">${n.addr}</span>
 											</div>
 										</div>
 										<div class="list-font-small">
-											<span class="list-min">text</span>
+											<span class="list-min">${n.price_min}</span>
 											<span>~</span>
-											<span class="list-max">text</span>
+											<span class="list-max">${n.price_max}</span>
 										</div>
 										<div class="list-font-small">
 											<span><img src="../../images/small.png" class="detail-icon list-size-img"></span>
-											<span class="dog-size list-size">&nbsp;text</span>
+											<span><img src="../../images/medium.png" class="detail-icon list-size-img"></span>
+											<span><img src="../../images/big.png" class="detail-icon list-size-img"></span>
+
+											<span class="dog-size list-size">&nbsp;${n.dogsize}</span>
 										</div>
 
 										<div class="right per">
 											<img src="../../images/reviewIcon.jpg" class="icon">
 											<span class="list-review">&nbsp;text</span>
 										</div>
+										
 									</div>
+									
 								</div>
-							</template>
+							</c:forEach>
+							<!-- </template> -->
 							<!-- 
 							
 								<div class="list top">
