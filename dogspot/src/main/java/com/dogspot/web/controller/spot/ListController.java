@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.dogspot.web.entity.Spot;
 import com.dogspot.web.service.SpotService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
-import com.google.gson.Gson;
 
 @WebServlet("/spot/list")
 public class ListController extends HttpServlet {

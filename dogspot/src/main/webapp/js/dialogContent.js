@@ -59,21 +59,42 @@ window.addEventListener("load", function(){
         if(label.value==undefined){ //리뷰할 장소 미선택
             event.preventDefault();
             label.classList.add("text-red")
-
+            var imgName = btnPageUpDown.src;
+            if(imgName.indexOf("Down")>=0){
+               imgName=imgName.replace("Down","Up");
+                ulSpotlist.classList.remove("hidden");
+                inputSpot.classList.remove("hidden");
+                inputSpot.focus();
+            }
+            btnPageUpDown.src=imgName;
         }else if(inputReviewTitle.value==null || inputReviewTitle.value==""){
             event.preventDefault();
-            
-        	alert("제목 미입력");
+            inputReviewTitle.classList.add("placeholderred-red");
+            inputReviewTitle.focus();
         }else if(textareaReviewContent.value==null || textareaReviewContent.value==""){
             event.preventDefault();
-
-        	alert("내용 미입력");
+            textareaReviewContent.classList.add("placeholderred-red");
+            textareaReviewContent.focus();
         }else{
-            closeModal();
+
+           //DB insert
+
+          var request = new XMLHttpRequest(); 
+
+          request.open("POST", "../review-insert", true); 
+          request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+
+          request.onload = function () {   
+               closeModal();
+               // + 리스트 재정렬
+          }
+
+          request.send("id=" + label.value+
+                "&title="+inputReviewTitle.value+
+                "&content="+textareaReviewContent.value+
+                "&hashtag="+hashTag.innerText);      
         }
-        
-        
-        
+
     }; 
     
     

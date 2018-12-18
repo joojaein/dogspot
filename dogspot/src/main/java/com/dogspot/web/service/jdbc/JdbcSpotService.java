@@ -311,12 +311,26 @@ public class JdbcSpotService implements SpotService {
 			// ResultSet rs =st.executeQuery();
 
 			while (rs.next()) {
-				Spot spot = new Spot(rs.getInt("id"), rs.getString("name"), rs.getString("addr"), rs.getString("phone"),
-						rs.getString("time"), rs.getString("time_etc"), rs.getString("dogsize"),
-						rs.getString("dogsize_etc"), rs.getString("dogweight"), rs.getString("dogweight_etc"),
-						rs.getString("price_min"), rs.getString("price_max"), rs.getString("price_etc"),
-						rs.getString("url"), rs.getString("etc"), rs.getDate("regdate"), rs.getInt("themeid"),
-						rs.getString("theme_etc"));
+				Spot spot = new Spot(
+						rs.getInt("id"), 
+						rs.getString("name"), 
+						rs.getString("addr"), 
+						rs.getString("phone"),
+						rs.getString("time"), 
+						rs.getString("time_etc"), 
+						rs.getString("dogsize"),
+						rs.getString("dogsize_etc"), 
+						rs.getString("dogweight"), 
+						rs.getString("dogweight_etc"),
+						rs.getString("price_min"), 
+						rs.getString("price_max"), 
+						rs.getString("price_etc"),
+						rs.getString("url"), 
+						rs.getString("etc"), 
+						rs.getDate("regdate"), 
+						rs.getInt("themeid"),
+						rs.getString("theme_etc")
+						);
 				list.add(spot);
 			}
 
@@ -332,6 +346,13 @@ public class JdbcSpotService implements SpotService {
 		}
 
 		return list;
+	}
+
+
+	@Override
+	public List<Favorite> getFavoriteList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
