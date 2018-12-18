@@ -40,7 +40,7 @@
 					</c:if>
 					
 					<ul class="list">
-						<c:forEach var="i" begin="1" end="4">
+<%-- 						<c:forEach var="i" begin="1" end="4">
 							<c:set var="cls" value="${i==filter? 'text-indigo':''}"/>
 							<c:if test="${i==1}">
 								<li><a href="?f=1" class="${cls}">최신순</a></li>
@@ -54,7 +54,13 @@
 							<c:if test="${i==4}">
 								<li><a href="?f=4" class="${cls}">댓글순</a></li>
 							</c:if>
-						</c:forEach>
+						</c:forEach> --%>
+						
+						<li><a class="btn text-indigo">최신순</a></li>
+						<li><a class="btn">조회순</a></li>
+						<li><a class="btn">좋아요순</a></li>
+						<li><a class="btn">댓글순</a></li>
+						
 					</ul>
 					
 					
@@ -102,7 +108,49 @@
 						<div class="review-name text-overflow-ellipsis"></div>
 						<div class="review-title text-overflow-ellipsis"></div>
 					</div>
-					</template>
+					</template> 
+					
+					
+					<%-- <c:forEach var="review" items="${list}">
+						<div class="review-div">
+							<a class="review-mainImg" href=""> 
+								<img class="review-img" src="/images/reviewImg.png" />
+								<section class="review-list-hover hidden">
+			
+									<section class="hover-back"></section>
+			
+									<div class="text-white">
+										<dl class="list">
+											<dt>
+												<img class="good-true-icon hidden" src="/images/goodTrueIcon.png">
+												<img class="good-false-icon" src="/images/goodFalseIcon.png">
+											</dt>
+											<dd class="good-int"></dd>
+										</dl>
+										<dl class="list">
+											<dt>
+												<img src="/images/commentIcon.png">
+											</dt>
+											<dd class="cmt-int"></dd>
+										</dl>
+										<dl class="list">
+											<dt>
+												<img src="/images/hitIcon.png">
+											</dt>
+											<dd class="hit-int"></dd>
+										</dl>
+									</div>
+			
+									<section class="hover-parency"></section>
+			
+								</section>
+								</a>
+							<div class="review-name text-overflow-ellipsis"></div>
+							<div class="review-title text-overflow-ellipsis"></div>
+						</div>
+					</c:forEach> --%>
+					
+					
 				</section>
 				</main>
 			</div>

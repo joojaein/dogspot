@@ -18,6 +18,17 @@ public class Review {
 
 	
 	
+	
+	public Review(int id, String title, int hit) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.hit = hit;
+	}
+
+
+
+
 	public Review(String title, String content, String regId, int spotId, String hashTag) {
 		super();
 		this.title = title;
