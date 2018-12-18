@@ -12,7 +12,7 @@
 				<section class="review-top list">
 					<img src="/images/profile.png">
 					<div>dogstpot</div>
-					<input class="btn" type="button" value="리뷰등록">
+					<a class="btn" href="">리뷰등록</a>
 				</section>
 				
 				
@@ -35,7 +35,7 @@
 				
 				<hr class="review-hr" />
 				<section class="review-bottom">
-					<div class="text-hashtag">#해시태그&nbsp</div>
+					<div class="text-hashtag">#</div>
 				</section>
 			</section>
 		</section>

@@ -37,8 +37,11 @@
 				</section> -->
 				<section class="dnd">
 					<img src="/images/regImgs.png"/>
-					<div>빠르게 사진 올리기 </div>
-					<div>원하는 이미지를 이곳에 끌어다 놓으면 사진을 쉽게 올릴 수 있습니다.</div>
+					<div class="msg">빠르게 사진 올리기 </div>
+					<div class="explanation">원하는 이미지를 이곳에 끌어다 놓으면 사진을 쉽게 올릴 수 있습니다.</div>
+					
+					<ul class="dnd-parency"></ul>
+					
 				</section>
 			</section>
 		</section>
