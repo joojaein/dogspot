@@ -334,5 +334,4 @@ public class JdbcSpotService implements SpotService {
 		return list;
 	}
 
-
 }

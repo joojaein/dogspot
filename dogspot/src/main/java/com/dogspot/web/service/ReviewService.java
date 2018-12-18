@@ -1,5 +1,6 @@
 package com.dogspot.web.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.dogspot.web.entity.Cmt;
@@ -17,6 +18,7 @@ public interface ReviewService {
 	//리스트 페이지
 	List<Review> getList();
 	List<Review> getList(String query);
+	List<HashMap> getReviewDataView(String query, int filter);
 	
 	//디테일 페이지
 	Review getReview(int reviewId);

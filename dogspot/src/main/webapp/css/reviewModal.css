@@ -38,8 +38,11 @@ dialog{
     top: 150px !important;
     border-radius: 30px !important;
     width: 400px !important;
-    height: 330px !important;
+    height: 330px !important; 
+    padding: 1em !important;
 }
+
+    
 
 .review-hr{
     margin-left: 10px;
@@ -182,6 +185,10 @@ padding-left :10px;
     line-height: 25px;
     color: #000000;
 }
+.review-spot-list li{    
+	width: 90%;;    
+}
+
 
 .review-spot-list li:first-child{
     margin-top: 5px;
@@ -308,10 +315,11 @@ box-sizing: border-box;
 	font-size : 10px;
 }
 
+
 .modal-title{
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
+    font-weight: bold !important;
+    font-size: 30px !important;
+    text-align: center !important;
 }
 
 .modal-small-box{
@@ -321,6 +329,7 @@ box-sizing: border-box;
     border: #000000 solid 1px;
     border-radius: 10px;
     font-size: 18px;
+    text-indent :10px;
 }
 
 .modal-big-box{
@@ -331,6 +340,7 @@ box-sizing: border-box;
     border-radius: 10px;
     font-size: 18px;
     font-family: Jua;
+    text-indent :10px;
 }
 
 .send-btn{
@@ -347,7 +357,16 @@ box-sizing: border-box;
     vertical-align: middle;
     margin-top: 15px;
     margin-left: 170px;
+    border:none;
 }
 
-
+.complain-modal-x{
+    position: absolute;
+    top:-25px;
+    right: -23px;
+    z-index: 11;
+    width: 50px;
+    cursor: pointer;
+}
+  
 }

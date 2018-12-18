@@ -355,4 +355,3 @@ function maxDistance(lat, lng, position, len){
 	}
 	return max;
 }
-

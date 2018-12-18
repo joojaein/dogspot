@@ -46,6 +46,20 @@ select:focus {
     color: #fff !important;
 }
 
+.text-red{
+    color: #f00 !important;
+}
+
+.placeholderred-red::-webkit-input-placeholder{
+    color: #f00 !important;
+}
+
+
+
+/* input.placeholderred::-webkit-input-placeholder {
+   color: red;
+} */
+
 .text-hashtag {
     color: #0000ff !important;
     padding: 5px 0px !important;

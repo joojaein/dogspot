@@ -9,20 +9,74 @@ window.addEventListener("load", function(){
     var hashTag = dialogContent.querySelector(".text-hashtag");
     var readyHash=false;
 
-    var bind_spot = function(spot){
+    
+    inputSpot.onkeydown = function() {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+        }
+    };
+    
+    var bind_spot = function(spot, id, name, addr){
     	var tempSpot = spot.querySelector("a");
-        tempSpot.innerText="가가카페";
+        tempSpot.innerText=name +" : " + addr;
+        tempSpot.value=id;
         ulSpotlist.append(spot);
     };
 
-    for(var i=0; i<5; i++){
-        var a = document.createElement("a");
-        var li = document.createElement("li");
-        a.href="";
-        li.appendChild(a);
-        bind_spot(li);
-    };
+    inputSpot.onkeyup = function(evt){	
+        var label = dialogContent.querySelector(".review-spot-list label");
+        label.classList.remove("text-red");
 
+		if(inputSpot.value < '가') return;
+		if(inputSpot.value== 13) return; 
+		
+		var request = new XMLHttpRequest(); 
+		
+		request.open("POST", "../review-spot-search", true); 
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		
+		request.onload = function () {	
+			ulSpotlist.innerHTML="";
+
+			var spotList = JSON.parse(request.responseText);
+			for(var i=0; i< spotList.length; i++){
+				var a = document.createElement("a");
+		        var li = document.createElement("li");
+		        a.href="";
+		        li.classList.add("text-overflow-ellipsis");
+		        li.appendChild(a);
+		        bind_spot(li, spotList[i].id, spotList[i].name, spotList[i].addr);
+		     }
+			
+		}
+		
+		request.send("keywords=" + inputSpot.value);		
+
+    };
+    
+    btnReviewUpload.onclick = function(){
+        var label = dialogContent.querySelector(".review-spot-list label");
+        if(label.value==undefined){ //리뷰할 장소 미선택
+            event.preventDefault();
+            label.classList.add("text-red")
+
+        }else if(inputReviewTitle.value==null || inputReviewTitle.value==""){
+            event.preventDefault();
+            
+        	alert("제목 미입력");
+        }else if(textareaReviewContent.value==null || textareaReviewContent.value==""){
+            event.preventDefault();
+
+        	alert("내용 미입력");
+        }else{
+            closeModal();
+        }
+        
+        
+        
+    }; 
+    
+    
     ulSpotlist.addEventListener("click", function(evt){
          if (evt.target.nodeName != "A" ) return;
          evt.preventDefault();
@@ -37,7 +91,9 @@ window.addEventListener("load", function(){
          inputReviewTitle.focus();
 
          var label = dialogContent.querySelector(".review-spot-list label");
-         label.innerText=evt.target.innerText;
+         var tempText = evt.target.innerText;
+         label.innerText = " "+tempText.substring(0,tempText.indexOf(":"));
+         label.value = evt.target.value;
 
     }, true);
 
@@ -49,6 +105,7 @@ window.addEventListener("load", function(){
         	imgName=imgName.replace("Down","Up");
             ulSpotlist.classList.remove("hidden");
             inputSpot.classList.remove("hidden");
+            inputSpot.focus();
         }else{
         	imgName=imgName.replace("Up","Down");
             ulSpotlist.classList.add("hidden");
@@ -127,8 +184,5 @@ window.addEventListener("load", function(){
 			setHashTag();
     	}
     }; 
-    
-    btnReviewUpload.onclick = function(){
-        closeModal();
-    }; 
+
 });

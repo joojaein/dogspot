@@ -61,6 +61,7 @@ public interface SpotService {
 	
 	//즐겨찾기 페이지
 	List<Favorite> getFavoriteList(String memberId, int page);
+	List<Favorite> getFavoriteList();
 	
 	//수정요청
 	List<SpotRequest> getSpotRequestList();
