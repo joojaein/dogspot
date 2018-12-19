@@ -2,7 +2,6 @@ package com.dogspot.web.controller.review;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -21,8 +20,8 @@ import com.dogspot.web.service.jdbc.JdbcReviewService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
 import com.google.gson.Gson;
 
-@WebServlet("/review-filter")
-public class reviewFilterController extends HttpServlet{
+@WebServlet("/review-spot-search")
+public class ReviewSpotSearchController extends HttpServlet{
 		
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,18 +31,16 @@ public class reviewFilterController extends HttpServlet{
 			resp.setContentType("text/html;charset=UTF-8");
 			PrintWriter out = resp.getWriter();
 			
-			int filter = Integer.parseInt(req.getParameter("filter"));
-			String query = req.getParameter("query");		
-			
+			String keywords = req.getParameter("keywords");
 			ReviewService service = new JdbcReviewService();
-			List<HashMap> reviewList = service.getReviewDataView(query,filter);
+			List<Spot> spotList = service.getSpotList(keywords);
 						
-			if(reviewList ==null) {
+			if(spotList ==null) {
 				out.write("");
 			}else {
 				Gson gson = new Gson();
-				String json = gson.toJson(reviewList);
+				String json = gson.toJson(spotList);
 				out.write(json);	
-			}		
+			}			
 		}
 	}

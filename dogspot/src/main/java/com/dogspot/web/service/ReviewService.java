@@ -20,6 +20,7 @@ public interface ReviewService {
 	List<Review> getList(String query);
 	List<HashMap> getReviewDataView(String query, int filter);
 	
+	
 	//디테일 페이지
 	Review getReview(int reviewId);
 	List<ReviewImg> getReviewImgList(int reviewId);
@@ -32,9 +33,12 @@ public interface ReviewService {
 	
 	//추가
 	int insert(Review review);
+	int getLastReviewId();
+	int getLastReviewImgId();
 	List<Spot> getSpotList(String query);
+	int insertReviewImg(String fileName, int reviewId);
 	int insertReviewImgList(List<ReviewImg> reviewImgList);
-	
+
 	//수정
 	int update(int reviewId, Review review);
 

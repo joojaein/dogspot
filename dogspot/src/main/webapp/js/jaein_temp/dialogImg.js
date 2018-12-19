@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
 
 	var dialogImg = modals.querySelector("#modal-review-reg-img");
-
+	
     var btnImgUpload=dialogImg.querySelector(".reg1-top input[type='button']");
     //var btnFileUpload=dialogImg.querySelector(".reg1-top div");
     var basicImgSrc = "/images/regImg.png";
@@ -23,9 +23,7 @@ window.addEventListener("load", function(){
     	for(var i =0; i<fileArr.length; i++){
     		tempArr.push(fileArr[i].name);
     	}
-    	btnImgUpload.value = tempArr;
-    	console.log(btnImgUpload.value);
-    	
+    	staticData.regImgArr = tempArr;
         closeModal();
         showDialogContent();
     } 

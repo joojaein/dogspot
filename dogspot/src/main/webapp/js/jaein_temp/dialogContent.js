@@ -10,6 +10,9 @@ window.addEventListener("load", function(){
     var hashTag = dialogContent.querySelector(".text-hashtag");
     var readyHash=false;
 
+    var openDialog =function() {
+    	alert("성공");
+    };
     
     inputSpot.onkeydown = function() {
         if (event.keyCode === 13) {
