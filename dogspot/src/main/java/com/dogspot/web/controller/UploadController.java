@@ -36,6 +36,8 @@ public class UploadController extends HttpServlet{
 		if(!file.exists()) {
 			file.mkdirs(); // 없으면 디렉토리 생성
 		}
+		System.out.println(path);
+
 		
 		Part part = req.getPart("file");
 		String fileName = part.getSubmittedFileName();
@@ -48,7 +50,6 @@ public class UploadController extends HttpServlet{
 
 		while((size=fis.read(buf))>=0) {
 			fos.write(buf, 0, size);
-			System.out.println(fileName +" / " +size);
 		}
 
 		fos.close();

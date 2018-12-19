@@ -129,12 +129,10 @@ window.addEventListener("load", function(){
     reviewList.addEventListener("click", function (evt) {
         evt.preventDefault();
         if (evt.target.className != "hover-parency") return;
-        modalBack.style.display = "unset";
-        dialogDetail.showModal();
+        showDialogDetail();
     }, true); 
     
     btnAddReview.onclick = function(evt){
-        modalBack.style.display = "unset";
-        dialogImg.showModal();
+    	showDialogImg();
     };
 });

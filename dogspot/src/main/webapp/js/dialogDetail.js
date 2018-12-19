@@ -1,5 +1,5 @@
 window.addEventListener("load", function(){
-
+	var dialogDetail = modals.querySelector("#modal-review-detail");
     var reviewDetailTop=dialogDetail.querySelector(".review-top");
     var reviewDetailCenter=dialogDetail.querySelector(".review-center");
     var reviewDetailBottom=dialogDetail.querySelector(".review-bottom");
@@ -29,8 +29,7 @@ window.addEventListener("load", function(){
 
         if(evt.target.value == "수정"){
         	closeModal();
-            modalBack.style.display = "unset";
-            dialogImg.showModal();
+        	showDialogImg();
         }
         else if(evt.target.value == "삭제"){
         	var bool = confirm("정말 삭제하시겠습니까?");
@@ -42,8 +41,7 @@ window.addEventListener("load", function(){
         }
         else if(evt.target.value == "신고"){
         	closeModal();
-            modalBack.style.display = "unset";
-            dialogReviewComplain.showModal();
+        	showDialogReviewComplain();
         }
    }, true);
 
@@ -89,8 +87,7 @@ window.addEventListener("load", function(){
         }
         else if(evt.target.value == "신고"){
         	closeModal();
-            modalBack.style.display = "unset";
-            dialogCommentComplain.showModal();
+        	showDialogCommentComplain();
         }
    }, true);
 

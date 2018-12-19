@@ -1,5 +1,6 @@
 window.addEventListener("load", function(){
 
+	var dialogContent = modals.querySelector("#modal-review-reg-content");
     var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");			
     var textareaReviewContent = dialogContent.querySelector("textarea");
     var inputReviewTitle = dialogContent.querySelector(".review-report input");
