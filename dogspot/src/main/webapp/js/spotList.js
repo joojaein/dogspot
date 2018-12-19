@@ -46,7 +46,7 @@ window.addEventListener("load", function(){
         tmpSizeImg3=tmp.querySelector(".list-size-img3");
         tmpReview=tmp.querySelector(".list-review");
         tmpLink=tmp.querySelector(".detail-link");
-        
+       
         if(spotData.themeid==1)
         	theme_img = "/images/cafe.png";
         if(spotData.themeid==2)
@@ -85,7 +85,8 @@ window.addEventListener("load", function(){
         tmpSize.innerText=spotData.dogsize;
        
         tmpReview.innerText = "8";
-        tmpLink="detail.jsp";
+        tmpLink="spot/detail";
+        //tmpLink.innerText=spotData.name;
         
         SpotList.append(tmp);
     };

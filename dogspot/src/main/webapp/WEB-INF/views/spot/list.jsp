@@ -99,7 +99,7 @@
 									
 									<div class="box">
 									
-										<div class="list-font-big list-title"><a href = "detail.jsp" class="detail-link">제목</a></div>
+										<div class="list-font-big"><a href="detail" class="list-font-big list-title detail-link">제목</a></div>
 									
 										<div>
 											<div class="list-font-small">

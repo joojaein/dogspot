@@ -16,7 +16,7 @@ import com.dogspot.web.service.SpotService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
 
 @WebServlet("/spot/list")
-public class ListController extends HttpServlet {
+public class SpotListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
