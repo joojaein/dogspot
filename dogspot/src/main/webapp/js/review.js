@@ -1,10 +1,15 @@
 window.addEventListener("load", function(){
     
+	var reviewSearch = document.querySelector("#review-search");
+	var inputSearch = reviewSearch.querySelector("input[type='text']");
+	var ulSearch = reviewSearch.querySelector("ul");
+	var aSearch = ulSearch.querySelectorAll("a");
+	
     var reviewList=document.querySelector("#review-list");
     var tmpReviewDiv= reviewList.querySelector("#review-list-div-template");    
     var btnAddReview=document.querySelector("main>input");
-       
-    var bind_reviewDiv = function(div){
+    
+    var bind_reviewDiv = function(div, reviewData){
         var tempImg=div.querySelector(".review-mainImg");
         var tempName=div.querySelector(".review-name");
         var tempTitle=div.querySelector(".review-title");
@@ -14,20 +19,54 @@ window.addEventListener("load", function(){
         var tempHitInt=div.querySelector(".hit-int");
 
         tempImg.innerSrc="/images/reviewImg.png";
-        tempName.innerText="1가가카페";
-        tempTitle.innerText="1가나다라마바사아자차하하하하하하하하";
+        tempName.innerText=reviewData.name;
+        tempTitle.innerText=reviewData.title;
 
-        tempGoodInt.innerText="10";
-        tempCommentInt.innerText="10";
-        tempHitInt.innerText="10";
+        tempGoodInt.innerText=reviewData.good;
+        tempCommentInt.innerText=reviewData.cmt;
+        tempHitInt.innerText=reviewData.hit;
 
         reviewList.append(div);
     };
     
-    for(var i=0;i<40; i++){
-        var div=document.importNode(tmpReviewDiv.content, true);
-        bind_reviewDiv(div);
-    }
+    var setReviewList = function(){    	
+		var request = new XMLHttpRequest(); 	
+		request.open("POST", "../review-filter", true); 
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		
+		var query = inputSearch.value;
+		var filter = 1;		
+		for (var i = 0; i < aSearch.length; i++) {
+			if(aSearch[i].classList.contains("text-indigo")){
+                filter = i+1;
+            }
+		}
+					
+		request.onload = function () {	
+		
+			var reviewFilterList = JSON.parse(request.responseText);
+			var reviewDivCnt = reviewList.querySelectorAll(".review-div").length;
+
+			var max = reviewFilterList.length;
+			if(max>reviewDivCnt+40) max = reviewDivCnt+40;	
+
+			for(var i=reviewDivCnt; i<max; i++){
+	    	        var div=document.importNode(tmpReviewDiv.content, true);
+	    	        bind_reviewDiv(div,reviewFilterList[i]);
+	    	}	    	
+		}
+		
+		request.send("query="+query+"&filter="+filter);
+    };
+    
+    setReviewList();
+    
+    inputSearch.onkeydown = function() {
+        if (event.keyCode == 13) {
+        	reviewList.innerHTML="";
+    	    setReviewList();
+        }
+    };
     
 	function getCurrentScrollPercentage(){
 	    var scrolled_value = window.scrollY
@@ -39,15 +78,26 @@ window.addEventListener("load", function(){
     document.addEventListener("scroll", function(){
     	var currentScrollPercentage = getCurrentScrollPercentage();
     	var testCnt = reviewList.querySelectorAll(".review-div").length;
-    	
     	if(currentScrollPercentage >= 98){
-    		  for(var i=0;i<40; i++){
-    		        div=document.importNode(tmpReviewDiv.content, true);
-    		        bind_reviewDiv(div);
-    		   }
+    	    setReviewList();
     	}
     });
     
+    ulSearch.addEventListener("click", function (evt) {
+        evt.preventDefault();
+        if (evt.target.nodeName != "A") return;
+        if(evt.target.className != "btn") return;
+
+        for(var i=0; i<aSearch.length; i++){
+            aSearch[i].classList.remove("text-indigo");
+        }
+        evt.target.classList.add("text-indigo");
+    	reviewList.innerHTML="";
+        setReviewList();
+
+    }, true); 
+    
+
     reviewList.addEventListener("mouseover", function (evt) {
         if (evt.target.nodeName == "IMG" ){
             var reviewDivs = reviewList.querySelectorAll(".review-div");
@@ -79,12 +129,10 @@ window.addEventListener("load", function(){
     reviewList.addEventListener("click", function (evt) {
         evt.preventDefault();
         if (evt.target.className != "hover-parency") return;
-        modalBack.style.display = "unset";
-        dialogDetail.showModal();
+        showDialogDetail();
     }, true); 
     
     btnAddReview.onclick = function(evt){
-        modalBack.style.display = "unset";
-        dialogImg.showModal();
+    	showDialogImg();
     };
 });

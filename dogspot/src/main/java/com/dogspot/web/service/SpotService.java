@@ -15,11 +15,14 @@ import com.dogspot.web.entity.Theme;
 public interface SpotService {
 
 	//리스트 페이지(검색)
-	List<Spot> getList();
-	//리스트페이지(관리자)
 	List<Spot> getList(int page);
 	List<Spot> getList(String query);
 	List<Spot> getList(int page, String query);
+	List<Spot> getList(String search,String local,String theme,String size, String min_p, String max_p);
+	//리스트페이지(관리자)
+	List<Spot> getAdminList(int page);
+	List<Spot> getAdminList(String query);
+	List<Spot> getAdminList(int page, String query);
 	SpotImg getSpotImg(int spotId);
 	
 	//디테일 페이지
@@ -58,6 +61,7 @@ public interface SpotService {
 	
 	//즐겨찾기 페이지
 	List<Favorite> getFavoriteList(String memberId, int page);
+	List<Favorite> getFavoriteList();
 	
 	//수정요청
 	List<SpotRequest> getSpotRequestList();

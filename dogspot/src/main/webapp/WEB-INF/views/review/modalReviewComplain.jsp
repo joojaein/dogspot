@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	<dialog id="modal-review-complain" class="modal complain-modal">
 	<form method="dialog">
-		<img class="modal-x" src="/images/modal-x.png">
+		<img class="complain-modal-x" src="/images/modal-x.png">
 		<section class="modal-section">
 			<h1 class="hidden">리뷰신고</h1>
 			<div class="modal-title">리뷰 신고</div>
