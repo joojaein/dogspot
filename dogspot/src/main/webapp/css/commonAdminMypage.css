@@ -68,10 +68,10 @@ tbody td input{
 .page_move img{
     width: 20px;
 }
-.page_move li:first-child a{
+.page_move li a:hover{
     color: red;
     font-weight: bold;
-}
+} 
 
 .nameinput{
     height: 30px;
@@ -120,3 +120,68 @@ textarea:focus {
     outline: none; 
 }
 
+.contents{
+	text-align:center;
+	background:#dcdcdc;
+	height:250px;
+  
+}
+
+.contents td{
+	position:relative;
+	white-space:normal;  text-overflow:clip; overflow:visible;
+}
+.detaile{
+	position:relative;
+}
+.detaile-title{
+	color:#002060;
+	width:100%;
+	font-size:20px;
+	height:50px;
+}
+.detaile-etc{
+	position:absolute;
+	right:0px;
+	top:0px;
+	margin-top:10px;
+	margin-right:10px;
+}
+.detaile-etc div{
+	margin-right:10px;
+	height:20px;
+	text-align:right;
+	
+}
+.contents p{
+	margin-right:20px;
+}
+/* .contents p:last-child{
+	text-align:left;
+}
+.detail{
+	text-align:center;
+}
+ .detail div{
+	margin-left:100px;
+}
+.detail div div{
+	padding-right:150px;
+	
+	padding-right:30px;
+	
+}
+.detail div div:first-child{
+	font-size:20px;
+	font-wight:bold;
+	color:#002060;
+	padding-right:80px;
+	 font-family: JOA !important;
+} */
+
+/* .detail{
+	 border: #002060 1px solid;
+
+
+
+} */

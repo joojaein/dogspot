@@ -17,33 +17,7 @@
 	rel="stylesheet" />
 </head>
 <body>
-	<header class="list">
-		<div>
-			<a href=""><img src="/images/logoImg.png" /></a>
-		</div>
-
-		<section class="list">
-			<h1 class="hidden">헤더</h1>
-
-			<nav id="mainmenu">
-				<h1 class="hidden">mainmenu</h1>
-				<ul class="list">
-					<li><a href="">검색</a></li>
-					<li><a href="">리뷰</a></li>
-				</ul>
-			</nav>
-
-			<nav id="membermenu">
-				<h1 class="hidden">membermenu</h1>
-				<ul class="list">
-					<li><a href="">마이페이지</a></li>
-					<li><a href="">로그아웃</a></li>
-				</ul>
-			</nav>
-		</section>
-	</header>
-
-
+	<jsp:include page="../../inc/header.jsp" />
 	<section id="body">
 		<div class="center">
 
@@ -76,22 +50,22 @@
 				<section id="boxlist">
 					<div class="list">
 						<a href="">
-							<div id="boximg">
+							<div class="boximg">
 								즐겨찾기
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								리뷰
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								좋아요
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								댓글
 								<div>30</div>
 							</div>
@@ -103,35 +77,32 @@
 					<div id="mypage-title">관리자 문의</div>
 
 				</section>
-				<section class="regcontent">
-					<div class="list">
-						<div class="nameinput">제목</div>
-						<div class="chginput">
-							<input type="text" />
+				<form action="" method="post" >
+					<section class="regcontent">
+						<div class="list">
+							<div class="nameinput">제목</div>
+							<div class="chginput">
+								<input name="title" />
+							</div>
 						</div>
-					</div>
-					<div class="list">
-						<div class="nameinput">내용</div>
-						<div class="chginput2">
-							<textarea></textarea>
+						<div class="list">
+							<div class="nameinput">내용</div>
+							<div class="chginput2">
+								<textarea name="content"></textarea>
+							</div>
 						</div>
+					</section>
+					<div class="askbtn">
+						<input type="submit" value="문의하기" />
 					</div>
-				</section>
-				<div class="askbtn">
-					<input type="submit" value="문의하기" />
-				</div>
+				</form>
+
+				</main>
+			</section>
 		</div>
-		</main>
-
-
 	</section>
 
 
-	<footer>
-		<section>
-			<h1 class="hidden">푸터</h1>
-
-		</section>
-	</footer>
+	<jsp:include page="../../inc/footer.jsp" />
 </body>
 </html>

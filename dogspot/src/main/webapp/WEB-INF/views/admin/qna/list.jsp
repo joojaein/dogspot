@@ -17,7 +17,7 @@
 <link href="../../../css/commonAdminMypage.css" type="text/css"
 	rel="stylesheet" />
 
-<script src="../../../js/mypage_admin.js"></script>
+<script src="../../../js/admin_list.js"></script>
 </head>
 <body>
 	<header class="list">

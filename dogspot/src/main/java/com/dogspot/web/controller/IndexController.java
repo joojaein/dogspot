@@ -19,9 +19,8 @@ public class IndexController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("Dafadfadfa");
-		IndexService service = new JdbcIndexService();
 
+		IndexService service = new JdbcIndexService();
 		
 		RequestDispatcher dispatcher = 
  				req.getRequestDispatcher("/WEB-INF/views/index.jsp");
@@ -29,5 +28,6 @@ public class IndexController extends HttpServlet{
 		List<Spot> list = service.getFavoriteTop6();
 		req.setAttribute("list",list);		
 		dispatcher.forward(req,resp);
+		
 	}
 }

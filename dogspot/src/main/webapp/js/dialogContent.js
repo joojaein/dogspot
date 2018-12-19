@@ -1,11 +1,12 @@
 window.addEventListener("load", function(){
 
+	var dialogContent = modals.querySelector("#modal-review-reg-content");
     var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");			
     var textareaReviewContent = dialogContent.querySelector("textarea");
     var inputReviewTitle = dialogContent.querySelector(".review-report input");
     var ulSpotlist = dialogContent.querySelector(".review-spot-list ul");
     var inputSpot = dialogContent.querySelector(".review-spot-list input[type='text']");
-    var btnReviewUpload=dialogContent.querySelector("input[value='리뷰등록']");
+    var btnReviewUpload=dialogContent.querySelector(".review-top .btn");
     var hashTag = dialogContent.querySelector(".text-hashtag");
     var readyHash=false;
 
@@ -77,23 +78,22 @@ window.addEventListener("load", function(){
             textareaReviewContent.focus();
         }else{
 
-           //DB insert
+		     closeModal();
 
-          var request = new XMLHttpRequest(); 
+        	textareaReviewContent.value = textareaReviewContent.value+" ";
+			setHashTag();
 
-          request.open("POST", "../review-insert", true); 
-          request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
 
-          request.onload = function () {   
-               closeModal();
-               // + 리스트 재정렬
-          }
-
-          request.send("id=" + label.value+
-                "&title="+inputReviewTitle.value+
-                "&content="+textareaReviewContent.value+
-                "&hashtag="+hashTag.innerText);      
-        }
+			var request = new XMLHttpRequest(); 
+			
+			request.open("POST", "../review-insert", true); 
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+			
+			request.send("id=" + label.value+
+			    "&title="+inputReviewTitle.value+
+			    "&content="+textareaReviewContent.value+
+			    "&hashtag="+hashTag.innerText);      
+		   }
 
     }; 
     
@@ -174,7 +174,7 @@ window.addEventListener("load", function(){
         }
 
         if(tempHash==""){
-            hashTag.innerText = "#해시태그 ";
+            hashTag.innerText = "#";
         }else{
             hashTag.innerText = tempHash;
         }
@@ -182,7 +182,6 @@ window.addEventListener("load", function(){
     
     textareaReviewContent.onkeyup = function(evt){
     	var key = evt.keyCode;
-    	console.log(key);
     	var temp="";
     	if(key==51){ //'#'
     		if(readyHash){

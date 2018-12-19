@@ -134,6 +134,20 @@ dialog{
     border-radius: 5px;
 }
 
+.review-top a:last-child{
+    position: absolute;
+    right: 10px;
+    margin-top: 20px; 
+    padding: 0px 10px; 
+    font-size: 20px;
+    height: 30px; 
+    line-height:35px;
+    background: #fff;
+    border: #BFBFBF solid 1px;   
+    border-radius: 5px;
+}
+
+
 .review-center {
     width: 95%;
     height: 450px;
@@ -241,9 +255,15 @@ padding-left :10px;
 
 .reg1-top{
     height: 10%;
+    min-height: 60px;
 }
 
-.reg1-top img{
+.reg1-top .empty{
+	    height: 60px;
+	width:100%
+}
+
+/* .reg1-top img{
     width: 45px;
 }
 
@@ -254,7 +274,7 @@ padding-left :10px;
     color: #7F7F7F;
     width: 45px;
     text-align: center;
-}
+} */
 
 .reg1-top input{
     position: absolute;
@@ -271,50 +291,92 @@ padding-left :10px;
 }
 
 .side-imgs{
-width: 530px;
+width: 550px;
 height: 90%;
-padding: 15px 10px;
+padding: 5px 10px;
 box-sizing: border-box;
 }
 
-.side-imgs .reviewImg dl{
-    height: fit-content;
+.side-imgs ul{
+	    position: relative;
+		flex-flow:wrap;	
 }
 
-.side-imgs .reviewImg li{
-    padding: 0px 3px;
-    position: relative;
+.side-imgs .reviewImg li {
+	margin: 4px 4px;
+	min-width: 165px;
+	min-height: 165px;
+	max-width: 165px;
+	max-height: 165px;
+	background: url(/images/regImg.png);
+	background-size: cover;
+	border: #7F7F7F solid 1px;
+	box-sizing: border-content;
 }
+
+.side-imgs .reviewImg li:first-child {
+	border: #002060 solid 4px;
+	border-radius : 2px;
+	margin: 2px 2px;
+	margin-left: 0;
+}
+.side-imgs .reviewImg li:first-child:before {
+	content: "대표";
+	font-size: 15px;
+	color:#fff;
+	background:#002060;
+	padding : 2px 5px;
+	padding-left :2px;
+	position : absolute;
+}
+
 
 .side-imgs .reviewImg img{
+    width: 166px;
+    height: 166px;
+   	border:none;
+   	padding :0;
+   	margin:0;   
+}
+.side-imgs .reviewImg li:first-child img{
     width: 165px;
     height: 165px;
 }
 
-.side-imgs ul:first-child li:first-child img:last-child{
-    position: absolute;
-    top:0px;
-    left:0px;
-    width: 169px;
-} 
+/* .side-imgs .titleImg{
+	top:4px;
+	left:4px;
+	width: 167px !important;
+    height: 167px !important;
+	padding :0;
+	position : absolute;
+} */
+
 
 .dnd{
-	width:470px;
+	width:450px;
 	text-align: center;
     font-family: 맑은 고딕;
+    position: relative;
 }
 
 .dnd img{
 		margin-top: 130px;
 }
 
-.dnd div{
+.dnd .msg{
 	font-size : 18px;
 }
-.dnd div:last-child{
+.dnd .explanation{
 	font-size : 10px;
 }
 
+.dnd .dnd-parency{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+}
 
 .modal-title{
     font-weight: bold !important;

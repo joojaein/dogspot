@@ -36,7 +36,9 @@
     margin-right: 10px;
  }
  .address input[type="text"]{
-     width: 400px;
+     width: 150px;
+     padding-left: 10px;
+    
  }
  .noneaddress input{
     margin-left: 10px;
@@ -69,4 +71,21 @@
 .placeholderalign input::placeholder{
    text-align: left;
    padding-left: 10px;
+}
+
+#layer{
+	display: none;
+    position:fixed;
+    width:500px;
+    height: 500px;
+    margin-left:100px;
+    z-index: 1;
+}
+
+#profile{
+	padding-left:100px;
+}
+.profilename{
+	padding-left:110px;
+	font-size:20px;
 }
