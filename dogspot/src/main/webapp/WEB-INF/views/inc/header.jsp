@@ -10,7 +10,7 @@
 	    <nav id="mainmenu">
 	        <h1 class="hidden">mainmenu</h1>
 	        <ul class="list">
-	            <li><a href="/spotlist">검색</a></li>
+	            <li><a href="/spot/list">검색</a></li>
 	            <li><a href="/review">리뷰</a></li>
 	        </ul>
 	    </nav>

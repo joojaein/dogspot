@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,20 +13,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.dogspot.web.entity.Spot;
 import com.dogspot.web.service.SpotService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
+import com.google.gson.Gson;
 
-@WebServlet("/spot/list")
-public class ListController extends HttpServlet {
+@WebServlet("/spot-filter")
+public class FilterController extends HttpServlet {
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
-		/*PrintWriter out = response.getWriter();
-		
-		//int id = Integer.parseInt(request.getParameter("id"));
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		
 		String search = request.getParameter("search");
 		String local = request.getParameter("local");
@@ -36,7 +33,6 @@ public class ListController extends HttpServlet {
 		String min_price = request.getParameter("min-price");
 		String max_price = request.getParameter("max-price");
 		
-	
 		if(search==null)
 			search="";
 		if(local==null)
@@ -51,19 +47,22 @@ public class ListController extends HttpServlet {
 			max_price="2000000";
 		
 		SpotService service = new JdbcSpotService();
+		List<Spot> list = service.getList(search,local,theme,size,min_price,max_price);
 		
-		//int review_cnt = service.getReviewCount(id);
-		List<Spot> list = service.getList(search,local,theme,size,min_price,max_price);*/
-		
-		//Gson gson = new Gson();
-		
-		//out.write(gson.toJson(list));
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/spot/list.jsp"); //홈 디렉토리 /서부터 시작하면 WebContent다!! 
 		//request.setAttribute("list", list);
-		//request.setAttribute("review_cnt", review_cnt);
+		Gson gson = new Gson();
+	      String json = gson.toJson(list);
+	      out.write(json);
+		/*if(list ==null) {
+			out.write("");
+		}else {
+			Gson gson = new Gson();
+			String json = gson.toJson(list);
+			out.write(json);	
+		}*/
 		
-	    dispatcher.forward(request,response);
+		
+		
 	}
-	
+
 }

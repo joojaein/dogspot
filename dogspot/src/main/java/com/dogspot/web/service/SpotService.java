@@ -19,6 +19,8 @@ public interface SpotService {
 	List<Spot> getList(String query);
 	List<Spot> getList(int page, String query);
 	List<Spot> getList(String search,String local,String theme,String size, String min_p, String max_p);
+	int getReviewCount(int spotId);
+	
 	//리스트페이지(관리자)
 	List<Spot> getAdminList(int page);
 	List<Spot> getAdminList(String query);

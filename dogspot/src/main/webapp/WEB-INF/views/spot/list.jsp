@@ -49,7 +49,7 @@
 						<option value="전라">전라</option>
 						<option value="경상">경상</option>
 						<option value="충청">충청</option>
-					</select> <select name="spot" class="select">
+					</select> <select name="theme" class="select">
 						<option value="">장소</option>
 						<option value="숙박">숙박</option>
 						<option value="카페">카페</option>
@@ -86,20 +86,20 @@
 				<div class="list" id="spot-main">
 					<div id="wid-front">
 						<section class="top left list-add">
-						<!-- <template class="spot-list-template"> -->
+						 <template class="spot-list-template"> 
 						
-							<!-- <div class="list top list-div">
+							 <div class="list top list-div">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
 										<div class="abso top favo">
-											<input type="button" value="☆" class="favorite" data-id="1" />
+											<input type="button" value="☆" class="favorite" />
 										</div>
 		
 									</div>
 									
 									<div class="box">
 									
-										<div class="list-font-big list-title">제목</div>
+										<div class="list-font-big list-title"><a href = "detail.jsp" class="detail-link">제목</a></div>
 									
 										<div>
 											<div class="list-font-small">
@@ -113,7 +113,9 @@
 											<span class="list-max">최대가격</span>
 										</div>
 										<div class="list-font-small">
-											<span><img src="../../images/small.png" class="detail-icon list-size-img"></span>
+											<span><img src="../../images/small.png" class="detail-icon list-size-img1"></span>
+											<span><img src="../../images/small.png" class="detail-icon list-size-img2"></span>
+											<span><img src="../../images/small.png" class="detail-icon list-size-img3"></span>
 											<span class="dog-size list-size">&nbsp;사이즈</span>
 										</div>
 
@@ -124,10 +126,10 @@
 										
 									</div>
 									
-								</div> -->
+								</div>
 							
 						
-						<c:forEach var="n" items="${list}">
+						<!--<c:forEach var="n" items="${list}">
 							<div class="list top list-div">
 									<div class="rela">
 										<img src="../../images/room1.png" class="img-list">
@@ -162,14 +164,14 @@
 
 										<div class="right per">
 											<img src="../../images/reviewIcon.jpg" class="icon">
-											<span class="list-review">&nbsp;text</span>
+											<span class="list-review">&nbsp;jjj</span>
 										</div>
 										
 									</div>
 									
 								</div>
-							</c:forEach>
-							<!-- </template> -->
+							</c:forEach>-->
+							</template>
 							<!-- 
 							
 								<div class="list top">

@@ -258,16 +258,16 @@ public class JdbcSpotService implements SpotService {
 		List<Spot> list = new ArrayList<>();
 		
 		int themeid=0;
-		if(theme.equals("¼÷¹Ú"))
-			themeid = 4;
+		
 		if(theme.equals("Ä«Æä"))
 			themeid = 1;
 		if(theme.equals("½Ä´ç"))
 			themeid = 2;
 		if(theme.equals("³îÀÌÅÍ"))
 			themeid = 3;
-		else
-			themeid=0;
+		if(theme.equals("¼÷¹Ú"))
+			themeid = 4;
+		
 
 		
 		if(size.equals("¼ÒÇü°ß"))
@@ -353,6 +353,43 @@ public class JdbcSpotService implements SpotService {
 	public List<Favorite> getFavoriteList() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public int getReviewCount(int spotId) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		
+		String sql = "select count(s.id) cnt from spot s inner join review r on s.id = r.spotid where s.id=? group by s.id";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot972");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, spotId);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) 
+				result = rs.getInt("cnt");
+			
+		
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		return result;
 	}
 
 }

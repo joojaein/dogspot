@@ -9,7 +9,6 @@
 		<link href="../../css/spot.css" type="text/css" rel="stylesheet" />
         <link href="../../css/basicStyle.css" type="text/css" rel="stylesheet" />
         <link href="../../css/share.css" type="text/css" rel="stylesheet" />
-		<script src="../../js/spot.js"></script>
 		<script src="../../js/spotSize.js"></script>
 		<script src="../../js/spotDetail.js"></script>
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc&libraries=services"></script>
