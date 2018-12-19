@@ -78,6 +78,7 @@ window.addEventListener("load", function(){
         
         tmpMainImg.src="/images/room6.png";
         tmpTitle.innerText=spotData.name;
+        tmpTitle.href= "detail?id="+spotData.id;
         tmpTheme.src=theme_img;
         tmpAddr.innerText=spotData.addr;
         tmpMin.innerText=spotData.price_min;

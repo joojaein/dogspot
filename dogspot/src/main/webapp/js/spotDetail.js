@@ -13,10 +13,38 @@ window.addEventListener("load", function(){
     var imgs = document.querySelectorAll("#img-arg img");
 
 
-    var modifyBtn = document.querySelector("#detail-sub input");
+    var modifyBtn = document.querySelector(".detail-sub input");
     var sendBtn = document.querySelector("#send-btn");
     var modalBack = document.querySelector(".modal-back");
+    
+    var modal_title = document.querySelector("#modal-small-box");
+    var modal_content = document.querySelector("#modal-big-box");
+    var detail_id = document.querySelector(".detail-id");
+    
+    
+    var setRequestList = function(){
+    	var request = new XMLHttpRequest(); 	
+		request.open("POST", "../detail-request", true); 
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	
+		var title = modal_title.value;
+		var content = modal_content.value;
+		var spotid = detail_id.innerText;
+		//alert(title);
+		//alert(content);
+		
+		request.onload = function () {	
+		
 
+		}
+				
+		request.send("title="+title+"&content="+content+"&spotid="+spotid);
+		
+    };
+
+   
+    
+    
     for(var i=0; i<modalImgs.length; i++){
         if(i!=0)
             modalImgs[i].src = imgs[i-1].src;
@@ -53,6 +81,7 @@ window.addEventListener("load", function(){
 
     sendBtn.onclick = function(evt){
         modalBack.style.display = "none";
+        setRequestList();
     };
 
     var closeModal = function(){
@@ -95,10 +124,20 @@ window.addEventListener("load", function(){
         favoBtn.style.color = "black";
         favoBtn.style.fontSize = "20px";
     };
+    
+    
+    
+    var title = document.querySelector(".detail-title");
+    var addr = document.querySelector(".detail-addr");
+   
+    showMap(title.innerText,addr.innerText);
+    
+    
 
 });
 
-window.addEventListener("load", function(){
+
+function showMap(title,addr){
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -112,7 +151,7 @@ window.addEventListener("load", function(){
     var geocoder = new daum.maps.services.Geocoder();
 
     // 주소로 좌표를 검색합니다
-    geocoder.addressSearch('인천시 계양구 계산새로', function(result, status) {
+    geocoder.addressSearch(addr, function(result, status) {
 
         // 정상적으로 검색이 완료됐으면 
         if (status === daum.maps.services.Status.OK) {
@@ -124,18 +163,44 @@ window.addEventListener("load", function(){
                 map: map,
                 position: coords
             });
+            
+            var info = 
+            	//'<div class="close" id="close" title="닫기"></div> \
+            	'<div style="width:80px;height:30px;text-align:center;padding:6px;font-size:13px; \
+            	;background:white;border-radius:15px;border:black solid 1px;margin-bottom:110px; \
+            	font-weight:bold;verticle-align:middle;">'
+            	+'<span>&nbsp;'+title+'</span>'
+            	'</div>';
+             
+             //closeBtn.onclick = function() { customOverlay.setMap(null); };
+            
+            
+             customOverlay = new daum.maps.CustomOverlay({
+                position: coords,
+                content: info,
+                map: map
+            });
+
+            //daum.maps.event.addListener(marker, 'click', function() {
+            	customOverlay.setMap(map);
+            //});
+           
+            // 커스텀 오버레이를 닫기 위해 호출되는 함수입니다 
+           
+            //customOverlay.setMap(map);
 
             // 인포윈도우로 장소에 대한 설명을 표시합니다
-            var infowindow = new daum.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">혜정이네 집</div>'
+            /*var infowindow = new daum.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">'+title+'</div>'
             });
-            infowindow.open(map, marker);
+            infowindow.open(map, marker);*/
 
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
+            
         } 
     });    
- 
-});
+   
+}
 
 
