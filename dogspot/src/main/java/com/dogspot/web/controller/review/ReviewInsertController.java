@@ -22,7 +22,7 @@ import com.dogspot.web.service.jdbc.JdbcSpotService;
 import com.google.gson.Gson;
 
 @WebServlet("/review-insert")
-public class reviewInsertController extends HttpServlet{
+public class ReviewInsertController extends HttpServlet{
 		
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

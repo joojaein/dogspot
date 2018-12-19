@@ -1,4 +1,4 @@
-package com.dogspot.web.controller;
+package com.dogspot.web.controller.review;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,32 +15,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-@WebServlet("/upload")
+import com.dogspot.web.service.ReviewService;
+import com.dogspot.web.service.jdbc.JdbcReviewService;
+
+@WebServlet("/review-img-upload")
 @MultipartConfig( //멀티파트식 인코딩을 위한 어노테이션
 		fileSizeThreshold=1024*1024,
 		maxFileSize=1024*1024*10,//10메가 까지
 		maxRequestSize=1024*1024*10*9//10메가 9개까지
 )
-public class UploadController extends HttpServlet{
+public class ReviewImgUploadController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("upload");
+		
 		resp.setContentType("text/html; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 	    PrintWriter out = resp.getWriter();
       
-		String path = req.getServletContext().getRealPath("/upload");
-		
+		String path = req.getServletContext().getRealPath("/reviewUpload");
+		System.out.println(path);
 		File file = new File(path);
 		if(!file.exists()) {
 			file.mkdirs(); // 없으면 디렉토리 생성
 		}
-		System.out.println(path);
-
 		
 		Part part = req.getPart("file");
-		String fileName = part.getSubmittedFileName();
+		String tempName = part.getSubmittedFileName();
+		ReviewService service = new JdbcReviewService();
+		int reviewId = service.getLastReviewId();
+		String fileName = reviewId+tempName;
+		
+		service.insertReviewImg(fileName, reviewId);
+		
+		//String fileName = part.getSubmittedFileName();
 		String filePath = path+File.separator + fileName;
 		InputStream fis = part.getInputStream();
 		OutputStream fos = new FileOutputStream(filePath);
@@ -56,7 +64,6 @@ public class UploadController extends HttpServlet{
 		fis.close();
 
 	    out.write(fileName);
-
 	}
 }
 

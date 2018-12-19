@@ -94,7 +94,7 @@ window.addEventListener("load",function() {
 				var reviewDivCnt = reviewList.querySelectorAll(".review-div").length;
 
 				var max = reviewFilterList.length;
-				if(max>reviewDivCnt+40) max = reviewDivCnt+40;	
+				if(max>reviewDivCnt+20) max = reviewDivCnt+20;	
 
 				for(var i=reviewDivCnt; i<max; i++){
 		    	        var div=document.importNode(tmpReviewDiv.content, true);
@@ -123,7 +123,7 @@ window.addEventListener("load",function() {
 	    document.addEventListener("scroll", function(){
 	    	var currentScrollPercentage = getCurrentScrollPercentage();
 	    	var testCnt = reviewList.querySelectorAll(".review-div").length;
-	    	if(currentScrollPercentage >= 98){
+	    	if(currentScrollPercentage >= 95){
 	    	    setReviewList();
 	    	}
 	    });
@@ -385,16 +385,38 @@ window.addEventListener("load",function() {
 	    //---------------------------------------------------------------------------------------		
 
 	    btnImgUpload.onclick = function(evt){
-	    	
-	    	var tempArr = [];
-	    	for(var i =0; i<fileArr.length; i++){
-	    		tempArr.push(fileArr[i].name);
+	   
+	    	var imgs = sideImgSc.querySelectorAll("li img");
+	    	if(imgs.length==0) {
+	    		dndImg.src = regSrc;	
+				msgDiv.classList.add("text-red");
+				msgDiv.innerText = "최소 1장의 사진이 필요합니다.";
+				explanationDiv.classList.add("hidden");
+	    		
+	    		setTimeout(function(){ //1회용
+					dndImg.src = regSrc;	
+					msgDiv.classList.remove("text-red");
+					msgDiv.innerText = "빠르게 사진 올리기";
+					explanationDiv.classList.remove("hidden");
+				}, 1000); 
+	    		return;
 	    	}
-	    	showModal(dialogContent)
+	    	
+	    	fileSrcArr = [];
+	    	
+	     	for(var i =0; i< imgs.length; i++){
+	     		fileSrcArr.push(imgs[i].src);
+	    	}	
+	    	
+	    	contentImgIndex=0;
+	    	setImgslide(contentImgIndex);
+	    	showModal(dialogContent);
+	    	
+	    	
 	    } 
 	    /////////////////////////////fileUpload//////////////////////////////////
-	    var fileArr = [];
-	    
+	    var fileSrcArr = [];
+	    var fileMap = new Map();
 	    var dndSc = dialogImg.querySelector(".dnd-parency");
 	    var dndImg = dialogImg.querySelector(".dnd img");
 	    var msgDiv = dialogImg.querySelector(".msg");
@@ -517,6 +539,28 @@ window.addEventListener("load",function() {
 			}	
 		};
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		dndSc.ondrop = function(evt){
 			evt.preventDefault();
 			evt.stopPropagation();
@@ -537,40 +581,46 @@ window.addEventListener("load",function() {
 				var request = new XMLHttpRequest();		
 
 				for (var i = 0; i < files.length; i++) {
-					if(files[i].size > 10*1024*1024)
-					{
+					if(files[i].size > 10*1024*1024){
 						dndImg.src = regSrc;	
 						msgDiv.classList.add("text-red");
 						msgDiv.innerText = "10MB 이상은 전송할 수 없습니다.";
 						explanationDiv.classList.add("hidden");
 						excessMb = true;	
-					}else{
-						if(fileArr.length<9){
-							fileArr.push(files[i])
-							var fd = new FormData();
-							fd.append("file", files[i]);
-							request.open("POST", "../../upload", false);
-							request.onload = function () {
-								
+					}
+					else{							
+						var reader = new FileReader();
+						
+						reader.onload = function(e) {		
+							var imgs = sideImgSc.querySelectorAll("li img");
+							if(imgs.length<9){
 								for(var i=0; i<imgLi.length; i++){
 									if(imgLi[i].querySelector("img")==null){
 										var tempImg = document.createElement("img");
-										tempImg.src = "/upload/"+request.responseText;
+										tempImg.src=e.target.result;
 										imgLi[i].append(tempImg);
+										
+										fileMap.set(tempImg.src, files[i]);
+
 										break;
 									}
+									
 								}
-							};
-							request.send(fd);
-						}else{
-							dndImg.src = regSrc;	
-							msgDiv.classList.add("text-red");
-							msgDiv.innerText = "최대 9장의 사진까지 등록 가능합니다.";
-							explanationDiv.classList.add("hidden");
-							excessCnt=true;
-						}
+							}else{
+								dndImg.src = regSrc;	
+								msgDiv.classList.add("text-red");
+								msgDiv.innerText = "최대 9장의 사진까지 등록이 가능합니다.";
+								explanationDiv.classList.add("hidden");
+								excessCnt=true;
+							}
+
+					    }
+					    reader.readAsDataURL(files[i]);
+
+
 					}
 				}
+
 				
 				if(excessMb || excessCnt) {
 					setTimeout(function(){ //1회용
@@ -585,12 +635,17 @@ window.addEventListener("load",function() {
 					&& evt.dataTransfer.types.indexOf("text/uri-list") >=0
 					&& evt.dataTransfer.types.indexOf("text/html") >=0){ //삭제할 사진을 올려놓음
 				if(clickImgIndex!=-1){
-					for(var i=clickImgIndex; i<imgLi.length-1; i++){
-						if(imgLi[i+1].querySelector("img") !=null){
+					for(var i=clickImgIndex; i<imgLi.length; i++){
+						if(i+1 == imgLi.length){
+							var now = imgLi[i].querySelector("img");
+							imgLi[i].removeChild(now);
+						}
+						else if(imgLi[i+1].querySelector("img") !=null){
 							var now = imgLi[i].querySelector("img");
 							var next = imgLi[i+1].querySelector("img")
 							now.src = next.src;
-						}else{        
+						}
+						else{        
 							var now = imgLi[i].querySelector("img");
 							imgLi[i].removeChild(now);
 							
@@ -602,7 +657,12 @@ window.addEventListener("load",function() {
 		};
 	    
 		///////////////////////content///////////////////////////////////////////////////////////
-	    var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");			
+	   
+		var imgReged=dialogContent.querySelector(".review-detail-image img");
+		var aLeftContentImg=dialogContent.querySelector(".review-detail-image .left-a");
+		var aRightContentImg=dialogContent.querySelector(".review-detail-image .right-a");
+		var contentImgIndex=0;
+		var btnPageUpDown=dialogContent.querySelector(".review-spot-list img");			
 	    var textareaReviewContent = dialogContent.querySelector("textarea");
 	    var inputReviewTitle = dialogContent.querySelector(".review-report input");
 	    var ulSpotlist = dialogContent.querySelector(".review-spot-list ul");
@@ -611,6 +671,29 @@ window.addEventListener("load",function() {
 	    var hashTag = dialogContent.querySelector(".text-hashtag");
 	    var readyHash=false;
 	    //---------------------------------------------------------------------------------------
+	    
+	    var setImgslide = function(contentImgIndex){	
+	    	aLeftContentImg.classList.remove("hidden");
+	    	aRightContentImg.classList.remove("hidden");
+	    	if(contentImgIndex==0){
+	    		aLeftContentImg.classList.add("hidden");
+	    	}else if(contentImgIndex==fileSrcArr.length-1){
+	    		aRightContentImg.classList.add("hidden");
+	    	}
+	    	imgReged.src = fileSrcArr[contentImgIndex];
+	    };
+	    
+	    aLeftContentImg.onclick = function(){
+            event.preventDefault();
+            contentImgIndex--;
+	    	setImgslide(contentImgIndex);
+	    }
+	    
+	    aRightContentImg.onclick = function(){
+            event.preventDefault();
+            contentImgIndex++;
+	    	setImgslide(contentImgIndex);
+	    }
 	    
 	    inputSpot.onkeydown = function() {
 	        if (event.keyCode === 13) {
@@ -676,19 +759,41 @@ window.addEventListener("load",function() {
 	            textareaReviewContent.classList.add("placeholderred-red");
 	            textareaReviewContent.focus();
 	        }else{
-			    closeModal();
+	            event.preventDefault();
+
+	        	alert("insert 시작합니다");
+
 	        	textareaReviewContent.value = textareaReviewContent.value+" ";
 				setHashTag();
 
-				var request = new XMLHttpRequest(); 
+				var requestReviewInsert = new XMLHttpRequest(); 
 				
-				request.open("POST", "../review-insert", true); 
-				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				requestReviewInsert.open("POST", "../review-insert", true); 
+				requestReviewInsert.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
 				
-				request.send("id=" + label.value+
+				requestReviewInsert.onload = function () {	//인설트 완료되고 들어옴 
+					
+					alert("requestReviewInsert.onload");
+					
+					for(var i=0; i<fileSrcArr.length; i++){
+						var fd = new FormData();
+						fd.append("file", fileMap.get(fileSrcArr[i]));  
+						var requestImgUpload = new XMLHttpRequest(); 
+						requestImgUpload.open("POST", "../review-img-upload", false);
+
+						requestImgUpload.onload = function () {	//이미지 업로드 완료되고 들어옴				
+							alert("requestImgUpload.onload");
+
+						};				
+						requestImgUpload.send(fd);			
+					}			
+				}		
+				requestReviewInsert.send("id=" + label.value+
 				    "&title="+inputReviewTitle.value+
 				    "&content="+textareaReviewContent.value+
 				    "&hashtag="+hashTag.innerText);      
+				
+			    closeModal();
 			   }
 	    }; 
    
@@ -797,7 +902,7 @@ window.addEventListener("load",function() {
 				setHashTag();
 	    	}
 	    }; 
-	    
+	   
 		///////////////////////review-complain///////////////////////////////////////////////////////////
 	    var btnSend=dialogReviewComplain.querySelector(".send-btn");
 	    //---------------------------------------------------------------------------------------
