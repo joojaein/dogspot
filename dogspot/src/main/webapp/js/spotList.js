@@ -1,34 +1,5 @@
 window.addEventListener("load", function(){
 
-    /*var main = document.querySelector("#wid-front");
-    var favoBtns = document.querySelectorAll(".favorite");
-
-   
-    main.addEventListener("click",function(evt){
-        if(evt.target.nodeName != "INPUT") return;
-        //console.log(evt.target.nodeName);
-        //alert(evt.target.id);
-        //alert("favo"+favoBtns[0].id);
-        for(var i=0; i<favoBtns.length;i++){
-            if(evt.target.id==favoBtns[i].id){
-                if(favoBtns[i].value != "★"){
-                    favoBtns[i].value = "★";
-                    favoBtns[i].style.color = "#ffb617";
-                    //favoBtns[i].style.backgroundColor = "black";
-                    return;
-                }
-                else{
-                    favoBtns[i].value = "☆";
-                    favoBtns[i].style.color = "black";
-                    //favoBtns[i].style.backgroundColor = "white";
-                }
-            }
-
-        }
-
-    },true);*/
-	
-	/* ----------------------------------- */
 	
 	function Enter_Check(){
 		
@@ -38,35 +9,31 @@ window.addEventListener("load", function(){
     	}
 	}
 	
-	/*document.querySelector("#enter").onkeydown = function(){
-		Enter_Check();
-	};*/
-	
-    /*------------------------------*/
-    
-	var tog = document.querySelector("#tog");
-	var flag=1;
-
-	draw_map(1);
-	tog.onclick = function(e){
-		if(e.target.nodeName!="INPUT") return;
-		//alert(e.target.id);
-		if(e.target.id == "max-pri")
-			draw_map(2);
-		
-		
-		else if(e.target.id == "min-pri")
-			draw_map(1);
-		
-	};
-	
-	
 	 /*-------------- spot-list js 처리 및 무한스크롤  ----------------*/
 	var SpotList= document.querySelector(".list-add");
 	var tmpSpotList= document.querySelector(".spot-list-template");
+	var inputSearch = document.querySelector("input[name='search']");
+	var inputLocal = document.querySelector("select[name='local']");
+	var inputTheme = document.querySelector("select[name='theme']");
+	var inputSize = document.querySelector("select[name='size']");
+	var inputMinPrice = document.querySelector("input[name='min-price']");
+	var inputMaxPrice = document.querySelector("input[name='max-price']");
+	
+	var minsArr = [];
+	var maxsArr = [];
+	var addrsArr = [];
+	var themesArr = [];
+	
+	var tog = document.querySelector("#tog");
+	var flag=1;
 	
 	
-	/*var bind_spotList = function(tmp,notice){
+	var main = document.querySelector("#wid-front");
+    var favoBtns = document.querySelector(".favorite");
+    var input = document.querySelector("#wid-front input");
+    
+	var bind_spotList = function(tmp,spotData){
+		var theme_img;	
 		tmpMainImg=tmp.querySelector(".img-list");
         tmpTitle=tmp.querySelector(".list-title");
         tmpTheme=tmp.querySelector(".list-theme");
@@ -74,62 +41,162 @@ window.addEventListener("load", function(){
         tmpMin=tmp.querySelector(".list-min");
         tmpMax=tmp.querySelector(".list-max");
         tmpSize=tmp.querySelector(".list-size");
-        tmpSizeImg=tmp.querySelector(".list-size-img");
+        tmpSizeImg1=tmp.querySelector(".list-size-img1");
+        tmpSizeImg2=tmp.querySelector(".list-size-img2");
+        tmpSizeImg3=tmp.querySelector(".list-size-img3");
         tmpReview=tmp.querySelector(".list-review");
+        tmpLink=tmp.querySelector(".detail-link");
+       
+        if(spotData.themeid==1)
+        	theme_img = "/images/cafe.png";
+        if(spotData.themeid==2)
+        	theme_img = "/images/restaurant.png";
+        if(spotData.themeid==3)
+        	theme_img = "/images/play.png";
+        if(spotData.themeid==4)
+        	theme_img = "/images/house.png";
+        
+        
+        if(spotData.dogsize=="소"){
+        	 tmpSizeImg1.src="/images/small.png";
+        	 tmpSizeImg2.classList.add("hidden");
+        	 tmpSizeImg3.classList.add("hidden");
+        }
+        
+        if(spotData.dogsize=="소중"){
+        	tmpSizeImg1.src="/images/small.png";
+        	tmpSizeImg2.src="/images/medium.png";
+        	tmpSizeImg3.classList.add("hidden");
+        }
+        
+        if(spotData.dogsize=="소중대"){
+          	tmpSizeImg1.src="/images/small.png";
+          	tmpSizeImg2.src="/images/medium.png";
+          	tmpSizeImg3.src="/images/big.png";
+         }
+       
         
         tmpMainImg.src="/images/room6.png";
-        tmpTitle.innerText="제주도지롱~~~~";
-        tmpTheme.src="/images/cafe.png";
-        tmpAddr.innerText="제주도 서귀포시";
-        tmpMin.innerText="67000";
-        tmpMax.innerText="78000";
-        tmpSize.innerText="대형견";
-        tmpSizeImg.src="/images/big.png";
+        tmpTitle.innerText=spotData.name;
+        tmpTheme.src=theme_img;
+        tmpAddr.innerText=spotData.addr;
+        tmpMin.innerText=spotData.price_min;
+        tmpMax.innerText=spotData.price_max;
+        tmpSize.innerText=spotData.dogsize;
+       
         tmpReview.innerText = "8";
-        
-        //input.dataset.id = cnt++;
+        tmpLink="spot/detail";
+        //tmpLink.innerText=spotData.name;
         
         SpotList.append(tmp);
     };
-
-	for(var i=0;i<10; i++){
-        tmp=document.importNode(tmpSpotList.content, true);
-        bind_spotList(tmp);
-    }
+    
+    inputSearch.onkeydown = function() {
+        if (event.keyCode == 13) {
+        	SpotList.innerHTML="";
+        	sendSpotList();
+        }
+    };
+    
+    var sendSpotList = function(){
+    	var request = new XMLHttpRequest(); 	
+		request.open("POST", "../spot-filter", true); 
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	
-	function getCurrentScrollPercentage(){
+		var search = inputSearch.value;
+		var local = inputLocal.value;
+		var theme = inputTheme.value;
+		var size = inputSize.value;
+		var min_price = inputMinPrice.value;
+		var max_price = inputMaxPrice.value;
+		
+		request.onload = function () {	
+			
+			var spotFilterList = JSON.parse(request.responseText);
+			var testCnt = SpotList.querySelectorAll(".list-div").length;
+	
+			var max = spotFilterList.length;
+			if(max>testCnt+10) max = testCnt+10;
+		
+		   
+		    main.addEventListener("click",function(e){
+		    	if(e.target.nodeName != "INPUT") return;
+		    	
+		    	if(e.target.value != "★"){
+		    		e.target.value = "★";
+		    		e.target.style.color = "#ffb617";
+                    return;
+                }
+                else{
+                	e.target.value = "☆";
+                	e.target.style.color = "black";
+                }
+		    },true);
+			
+
+			for(var i=testCnt; i<max; i++){
+    	        var tmp=document.importNode(tmpSpotList.content, true);
+    	        bind_spotList(tmp,spotFilterList[i]);
+    	        minsArr.push(spotFilterList[i].price_min);
+    	        maxsArr.push(spotFilterList[i].price_max);
+    	        addrsArr.push(spotFilterList[i].addr);
+    	        themesArr.push(spotFilterList[i].themeid);
+    	       
+	    	}
+			radio(minsArr,maxsArr,addrsArr,themesArr);
+		}
+				
+		request.send("search="+search+"&local="+local+
+				"&theme="+theme+"&size="+size+
+				"&min-price="+min_price+"&max-price="+max_price);
+		
+		minsArr = [];
+		maxsArr = [];
+		addrsArr = [];
+		themesArr = [];
+    };
+
+    sendSpotList();
+    
+    function getCurrentScrollPercentage(){
 	    var scrolled_value = window.scrollY
 	    var viewport_height = window.innerHeight;
 		var doc_TotalHeight = document.body.clientHeight;
 		  return (scrolled_value + viewport_height) / doc_TotalHeight * 100
 	}
-    
     document.addEventListener("scroll", function(){
     	var currentScrollPercentage = getCurrentScrollPercentage();
     	var testCnt = SpotList.querySelectorAll(".list-div").length;
-    	console.log(currentScrollPercentage  + " / "+ testCnt);
-
-    	if(currentScrollPercentage >= 100){
-    		  for(var i=0;i<10; i++){
-				   tmp=document.importNode(tmpSpotList.content, true);
-			       bind_spotList(tmp);
-    		   }
+    	if(currentScrollPercentage >= 98){
+    		sendSpotList();
     	}
-    });*/
+    });
+	
+    /*------------------------------*/
+   
+	function radio(minsArr,maxsArr,addrsArr,themesArr){
+		//draw_map(1,mins,maxs,addrs);
+		draw_map(1,minsArr,maxsArr,addrsArr,themesArr);
+		tog.onclick = function(e){
+			if(e.target.nodeName!="INPUT") return;
+			//alert(e.target.id);
+			if(e.target.id == "max-pri")
+				draw_map(2,minsArr,maxsArr,addrsArr,themesArr);
+				//draw_map(2,mins,maxs,addrs);
+			
+			else if(e.target.id == "min-pri")
+				draw_map(1,minsArr,maxsArr,addrsArr,themesArr);
+				//draw_map(1,mins,maxs,addrs);
+		};
+	}
 	
 	
 	/* ----------------------------------- */
 
-	var main = document.querySelector("#wid-front");
+	/*var main = document.querySelector("#wid-front");
     var favoBtns = document.querySelectorAll(".favorite");
     var input = document.querySelector("#wid-front input");
-    //alert(input.value);
-    //alert(input.dataset.id);
-	
-    for(var i=0; i<favoBtns.length; i++){
-    	//input.dataset.id = cnt++;
-    }
-    
+
     main.addEventListener("click",function(e){
     	if(e.target.nodeName != "INPUT") return;
     	
@@ -139,31 +206,16 @@ window.addEventListener("load", function(){
                 if(favoBtns[i].value != "★"){
                     favoBtns[i].value = "★";
                     favoBtns[i].style.color = "#ffb617";
-                    //favoBtns[i].style.backgroundColor = "black";
                     return;
                 }
                 else{
                     favoBtns[i].value = "☆";
                     favoBtns[i].style.color = "black";
-                    //favoBtns[i].style.backgroundColor = "white";
                 }
             }
 
         }
-    	
-    	
-    	/*if(e.target.classList.contains("favorite")){
-    		for(var i=0; favoBtns.length; i++){
-    	    	alert(favoBtns[i].nodeName);
-    	    }
-    		var id = e.target.dataset.id;
-    		var notice = null;
-    		alert(id);
-    	}*/
-    	
-    },true);
-    
-    
+    },true);*/
 	
 
 });
@@ -171,20 +223,8 @@ window.addEventListener("load", function(){
 
 
 
-function draw_map(flag){
+function draw_map(flag,mins,maxs,addrs,themesArr){
 
-
-    var mins = ["1","2","3","4","5"];
-  
-    var maxs = ["10","20","30","40","50"];
-  
-    var addrs = ["서울시 동대문구 답십리로","서울시 광진구 군자로","서울시 마포구","인천시 계양구 계산새로","서울시 성동구 성수일로"];
-  
-    var info = [
-    	{id:1, address:"서울시 동대문구 답십리로",minprice:"1",maxprice:"10"},
-    	{id:2, address:"인천시 계양구 계산새로",minprice:"2",maxprice:"20"},
-    	{id:3, address:"서울시 마포구",minprice:"3",maxprice:"30"}
-    ];
     
     
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -210,25 +250,15 @@ function draw_map(flag){
     addrs.forEach(function(addr) {
     	 
     	 //geocoder.addressSearch(addr,callback);
-    	 
-    	//console.log(addr);
-    
+    	
         geocoder.addressSearch(addr, function(result, status) {
         	
             // 정상적으로 검색이 완료됐으면 
-        	//console.log("00."+cnt+","+addr);
         	
             if (status === daum.maps.services.Status.OK) {
-            	//console.log("01."+cnt+","+addr);
                 var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-                /*for(var i=0; i<addrs.length;i++){
-                 	if(addr==addrs[i]){
-                 		cnt=i;
-                     	console.log(addr);
-                     }
-                 }*/
+                
                 markersPos.push(coords);
-                //alert(markersPos.length);
 
                 // var marker = new daum.maps.Marker({
                 //         map: map,
@@ -243,32 +273,64 @@ function draw_map(flag){
                     map: map,
                     position: coords
                 });
-                //if(addrs[cnt])
                 
-                //console.log("1."+cnt+","+addr);
-             	
-                //console.log("dsfdsfsdfsdf: "+addr+"dfdsf:"+addrs[cnt]);
-               
+                
+                var theme_img;
+                if(themesArr[addr_cnt(addr,addrs)]==1)
+                	theme_img = "/images/cafe.png";
+                if(themesArr[addr_cnt(addr,addrs)]==2)
+                	theme_img = "/images/restaurant.png";
+                if(themesArr[addr_cnt(addr,addrs)]==3)
+                	theme_img = "/images/play.png";
+                if(themesArr[addr_cnt(addr,addrs)]==4)
+                	theme_img = "/images/house.png";
                 
                 if(flag==1){
+	                var content_min = '<div style="width:80px;text-align:center;padding:6px;font-size:13px; \
+	                	;background:white;border-radius:15px;border:black solid 1px;margin-bottom:100px;">'
+	                	+'<span>'+'<img src="'+theme_img+'" width="25px">'+'</span>'
+	                	+'<span>&nbsp;'+mins[addr_cnt(addr,addrs)]+'</span>'
+	                	'</div>';
+	                
+	                var customOverlay = new daum.maps.CustomOverlay({
+	                    position: coords,
+	                    content: content_min
+	                });
+                }
+                
+                else if(flag==2){
+	                var content_max = '<div style="width:80px;text-align:center;padding:6px;font-size:13px; \
+	                	;background:white;border-radius:15px;border:black solid 1px;margin-bottom:100px;">'
+	                	+'<span>'+'<img src="'+theme_img+'" width="25px">'+'</span>'
+	                	+'<span>&nbsp;'+maxs[addr_cnt(addr,addrs)]+'</span>'
+	                	'</div>';
+	                
+	                var customOverlay = new daum.maps.CustomOverlay({
+	                    position: coords,
+	                    content: content_max
+	                });
+                }
+
+                // 커스텀 오버레이를 지도에 표시합니다
+                customOverlay.setMap(map);
+                
+               /* if(flag==1){
                
                 // 인포윈도우로 장소에 대한 설명을 표시합니다
                  var infowindow = new daum.maps.InfoWindow({
-                     content: '<div style="width:180px;text-align:center;padding:6px 0;">'+mins[cnt]+'</div>'
+                     content: '<div style="width:180px;text-align:center;padding:6px; 0;">'+mins[addr_cnt(addr,addrs)]+'</div>'
+                     
                  });
                 }
                 
                 else if(flag==2){
                 	// 인포윈도우로 장소에 대한 설명을 표시합니다
                     var infowindow = new daum.maps.InfoWindow({
-                        content: '<div style="width:180px;text-align:center;padding:6px 0;">'+maxs[cnt]+'</div>'
+                        content: '<div style="width:180px;text-align:center;padding:6px 0;">'+maxs[addr_cnt(addr,addrs)]+'</div>'
                     });
                 }
                 
-                
-                //console.log("2."+cnt+","+addr);
-                
-                infowindow.open(map, marker);
+                infowindow.open(map, marker);*/
                 cnt++;
                 if(len == cnt){
                 	center_x /= len;
@@ -301,6 +363,7 @@ function draw_map(flag){
                 }
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                 //map.setCenter(coords);
+                
                 // // 마커가 지도 위에 표시되도록 설정합니다
                 marker.setMap(map);
             } 
@@ -311,6 +374,17 @@ function draw_map(flag){
     
    
 }
+function addr_cnt(addr,addrs){
+	for(var i=0; i<addrs.length;i++){
+     	if(addr==addrs[i]){
+     		cnt=i;
+         	//console.log(addr);
+         }
+     }
+	return cnt;
+}
+
+
 
 function makeOutListener(infowindow) {
     return function() {

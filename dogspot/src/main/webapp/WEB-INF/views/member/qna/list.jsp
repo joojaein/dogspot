@@ -1,5 +1,12 @@
+<%@page import="com.dogspot.web.entity.Question"%>
+<%@page import="java.util.List"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,34 +22,12 @@
 	rel="stylesheet" />
 <link href="../../../css/commonAdminMypage.css" type="text/css"
 	rel="stylesheet" />
-<script src="../../../js/mypage_admin.js"></script>
-</head>
+ <script src="../../../js/mypage_list.js"></script>
+
+ </head>
 <body>
-	<header class="list">
-		<div>
-			<a href=""><a href=""><img src="/images/logoImg.png" /></a>
-		</div>
-
-		<section class="list">
-			<h1 class="hidden">헤더</h1>
-
-			<nav id="mainmenu">
-				<h1 class="hidden">mainmenu</h1>
-				<ul class="list">
-					<li><a href="">검색</a></li>
-					<li><a href="">리뷰</a></li>
-				</ul>
-			</nav>
-
-			<nav id="membermenu">
-				<h1 class="hidden">membermenu</h1>
-				<ul class="list">
-					<li><a href="">마이페이지</a></li>
-					<li><a href="">로그아웃</a></li>
-				</ul>
-			</nav>
-		</section>
-	</header>
+	 <jsp:include page ="../../inc/header.jsp" />
+     
 
 
 	<section id="body">
@@ -73,26 +58,26 @@
 						</ul>
 					</nav>
 				</aside>
-				<main>
+				<main id="test">
 				<section id="boxlist">
 					<div class="list">
 						<a href="">
-							<div id="boximg">
+							<div class="boximg">
 								즐겨찾기
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								리뷰
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								좋아요
 								<div>30</div>
 							</div>
 						</a> <a href="">
-							<div id="boximg">
+							<div class="boximg">
 								댓글
 								<div>30</div>
 							</div>
@@ -103,70 +88,72 @@
 
 					<div id="mypage-title">관리자 문의</div>
 					<div class="writeBtn">
-						<a href=""><input type="submit" value="글쓰기" /></a>
+						<a href="reg"><input type="submit" value="글쓰기" /></a>
 					</div>
 
 				</section>
 				<section>
-					<table>
-						<thead>
-							<td>제목</td>
-							<td>작성자</td>
-							<td>작성일</td>
-							<td></td>
+					<!-- <template class="row-template">
+                            <tr class="trhere">
+                                <td class="title"></td>
+                                <td class="id"></td>
+                                <td class="date"></td>
+                                <td class="etc">
+                                    <a href=""><input type="submit" value="수정" /> </a>
+                                    <input type="submit" value="삭제" />
+                                </td>
+                            </tr>
+							<tr class="contents"  style="display: none" >style="display: none"
+								<td class="detail"  colspan="4">123</td>
+							</tr>
+						</template> -->
+                        <!-- <template class="colspan-td">
+                        	<tr id="contents" style="display:none">
+                                <td colspan="4">
+                                    123
+                                </td>                        
+                            </tr>
+                        </template> -->
+                        <table id="table1">
+                         <thead>
+                            <td>제목</td>
+                            <td>작성자</td>
+                            <td>작성일</td>
+                            <td></td>
 
-						</thead>
-						<tbody>
-							<tr>
-								<td onclick="btntitle()">문의드립니다</td>
-								<td>dogspot</td>
-								<td>2018.10.01</td>
-								<td><a href=""><input type="submit" value="수정" /> </a> <input
-									type="submit" value="삭제" /></td>
-							</tr>
-							<tr id="contents">
-								<td colspan="4">
-									<ul class="list contentsul">
-										<li>문의드립니다에 정확한 제목이나와</li>
-										<li>글의 작성자</li>
-										<li>2018-12-12</li>
-									</ul>
-									<div>글의설명이 다 나올것이야</div>
-
-
-								</td>
-							</tr>
-							<tr>
-								<td>└ 답변 : 답변 드립니다</td>
-								<td>dogspot</td>
-								<td>2018.10.01</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>가격 문의드립니다.</td>
-								<td>dogspot</td>
-								<td>2018.10.01</td>
-								<td><a href=""><input type="submit" value="수정" /> </a> <input
-									type="submit" value="삭제" /></td>
-							</tr>
-							<tr>
-								<td>└ 답변 : 답변 드립니다</td>
-								<td>dogspot</td>
-								<td>2018.10.01</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>가격 문의드립니다.</td>
-								<td>dogspot</td>
-								<td>2018.10.01</td>
-								<td><a href=""><input type="submit" value="수정" /> </a> <input
-									type="submit" value="삭제" /></td>
-							</tr>
-						</tbody>
-
-						<tbody>
-
-						</tbody>
+                         </thead>
+                        <tbody>
+                         <%  %>
+	                     <c:forEach var="q" items="${list}">
+          				<form action="" method="post" >
+                            
+								<tr class="trhere">
+									<td class="title">${q.title}</td>
+									<td class="writer">${q.regid}</td>
+									<td class="regdate">${q.regdate}</td>
+									<td class="etc">
+									<a href=""><input type="submit" value="수정" /> </a> 
+									<input type="submit" class="delbtn" value="삭제" /></td>
+								</tr>
+							</form>
+	                        <tr class="contents"  style="display: none" >
+	                     		<td class="detaile" colspan="4">
+	                     		
+	                     			<div class="detaile-etc list">
+		                     			<div class="detaildiv">${q.regid}</div>
+		                     			<div class="detaildiv">${q.regdate}</div>
+	                     			</div>
+	                     			<div class="detaile-title">${q.title}</div>
+	                     		
+	                     			<p>${q.content}</p>
+	                     		</td>
+	                     		
+	                     	</tr>
+	                        
+	                       </c:forEach>
+                     	<% %>
+                     	
+                        </tbody>
 					</table>
 				</section>
 				<section>
@@ -176,9 +163,18 @@
 						</div>
 						<div>
 							<ul class="list">
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
+								<c:set var="page" value="1" />
+		                      <c:if test="${not empty param.p}">
+		                      	<c:set var="page" value="${param.p}" />
+		                      </c:if>
+		                      
+		                     <c:forEach var="i" begin="1" end="3">
+		                     
+		                      <c:set var="cls" value="${i==page?'strong':''}"/>
+		                      <li>
+                     			<a href="?p=${i}" class="${cls}">${i}</a>
+                     		  </li>
+                     	 	</c:forEach>
 							</ul>
 						</div>
 						<div>
@@ -193,12 +189,8 @@
 		</div>
 	</section>
 
-	<footer>
-		<section>
-			<h1 class="hidden">푸터</h1>
+		 <jsp:include page ="../../inc/footer.jsp" />
 
-		</section>
-	</footer>
 </body>
 
 </html>

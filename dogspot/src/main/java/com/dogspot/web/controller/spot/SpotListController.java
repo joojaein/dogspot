@@ -16,7 +16,7 @@ import com.dogspot.web.service.SpotService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
 
 @WebServlet("/spot/list")
-public class ListController extends HttpServlet {
+public class SpotListController extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,9 @@ public class ListController extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		
-		PrintWriter out = response.getWriter();
+		/*PrintWriter out = response.getWriter();
+		
+		//int id = Integer.parseInt(request.getParameter("id"));
 		
 		String search = request.getParameter("search");
 		String local = request.getParameter("local");
@@ -47,24 +49,19 @@ public class ListController extends HttpServlet {
 			min_price="0";
 		if(max_price==null)
 			max_price="2000000";
-		/*int min_price = 0;
-		int max_price = 0;
-		
-		if(min_price_!=null&&!min_price_.equals(""))
-			min_price=Integer.parseInt(min_price_);
-		if(max_price_!=null&&!max_price_.equals(""))
-			max_price=Integer.parseInt(max_price_);*/
 		
 		SpotService service = new JdbcSpotService();
 		
-		List<Spot> list = service.getList(search,local,theme,size,min_price,max_price);
+		//int review_cnt = service.getReviewCount(id);
+		List<Spot> list = service.getList(search,local,theme,size,min_price,max_price);*/
 		
 		//Gson gson = new Gson();
 		
 		//out.write(gson.toJson(list));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/spot/list.jsp"); //홈 디렉토리 /서부터 시작하면 WebContent다!! 
-		request.setAttribute("list", list);
+		//request.setAttribute("list", list);
+		//request.setAttribute("review_cnt", review_cnt);
 		
 	    dispatcher.forward(request,response);
 	}
