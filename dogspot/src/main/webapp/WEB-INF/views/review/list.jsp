@@ -6,16 +6,18 @@
 <!DOCTYPE html>
 <html>
 
-	<head>	    
-	    <script src="../../js/reviewModals.js"></script>
-	    <script src="../../js/review.js"></script>
-	    <script src="../../js/dialogDetail.js"></script>
-	    <script src="../../js/dialogImg.js"></script>
-	    <script src="../../js/dialogContent.js"></script>
-	    <script src="../../js/dialogReviewComplain.js"></script>
-	    <script src="../../js/dialogCommentComplain.js"></script>
-	    
-	    <title>DogSpot</title>
+	<head>
+	
+		<script src="../../js/reviewCombine.js"></script>
+		<!-- 
+		<script src="../../js/reviewModals.js"></script>
+		<script src="../../js/review.js"></script>
+		<script src="../../js/dialogDetail.js"></script>
+		<script src="../../js/dialogImg.js"></script>
+		<script src="../../js/dialogContent.js"></script>
+		<script src="../../js/dialogReviewComplain.js"></script>
+		<script src="../../js/dialogCommentComplain.js"></script> -->
+		<title>DogSpot</title>
 	    <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 	    <link href="../../css/review.css" type="text/css" rel="stylesheet" />
 	</head>
@@ -160,9 +162,6 @@
 	
 		<section id="modals">
 			<h1 class="hidden">모달</h1>
-			<section class="modal-back">
-				<h1 class="hidden">모달 백</h1>
-			</section>
 			<jsp:include page="modalReviewDetail.jsp" />
 			<jsp:include page="modalReviewRegImg.jsp" />
 			<jsp:include page="modalReviewRegContent.jsp" />	
