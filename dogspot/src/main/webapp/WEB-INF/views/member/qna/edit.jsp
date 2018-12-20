@@ -84,7 +84,7 @@
 					<div id="mypage-title">관리자 문의</div>
 
 				</section>
-				<%  %> <c:forEach var="q" items="${list}">
+				
 					<form action="" method="post">
 						<section class="regcontent">
 							<div class="list">
@@ -104,7 +104,7 @@
 							<input type="submit" value="문의하기" />
 						</div>
 					</form>
-				</c:forEach> <% %> 
+				
 				</main>
 			</section>
 		</div>
