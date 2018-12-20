@@ -113,7 +113,7 @@
 									<td class="title">${q.title}</td>
 									<td class="writer">${q.regid}</td>
 									<td class="regdate">${q.regdate}</td>					
-								    <td class="qid">${q.id}</td><!-- class="hidden" -->
+								    <td class="qid" style="display: none">${q.id}</td><!-- class="hidden" -->
 									<td class="etc">
 									<%-- <input type="hidden" name="id" value="${q.id }" />  dataset-qid="${q.id}" --%>
 									<a href="listedit?id=${q.id}"><input type="button" value="수정"/></a>

@@ -70,7 +70,7 @@ window.addEventListener("load", function() {
 			 request.send("id="+qid);
 			 
 		};
-		
+/*		
 		if(e.target.classList.contains("editbtn")){
 			
 			//console.log("getget");
@@ -99,6 +99,6 @@ window.addEventListener("load", function() {
 			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			
 			request.send();
-		};
+		};*/
 	});
 });

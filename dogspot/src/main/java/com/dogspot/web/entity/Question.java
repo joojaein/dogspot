@@ -24,6 +24,17 @@ public class Question {
 		this.title = title;
 		this.content = content;
 	}
+	
+	
+
+
+
+	public Question(String title, String content, int id) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.id = id;
+	}
 
 
 

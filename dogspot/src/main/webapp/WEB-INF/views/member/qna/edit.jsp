@@ -22,6 +22,7 @@
 	rel="stylesheet" />
 <link href="../../../css/commonAdminMypage.css" type="text/css"
 	rel="stylesheet" />
+<script src="../../../js/edit_list.js"></script>
 </head>
 <body>
 	<jsp:include page="../../inc/header.jsp" />
@@ -53,7 +54,7 @@
 						</ul>
 					</nav>
 				</aside>
-				<main>
+				<main id = "test">
 				<section id="boxlist">
 					<div class="list">
 						<a href="">
@@ -84,27 +85,29 @@
 					<div id="mypage-title">관리자 문의</div>
 
 				</section>
-				
-					<form action="" method="post">
+					<%  %>
+					<c:forEach var="q" items="${list}">
+					<form ><!-- action="" method="post" -->
 						<section class="regcontent">
 							<div class="list">
 								<div class="nameinput">제목</div>
 								<div class="chginput">
-									<input name="title" placeholder="${q.title }" />
+									<input name="title" value="${q.title }"/>
 								</div>
 							</div>
 							<div class="list">
 								<div class="nameinput">내용</div>
 								<div class="chginput2">
-									<textarea name="content"  placeholder="${q.content}"></textarea>
+									<textarea name="content" placeholder="${q.content}"></textarea>
 								</div>
 							</div>
 						</section>
 						<div class="askbtn">
-							<input type="submit" value="문의하기" />
+							<input type="button" class="editbtn" name="${q.id}" value="수정완료" />
 						</div>
 					</form>
-				
+					</c:forEach>
+					<%  %>
 				</main>
 			</section>
 		</div>

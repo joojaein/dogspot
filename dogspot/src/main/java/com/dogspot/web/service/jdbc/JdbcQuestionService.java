@@ -149,5 +149,36 @@ public class JdbcQuestionService implements QuestionService {
 		}
 		return que;
 	}
+	
+	public List<Question> editQue(String title, String content){
+		
+		List<Question> list = new ArrayList<>();
+		
+		String sql = "UPDATE QUESTION SET TITLE = ? , CONTENT=? WHERE ID =?";
+		
+		 String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl"; 
+         try {
+        	 
+        	/* String text ;
+        	 String content;
+        	 String id;*/
+        	 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection  con = DriverManager.getConnection(url,"c##sist","dclass");
+			PreparedStatement st = con.prepareStatement(sql);
+		} 
+         catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+         catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return list;
+		
+	}
 
 }
