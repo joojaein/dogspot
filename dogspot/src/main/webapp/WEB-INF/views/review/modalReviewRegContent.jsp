@@ -5,16 +5,17 @@
 		<img class="modal-x" src="/images/modal-x.png">
 		<section class="modal-section list">
 			<h1 class="hidden">장소선택모달</h1>
+			
 			<section class="review-detail-image">
-				<img src="/images/reviewImg.png"> <a href="">&lt;</a> <a href="">&gt;</a>
+				<img src="/images/reviewImg.png"> <a class="left-a" href="">&lt;</a> <a class="right-a" href="">&gt;</a>
 			</section>		
+			
 			<section class="review-detail-contents">
 				<section class="review-top list">
 					<img src="/images/profile.png">
 					<div>dogstpot</div>
 					<a class="btn" href="">리뷰등록</a>
 				</section>
-				
 				
 				<section class="review-center">
 					<hr class="review-hr" />

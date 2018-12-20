@@ -19,6 +19,8 @@ public interface SpotService {
 	List<Spot> getList(String query);
 	List<Spot> getList(int page, String query);
 	List<Spot> getList(String search,String local,String theme,String size, String min_p, String max_p);
+	int getReviewCount(int spotId);
+	
 	//리스트페이지(관리자)
 	List<Spot> getAdminList(int page);
 	List<Spot> getAdminList(String query);
@@ -30,7 +32,7 @@ public interface SpotService {
 	List<Review> getReviewList(int spotId);
 	List<SpotImg> getSpotImgList(int spotId);
 	int insertRecent(int spotId, String memberId);
-	int insertSpotRequest(SpotRequest spotRequest, String memberId);
+	int insertSpotRequest(int spotId, String memberId, String title, String content);
 	
 	//좋아요
 	List<Good> getGoodList(String reviewId);

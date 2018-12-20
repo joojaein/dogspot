@@ -18,7 +18,9 @@ public interface ReviewService {
 	//리스트 페이지
 	List<Review> getList();
 	List<Review> getList(String query);
-	List<HashMap> getReviewDataView(String query, int filter);
+	List<HashMap<String, String>> getReviewsDataView(String query, int filter);
+	HashMap<String, String> getReviewDataView(int reviewId);
+	
 	
 	//디테일 페이지
 	Review getReview(int reviewId);
@@ -27,14 +29,19 @@ public interface ReviewService {
 
 	//상단 공통
 	ReviewImg getReviewImg(int reviewId);
-
+	String getReviewImgSrc(int reviewId);
+	List getReviewImgsSrc(int reviewId);
 	////메모 참고
 	
 	//추가
 	int insert(Review review);
+	int getLastReviewId();
+	//int getLastReviewImgId();
+	int getOrderNum(int reviewId); 
 	List<Spot> getSpotList(String query);
+	int insertReviewImg(String fileName, int reviewId, int ord);
 	int insertReviewImgList(List<ReviewImg> reviewImgList);
-	
+
 	//수정
 	int update(int reviewId, Review review);
 
@@ -48,14 +55,15 @@ public interface ReviewService {
 	//좋아요
 	List<Good> getGoodList(String memberId);
 	List<Good> getGoodList(String memberId, int page);
-	int setGood(int reviewId, String memberId);
-
+	int setGood(int reviewId, String memberId, String updown);
+	int getIsGood(int reviewId, String memberId);
 	//댓글
 	List<Cmt> getCmtList(String memberId);
+	List<Cmt> getCmtList(int reviewId);
 	List<Cmt> getCmtList(String memberId, int page);
 	int insertCmt(Cmt cmt);
 	int updateCmt(int cmtId, Cmt cmt);
-
+	
 	//조회수
 	int insertHit(int reviewId, String memberId);
 	int getHit(int reviewId);

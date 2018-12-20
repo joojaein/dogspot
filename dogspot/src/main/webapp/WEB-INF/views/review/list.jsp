@@ -6,16 +6,18 @@
 <!DOCTYPE html>
 <html>
 
-	<head>	    
-	    <script src="../../js/reviewModals.js"></script>
-	    <script src="../../js/review.js"></script>
-	    <script src="../../js/dialogDetail.js"></script>
-	    <script src="../../js/dialogImg.js"></script>
-	    <script src="../../js/dialogContent.js"></script>
-	    <script src="../../js/dialogReviewComplain.js"></script>
-	    <script src="../../js/dialogCommentComplain.js"></script>
-	    
-	    <title>DogSpot</title>
+	<head>
+	
+		<script src="../../js/reviewCombine.js"></script>
+		<!-- 
+		<script src="../../js/reviewModals.js"></script>
+		<script src="../../js/review.js"></script>
+		<script src="../../js/dialogDetail.js"></script>
+		<script src="../../js/dialogImg.js"></script>
+		<script src="../../js/dialogContent.js"></script>
+		<script src="../../js/dialogReviewComplain.js"></script>
+		<script src="../../js/dialogCommentComplain.js"></script> -->
+		<title>DogSpot</title>
 	    <link href="https://fonts.googleapis.com/css?family=Jua&amp;subset=korean" rel="stylesheet">
 	    <link href="../../css/review.css" type="text/css" rel="stylesheet" />
 	</head>
@@ -73,8 +75,9 @@
 	
 					<template id="review-list-div-template">
 					<div class="review-div">
+						<div class="hiddenId hidden"></div>
 						<a class="review-mainImg" href=""> 
-							<img class="review-img" src="/images/reviewImg.png" />
+							<img class="review-img"/>
 							<section class="review-list-hover hidden">
 		
 								<section class="hover-back"></section>
@@ -160,9 +163,6 @@
 	
 		<section id="modals">
 			<h1 class="hidden">모달</h1>
-			<section class="modal-back">
-				<h1 class="hidden">모달 백</h1>
-			</section>
 			<jsp:include page="modalReviewDetail.jsp" />
 			<jsp:include page="modalReviewRegImg.jsp" />
 			<jsp:include page="modalReviewRegContent.jsp" />	
