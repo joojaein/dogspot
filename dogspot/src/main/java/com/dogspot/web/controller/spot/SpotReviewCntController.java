@@ -2,6 +2,7 @@ package com.dogspot.web.controller.spot;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dogspot.web.entity.Spot;
 import com.dogspot.web.service.SpotService;
 import com.dogspot.web.service.jdbc.JdbcSpotService;
+import com.google.gson.Gson;
 
-@WebServlet("/detail-request")
-public class DetailRequestController extends HttpServlet {
+@WebServlet("/spot-review-cnt")
+public class SpotReviewCntController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,21 +25,23 @@ public class DetailRequestController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		int spotId = Integer.parseInt(request.getParameter("spotid"));
-		String memberId = "ingyung";
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 		
-		if(title==null||title.equals(""))
-			return;
-		if(content==null||content.equals(""))
-			return;
-		
-		System.out.println(title+","+content);
-		
+		int spotid = Integer.parseInt(request.getParameter("spotid"));
+		System.out.println("들어가니.."+spotid);
 		SpotService service = new JdbcSpotService();
-		int spotrequest = service.insertSpotRequest(spotId, memberId, title, content);
-		if(spotrequest==1)
-			System.out.println("잘 들어갔어 요청!");
+		int reviewCnt = service.getReviewCount(spotid);
+		//request.setAttribute("list", list);
+		Gson gson = new Gson();
+	      String json = gson.toJson(reviewCnt);
+	      out.write(json);
+		/*if(list ==null) {
+			out.write("");
+		}else {
+			Gson gson = new Gson();
+			String json = gson.toJson(list);
+			out.write(json);	
+		}*/
+		
 	}
+
 }

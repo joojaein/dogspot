@@ -28,7 +28,7 @@
 
 				<main id="search-list" class="list-large-main">
 				<h1 class="hidden">메인</h1>
-				<form name="filter-box" > <!-- method="post" -->
+				<form name="filter-box"> <!-- method="post" -->
 				<div class="left top">
 					<!--  <input type="text" name="search" class="big-data-search" id="enter" onkeydown="JavaScript:Enter_Check();" />-->
 					<input type="text" name="search" class="big-data-search" id="enter" autocomplete="off"
@@ -68,7 +68,8 @@
 
 
 				<div class="list">
-					<div class="content-bold">${fn:length(list)} 개의 검색결과</div>
+					<!-- <div class="content-bold">${fn:length(list)} 개의 검색결과</div> -->
+					<div class="content-bold list-length"></div>
 					<fieldset class="right" id="tog">
 						<input type="radio" id="min-pri" name="price" value="min-price"
 							checked> <label>최소가격&nbsp;&nbsp;&nbsp;</label> <input

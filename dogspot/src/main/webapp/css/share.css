@@ -205,3 +205,11 @@ select:focus {
     z-index: 7;
 }
 
+
+.idx-page{
+    font-size: 22px;
+    color: #002060;
+    text-decoration: underline;
+    
+}
+

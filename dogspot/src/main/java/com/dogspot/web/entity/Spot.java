@@ -65,6 +65,14 @@ public class Spot {
 		this.addr = addr;
 		this.themeid = themeid;
 	}
+	
+	public Spot(String name, String addr, int themeid, String phone) {
+		
+		this.name = name;
+		this.addr = addr;
+		this.themeid = themeid;
+		this.phone = phone;
+	}
 
 
 	public int getId() {

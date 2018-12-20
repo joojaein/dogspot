@@ -166,7 +166,7 @@ function showMap(title,addr){
             
             var info = 
             	//'<div class="close" id="close" title="닫기"></div> \
-            	'<div style="width:80px;height:30px;text-align:center;padding:6px;font-size:13px; \
+            	'<div style="width:'+title.length*15+'px;height:30px;text-align:center;padding:6px;font-size:13px; \
             	;background:white;border-radius:15px;border:black solid 1px;margin-bottom:110px; \
             	font-weight:bold;verticle-align:middle;">'
             	+'<span>&nbsp;'+title+'</span>'

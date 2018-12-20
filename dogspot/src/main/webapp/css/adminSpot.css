@@ -95,14 +95,17 @@ tbody td input{
     border-radius: 5px;
     font-size: 15px;
     vertical-align: middle;
+    text-indent: 10px;
 }
 
 .input-small{
     width: 150px!important;
+    text-indent: 10px;
 }
 
 .input-big{
     width: 618px!important;
+    text-indent: 10px;
 }
 
 .width-front{
@@ -132,7 +135,7 @@ tbody td input{
 
 
 #img-area{
-    width: 150px;
+    width: 200px;
     height: 80px;
     margin-left: 10px;
     vertical-align: middle;
@@ -141,12 +144,13 @@ tbody td input{
 } 
 
 .long-area{
-    width: 600px;
+    width: 618px;
     margin-left: 100px;
     border: #002060 solid 1px;
     border-radius: 5px;
     font-size: 15px;
     font-family: Jua;
+    text-indent: 10px;
 }
 .short-area{
     width: 300px;
@@ -154,6 +158,29 @@ tbody td input{
     border: #002060 solid 1px;
     border-radius: 5px;
     font-family: Jua;
+    font-size:15px;
+    text-indent: 10px;
+}
+
+.middle-area{
+    width: 404px;
+    vertical-align: middle;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+    font-family: Jua;
+    font-size:15px;
+    text-indent: 10px;
+}
+
+.etc-area{
+    width: 618px;
+    vertical-align: middle;
+    border: #002060 solid 1px;
+    border-radius: 5px;
+    font-family: Jua;
+    font-size:15px;
+    text-indent: 10px;
+    
 }
 
 

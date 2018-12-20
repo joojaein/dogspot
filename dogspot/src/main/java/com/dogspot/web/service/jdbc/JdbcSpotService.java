@@ -257,7 +257,39 @@ public class JdbcSpotService implements SpotService {
 	@Override
 	public int insert(Spot spot) {
 		// TODO Auto-generated method stub
-		return 0;
+		String sql = "insert into spot (name,addr,phone,themeid) values ('"+spot.getName()+"',"
+				+ "'"+spot.getAddr()+"','"+spot.getPhone()+"',"+spot.getThemeid()+")";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+		int result = 0;
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			//PreparedStatement st = con.prepareStatement(sql);
+			//st.setInt(1, spotId);
+			//st.setString(2, memberId);
+
+			//ResultSet rs = st.executeQuery();
+
+			if(rs.next())
+				result=1;
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override
