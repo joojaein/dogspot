@@ -27,6 +27,7 @@ public class ReviewFilterController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+			System.out.println("ReviewFilterController");
 			req.setCharacterEncoding("UTF-8");
 			resp.setCharacterEncoding("UTF-8");
 			resp.setContentType("text/html;charset=UTF-8");
@@ -36,14 +37,16 @@ public class ReviewFilterController extends HttpServlet{
 			String query = req.getParameter("query");		
 			
 			ReviewService service = new JdbcReviewService();
-			List<HashMap> reviewList = service.getReviewDataView(query,filter);
+			List<HashMap<String, String>> reviewList = service.getReviewsDataView(query,filter);
 						
 			if(reviewList ==null) {
 				out.write("");
 			}else {
+
 				Gson gson = new Gson();
 				String json = gson.toJson(reviewList);
 				out.write(json);	
+
 			}		
 		}
 	}

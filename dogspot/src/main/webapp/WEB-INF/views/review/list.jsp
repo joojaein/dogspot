@@ -75,8 +75,9 @@
 	
 					<template id="review-list-div-template">
 					<div class="review-div">
+						<div class="hiddenId hidden"></div>
 						<a class="review-mainImg" href=""> 
-							<img class="review-img" src="/images/reviewImg.png" />
+							<img class="review-img"/>
 							<section class="review-list-hover hidden">
 		
 								<section class="hover-back"></section>

@@ -4,14 +4,15 @@
 	<form method="dialog">
 		<img class="modal-x" src="/images/modal-x.png">
 		<section class="modal-section list">
+		<input type="hidden" name="reviewId">
 			<h1 class="hidden">디테일모달</h1>
 			<section class="review-detail-image">
-				<img src="/images/reviewImg.png"> <a href="">&lt;</a> <a href="">&gt;</a>
+				<img> <a class="left-a" href="">&lt;</a> <a class="right-a" href="">&gt;</a>
 			</section>
 			<section class="review-detail-contents">
 				<section class="review-top list">
 					<img src="/images/profile.png">
-					<div>dogstpot</div>
+					<div id="regId">dogstpot</div>
 					<ul class="list">
 						<input class="btn" type="button" value="수정">
 						<input class="btn" type="button" value="삭제">
@@ -21,15 +22,12 @@
 				</section>
 				<section class="review-center">
 					<hr class="review-hr" />
-					<div>가가카페</div>
+					<div id="name"></div>
 					<section class="review-report">
-						<div>제목</div>
-						<p>
-							내용내용123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-							내용내용123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-						</p>
+						<div id="title"></div>
+						<p id="content"></p>
 					</section>
-					<div class="text-hashtag">#해시태그</div>
+					<div class="text-hashtag"></div>
 					<template id="review-comment-template">
 					<section class="comments list">
 						<div class="cmt-id"></div>
@@ -47,17 +45,17 @@
 							<img class="btn good-true-icon hidden" src="/images/goodTrueIcon.png">
 							<img class="btn good-false-icon" src="/images/goodFalseIcon.png">
 						</dt>
-						<dd>10</dd>
+						<dd class="good"></dd>
 						<dt>
 							<img src="/images/commentIcon.png">
 						</dt>
-						<dd>10</dd>
+						<dd class="cmt"></dd>
 						<dt>
 							<img src="/images/hitIcon.png">
 						</dt>
-						<dd>10</dd>
+						<dd class="hit"></dd>
 					</dl>
-					<div>2018년12월01일</div>
+					<div id="regdate"></div>
 					<hr class="review-hr">
                     <input type="text" placeholder="댓글 달기..">
 				</section>
