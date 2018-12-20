@@ -1,5 +1,6 @@
 package com.dogspot.web.member;
 
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,13 +22,11 @@ import com.dogspot.web.entity.Question;
 @WebServlet("/member/qna/list")
 public class ListController extends HttpServlet{
 
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		/*RequestDispatcher dispatcher = 
-		req.getRequestDispatcher("/WEB-INF/views/member/qna/list.jsp");
-		dispatcher.forward(req, resp);*/
-//				
+
+				
 				
 		String page_ = req.getParameter("p");
 		
@@ -56,6 +55,7 @@ public class ListController extends HttpServlet{
 			while(rs.next()) {
 				Question q = new Question(
 						//rs.getInt("id"),
+						rs.getInt("id"),
 						rs.getString("title"), 
 						rs.getString("regid"),
 						rs.getDate("regdate"),
@@ -73,19 +73,17 @@ public class ListController extends HttpServlet{
 //				
 			}
 //			
-//			rs.next();
-			rs.close();
-			st.close();
-			con.close();
+
 //			
 			RequestDispatcher dispatcher = 
 			req.getRequestDispatcher("/WEB-INF/views/member/qna/list.jsp");
 			req.setAttribute("list", list);
+			
 			dispatcher.forward(req, resp);
 	
 			
-			rs.next(); 
-//		
+//			rs.next(); 
+		
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

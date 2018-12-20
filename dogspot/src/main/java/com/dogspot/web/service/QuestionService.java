@@ -17,6 +17,9 @@ public interface QuestionService {
 	List<Question> getList(int page);
 	List<Question> getList(String memberId);
 	
+	//Question getQuestion(int questionId);
+
 	Question getQuestion(int questionId);
+	int delQue(String qid);
 		
 }

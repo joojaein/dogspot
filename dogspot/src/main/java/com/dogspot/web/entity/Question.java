@@ -17,9 +17,20 @@ public class Question {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//member inserting
-	public Question(String title, String regid,Date regdate,String content) {
+	
+	
+	public Question(String title, String content) {
+		super();
+		this.title = title;
+		this.content = content;
+	}
 
+
+
+	//member inserting
+	public Question(int id,String title, String regid,Date regdate,String content) {
+
+		this.id = id;
 		this.title = title;
 		this.regid = regid;
 		this.regdate = regdate;

@@ -36,9 +36,9 @@ public class JdbcReviewService implements ReviewService {
 	}
 
 	@Override
-	public List<HashMap> getReviewDataView(String query, int filter) {
+	public List<HashMap<String, String>> getReviewsDataView(String query, int filter) {
 
-		List<HashMap> list = new ArrayList<HashMap>();
+		List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 		String sql = "";
 		switch (filter) {
 		case 1:
@@ -67,14 +67,13 @@ public class JdbcReviewService implements ReviewService {
 			ResultSet rs = st.executeQuery(sql);
 
 			while (rs.next()) {
-				HashMap reviewData = new HashMap();
+				HashMap<String, String> reviewData = new HashMap();
 				reviewData.put("id", rs.getString("ID"));
 				reviewData.put("title", rs.getString("TITLE"));
 				reviewData.put("name", rs.getString("NAME"));
 				reviewData.put("hit", rs.getString("HIT_CNT"));
 				reviewData.put("good", rs.getString("GOOD_CNT"));
 				reviewData.put("cmt", rs.getString("CMT_CNT"));
-
 				list.add(reviewData);
 			}
 
@@ -93,8 +92,80 @@ public class JdbcReviewService implements ReviewService {
 	}
 
 	@Override
+	public HashMap<String, String> getReviewDataView(int reviewId) {
+
+		HashMap<String, String> dataMap = new HashMap<String, String>();
+		String sql = "SELECT * FROM REVIEW_DESC_VIEW WHERE ID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				dataMap.put("regId", rs.getString("REGID"));
+				dataMap.put("id", rs.getString("ID"));
+				dataMap.put("title", rs.getString("TITLE"));
+				dataMap.put("content", rs.getString("CONTENT"));
+				dataMap.put("name", rs.getString("NAME"));
+				dataMap.put("hit", rs.getString("HIT_CNT"));
+				dataMap.put("good", rs.getString("GOOD_CNT"));
+				dataMap.put("cmt", rs.getString("CMT_CNT"));
+				dataMap.put("hash", rs.getString("HASHTAG"));
+				dataMap.put("regdate", rs.getString("REGDATE"));
+			}
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return dataMap;
+	}
+	
+	@Override
 	public Review getReview(int reviewId) {
-		// TODO Auto-generated method stub
+		/*// TODO Auto-generated method stub
+		String sql = "SELECT * from REVIEW WHERE REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		Review result = null;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			rs.next();
+			result = new Review(
+					rs.getInt("id"),
+					rs.getString("title"),
+					rs.getString("content"),
+					rs.getDate("regdate"),
+					rs.getString("regId"),
+					rs.getInt("spotId"),
+					rs.getInt("hit"),
+					rs.getString("hashTag"));
+			
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;*/
 		return null;
 	}
 
@@ -102,6 +173,65 @@ public class JdbcReviewService implements ReviewService {
 	public List<ReviewImg> getReviewImgList(int reviewId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public String getReviewImgSrc(int reviewId) {
+		
+		String sql = "SELECT FILENAME from REVIEW_IMG WHERE REVIEWID="+reviewId+" AND ORD=0";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		String result = "";
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			rs.next();
+			result = rs.getString("FILENAME");
+			
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	public List getReviewImgsSrc(int reviewId) {
+		
+		String sql = "SELECT FILENAME from REVIEW_IMG WHERE REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		List result=new ArrayList<>();
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while(rs.next()) {
+				result.add("reviewUpload/"+rs.getString("FILENAME"));
+			}
+			
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override
@@ -178,6 +308,34 @@ public class JdbcReviewService implements ReviewService {
 	}
 	
 	@Override
+	public int getOrderNum(int reviewId) {
+		String sql = "SELECT CNT FROM (SELECT REVIEWID, COUNT(REVIEWID) CNT FROM REVIEW_IMG GROUP BY REVIEWID) WHERE REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int result = 0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			rs.next();
+			result = rs.getInt("CNT");
+			
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	/*@Override
 	public int getLastReviewImgId() {
 		
 		String sql = "SELECT COUNT(ID) FROM REVIEW_IMG GROUP BY ID";
@@ -204,7 +362,7 @@ public class JdbcReviewService implements ReviewService {
 		}
 
 		return result+1;
-	}
+	}*/
 
 	@Override
 	public List<Spot> getSpotList(String query) {
@@ -237,8 +395,8 @@ public class JdbcReviewService implements ReviewService {
 	}
 
 	@Override
-	public int insertReviewImg(String fileName, int reviewId) {
-		String sql = "insert into REVIEW_IMG (FILENAME, REVIEWID, ORD) values ('"+fileName+"',"+reviewId+","+"0)";
+	public int insertReviewImg(String fileName, int reviewId, int ord) {
+		String sql = "insert into REVIEW_IMG (FILENAME, REVIEWID, ORD) values ('"+fileName+"',"+reviewId+","+ord+")";
 		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
 
 		int complete = 0;
@@ -306,15 +464,103 @@ public class JdbcReviewService implements ReviewService {
 	}
 
 	@Override
-	public int setGood(int reviewId, String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int setGood(int reviewId, String memberId, String updown) {
+		
+		String sql="";
+		if(updown.equals("up")) {
+			sql = "insert into GOOD(MEMBERID, REVIEWID) VALUES('"+memberId+"',"+reviewId+")";
+		}else {
+			sql = "delete GOOD WHERE MEMBERID='"+memberId+"' AND REVIEWID="+reviewId;
+		}
+
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int result =0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			st.executeUpdate(sql);
+
+			sql = "SELECT CNT FROM (SELECT REVIEWID, COUNT(REVIEWID)CNT FROM GOOD GROUP BY REVIEWID) WHERE REVIEWID="+reviewId;
+			ResultSet rs = st.executeQuery(sql);
+			rs.next();
+			result = rs.getInt("CNT");
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return result;
 	}
 
 	@Override
-	public List<Cmt> getCmtList(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+	public int getIsGood(int reviewId, String memberId) {
+		String sql="SELECT COUNT(MEMBERID) CNT FROM GOOD WHERE MEMBERID='"+memberId+"' AND REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int result =0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+			rs.next();
+			result = rs.getInt("CNT");
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return result;
+	}
+	
+	;
+
+
+	@Override
+	public List<Cmt> getCmtList(int reviewId) {
+		
+		List<Cmt> list = new ArrayList();
+		String sql = "select * from CMT WHERE REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Cmt cmt = new Cmt(
+						rs.getInt("ID"),
+						rs.getString("CONTENT"), 
+						rs.getString("REGID"), 
+						rs.getInt("REVIEWID"));
+			
+				list.add(cmt);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	@Override
@@ -325,8 +571,29 @@ public class JdbcReviewService implements ReviewService {
 
 	@Override
 	public int insertCmt(Cmt cmt) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		String sql = "insert into CMT(CONTENT, REGID, REVIEWID) VALUES ('"+cmt.getContent()+"', '"+cmt.getRegId()+"',"+cmt.getReviewId()+")";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int complete=0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			complete = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return complete;	
 	}
 
 	@Override
@@ -424,6 +691,15 @@ public class JdbcReviewService implements ReviewService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<Cmt> getCmtList(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 
 

@@ -1,5 +1,4 @@
 window.addEventListener("load",function() {
-
 		///////////////////////reviewModals///////////////////////////////////////////////////////////
 		var modals = document.querySelector("#modals");
 		var modalBack = modals.querySelector(".modal-back");
@@ -29,13 +28,9 @@ window.addEventListener("load",function() {
 		}
 
 		modals.addEventListener("click", function(evt) {
-			if (evt.target.nodeName != "IMG")
-				return;
-			
-
-			if (evt.target.className.indexOf("modal-x")<0)
-				return;
-
+			if (evt.target.nodeName != "IMG") return;		
+			if (evt.target.className.indexOf("modal-x")<0) return;
+			resetModal();
 			closeModal();
 		}, true);
 
@@ -57,23 +52,53 @@ window.addEventListener("load",function() {
 	    var btnAddReview=document.querySelector("main>input");
 	    //---------------------------------------------------------------------------------------
 	    var bind_reviewDiv = function(div, reviewData){
-	        var tempImg=div.querySelector(".review-mainImg");
+	    	var tempId=div.querySelector(".hiddenId")
+	        var tempImg=div.querySelector(".review-img");
 	        var tempName=div.querySelector(".review-name");
 	        var tempTitle=div.querySelector(".review-title");
 
 	        var tempGoodInt=div.querySelector(".good-int");
 	        var tempCommentInt=div.querySelector(".cmt-int");
 	        var tempHitInt=div.querySelector(".hit-int");
+      
+	        var tempGoodTrue=div.querySelector(".good-true-icon")
+	        var tempGoodFalse=div.querySelector(".good-false-icon")
+	        
+	        var requestImgSearch = new XMLHttpRequest(); 	
+	        requestImgSearch.open("POST", "../review-img-search", true); 
+	        requestImgSearch.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+	        
+	        requestImgSearch.onload = function () {	
+				tempId.innerText=reviewData.id;
+				var src = requestImgSearch.responseText;
+				tempImg.src=src;
+		        tempName.innerText=reviewData.name;
+		        tempTitle.innerText=reviewData.title;
 
-	        tempImg.innerSrc="/images/reviewImg.png";
-	        tempName.innerText=reviewData.name;
-	        tempTitle.innerText=reviewData.title;
-
-	        tempGoodInt.innerText=reviewData.good;
-	        tempCommentInt.innerText=reviewData.cmt;
-	        tempHitInt.innerText=reviewData.hit;
-
-	        reviewList.append(div);
+		        tempGoodInt.innerText=reviewData.good;
+		        tempCommentInt.innerText=reviewData.cmt;
+		        tempHitInt.innerText=reviewData.hit;
+  
+		        var requestIsGood = new XMLHttpRequest(); 
+		        requestIsGood.open("POST", "../get-is-good", true); 
+		        requestIsGood.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+		        requestIsGood.onload = function () {	
+					var isGood = requestIsGood.responseText;
+					if(isGood==1){
+						tempGoodTrue.classList.remove("hidden");
+						tempGoodFalse.classList.add("hidden");
+					}else{
+						tempGoodTrue.classList.add("hidden");
+						tempGoodFalse.classList.remove("hidden");
+					}
+					
+			        reviewList.append(div);
+				}
+		        requestIsGood.send("memberId=joojaein&reviewId="+reviewData.id);
+   
+			};
+			requestImgSearch.send("reviewId="+reviewData.id);
+   
 	    };
 	    
 	    var setReviewList = function(){    	
@@ -92,15 +117,14 @@ window.addEventListener("load",function() {
 			request.onload = function () {	
 				var reviewFilterList = JSON.parse(request.responseText);
 				var reviewDivCnt = reviewList.querySelectorAll(".review-div").length;
-
 				var max = reviewFilterList.length;
-				if(max>reviewDivCnt+20) max = reviewDivCnt+20;	
+				if(max>reviewDivCnt+16) max = reviewDivCnt+16;	
 
 				for(var i=reviewDivCnt; i<max; i++){
 		    	        var div=document.importNode(tmpReviewDiv.content, true);
 		    	        bind_reviewDiv(div,reviewFilterList[i]);
-		    	}	    	
-			}			
+		    	}	    		
+			};
 			request.send("query="+query+"&filter="+filter);
 	    };
 	    
@@ -123,7 +147,7 @@ window.addEventListener("load",function() {
 	    document.addEventListener("scroll", function(){
 	    	var currentScrollPercentage = getCurrentScrollPercentage();
 	    	var testCnt = reviewList.querySelectorAll(".review-div").length;
-	    	if(currentScrollPercentage >= 95){
+	    	if(currentScrollPercentage >= 98){
 	    	    setReviewList();
 	    	}
 	    });
@@ -171,15 +195,122 @@ window.addEventListener("load",function() {
 	    
 	    reviewList.addEventListener("click", function (evt) {
 	        evt.preventDefault();
+
 	        if (evt.target.className != "hover-parency") return;
-	        showModal(dialogDetail);
+	        
+	        var regId = dialogDetail.querySelector("#regId");
+	        var name = dialogDetail.querySelector("#name");
+	        var title = dialogDetail.querySelector("#title");
+	        var content = dialogDetail.querySelector("#content");
+	        var regdate = dialogDetail.querySelector("#regdate");
+	        var hashtag = dialogDetail.querySelector(".text-hashtag");
+	        
+	        var good = dialogDetail.querySelector(".good");
+	        var cmt = dialogDetail.querySelector(".cmt");
+	        var hit = dialogDetail.querySelector(".hit");
+
+	        var reviewId = 0;
+	        var divs = reviewList.querySelectorAll(".review-div");
+	        for(var i=0; i<divs.length; i++){
+	        	if(divs[i].querySelector(".hover-parency") == evt.target){
+	        		var id = divs[i].querySelector(".hiddenId");
+	        		reviewId = id.innerText;
+	        		break;
+	        	}
+	        }
+
+	        const requestGetReview = new XMLHttpRequest(); 	
+	        requestGetReview.open("POST", "/get-review-data", true); 
+	        requestGetReview.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+	        
+	        requestGetReview.onload = function () {	
+				var review = JSON.parse(requestGetReview.responseText);
+				regId.innerText=review.regId;
+				name.innerText = review.name;
+				title.innerText = review.title;
+				content.innerText = review.content;
+				hashtag.innerText = review.hash;
+				good.innerText = review.good;
+				cmt.innerText = review.cmt;
+				hit.innerText = review.hit;
+				regdate.innerText = review.regdate;
+				
+		    	reviewDetailHiddenId.value=reviewId;	    	
+		    	setGoodBtnDetail("joojaein",reviewId);
+		    	setDetailImgSrcList(reviewId);
+		    	getCmtList(reviewId);
+		        showModal(dialogDetail);
+			};
+			
+			requestGetReview.send("reviewId="+reviewId);	        
 	    }, true); 
+	    
 	    
 	    btnAddReview.onclick = function(evt){
 	        showModal(dialogImg);
 	    };
 	    
+	    var setDetailImgSrcList = function(reviewId){
+	    	var request = new XMLHttpRequest(); 
+			request.open("POST", "../get-detail-imgs", true); 
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+			request.onload = function () {	
+				detailImgSrcList = JSON.parse(request.responseText);
+				detailImgIndex=0;
+				setDetailImgslide(detailImgIndex);
+			}
+			request.send("reviewId="+reviewId);	
+	    }
+	    
+	    var setDetailImgslide = function(detailImgIndex){	
+	    	aLeftDetailImg.classList.remove("hidden");
+	    	aRightDetailImg.classList.remove("hidden");
+	    	if(detailImgIndex==0){
+	    		aLeftDetailImg.classList.add("hidden");
+	    	}
+	    	if(detailImgIndex==detailImgSrcList.length-1){
+	    		aRightDetailImg.classList.add("hidden");
+	    	}
+	    	imgDetailed.src = detailImgSrcList[detailImgIndex];
+	    };
+	    
+	    var setGoodBtnDetail = function(memberId, reviewId){
+		     var request = new XMLHttpRequest(); 
+				request.open("POST", "../get-is-good", true); 
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				request.onload = function () {	
+					var isGood = request.responseText;
+					if(isGood==1){
+				        btnGoodTrueIcon.classList.remove("hidden");
+				        btnGoodFalseIcon.classList.add("hidden");
+					}else{
+				        btnGoodTrueIcon.classList.add("hidden");
+				        btnGoodFalseIcon.classList.remove("hidden");
+					}
+				}
+				request.send("memberId="+memberId+"&reviewId="+reviewId);	
+	    }
+	    
+	    var setGoodBtnList= function(memberId, reviewId){
+		     var request = new XMLHttpRequest(); 
+				request.open("POST", "../get-is-good", true); 
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				request.onload = function () {	
+					var isGood = request.responseText;
+					if(isGood==1){
+
+				        btnGoodTrueIcon.classList.remove("hidden");
+				        btnGoodFalseIcon.classList.add("hidden");
+					}else{
+				        btnGoodTrueIcon.classList.add("hidden");
+				        btnGoodFalseIcon.classList.remove("hidden");
+					}
+				}
+				request.send("memberId="+memberId+"&reviewId="+reviewId);	
+	    }
+	    
 		///////////////////////datail///////////////////////////////////////////////////////////
+	    var reviewDetailHiddenId = dialogDetail.querySelector("input[name='reviewId']");
 	    var reviewDetailTop=dialogDetail.querySelector(".review-top");
 	    var reviewDetailCenter=dialogDetail.querySelector(".review-center");
 	    var reviewDetailBottom=dialogDetail.querySelector(".review-bottom");
@@ -190,10 +321,47 @@ window.addEventListener("load",function() {
 	    var btnGoodTrueIcon = reviewDetailBottom.querySelector(".good-true-icon")
 	    var btnGoodFalseIcon = reviewDetailBottom.querySelector(".good-false-icon")
 	    var inputComment = reviewDetailBottom.querySelector("input")
-
+	    var aLeftDetailImg=dialogDetail.querySelector(".review-detail-image .left-a");
+		var aRightDetailImg=dialogDetail.querySelector(".review-detail-image .right-a");
+		var imgDetailed=dialogDetail.querySelector(".review-detail-image img");
+		
 	    var tmpReviewComment = reviewDetailCenter.querySelector("#review-comment-template");
+	   
+	    var detailImgSrcList;
+	    var detailImgIndex=-1;
 	    //---------------------------------------------------------------------------------------
 
+	    aLeftDetailImg.onclick = function(){
+            event.preventDefault();
+            detailImgIndex--;
+            setDetailImgslide(detailImgIndex);
+	    }
+	    
+	    aRightDetailImg.onclick = function(){
+            event.preventDefault();
+            detailImgIndex++;
+            setDetailImgslide(detailImgIndex);
+	    }
+	    
+	    inputComment.onkeydown = function() {
+	        if (event.keyCode === 13) {
+	            event.preventDefault();
+	           if(inputComment.value!=""){
+	  		     var request = new XMLHttpRequest(); 
+					request.open("POST", "../cmt-action", true); 
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+					request.onload = function () {	
+						var cmt = JSON.parse(request.responseText);
+						var cmtTmp=document.importNode(tmpReviewComment.content, true);
+					    bind_cmt(cmtTmp, cmt);
+					}
+					request.send("action=insert&regId=joojaein&reviewId="+ reviewDetailHiddenId.value+
+							"&content="+inputComment.value);	
+	           }
+	        }
+	    };
+	    
+	    
 	    var setReviewTopBtn = function(){
 	    	//if 내가 쓴 리뷰이라면 btnComplainReview 를 히든 처리
 	    	//else btnUpdateReview, btnDelReview 을 히든 처리
@@ -234,26 +402,44 @@ window.addEventListener("load",function() {
 	       //tempUpdate.classList.add("hidden");
 	    };
 	    
-	    var bind_cmt = function(cmt){
-	        var tempId = cmt.querySelector(".cmt-id");
-	        var tempContent = cmt.querySelector(".cmt-content");
-	        tempId.innerText="아이디";
-	        tempContent.innerText="내용";
-	        setCmtBtn(cmt);
-	        reviewDetailCenter.append(cmt);  
+	    var bind_cmt = function(cmtTmp, cmt){
+	        var cmtId = cmtTmp.querySelector("input[type='hidden']");
+	        var tempId = cmtTmp.querySelector(".cmt-id");
+	        var tempContent = cmtTmp.querySelector(".cmt-content");
+	        
+	        cmtId.value=cmt.id;
+	        tempId.innerText=cmt.regId;
+	        tempContent.innerText=cmt.content;
+	        
+	        setCmtBtn(cmtTmp);
+	        reviewDetailCenter.append(cmtTmp);  
 	    };
 	    
-	    for(var i=0;i<15;i++){
-	        var cmt=document.importNode(tmpReviewComment.content, true);
-	        bind_cmt(cmt);
-	    }
+	    var getCmtList = function(reviewId){
+		     var request = new XMLHttpRequest(); 
+				request.open("POST", "../get-comments", true); 
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				request.onload = function () {	
+					var tempCmt = request.responseText;
+					if(request.responseText!=""){
+						var cmtList = JSON.parse(request.responseText);
+						for (var i = 0; i < cmtList.length; i++) {
+							 var cmtTmp=document.importNode(tmpReviewComment.content, true);
+						        bind_cmt(cmtTmp, cmtList[i]);
+						}	
+					}								
+				}
+				request.send("reviewId=" + reviewId);	
+	    };
 	    
+
 	    reviewDetailCenter.addEventListener("click", function(evt){
 	    	//댓글!!!!!!!
 	        if(evt.target.nodeName !="INPUT") return;
 
 	        if(evt.target.value == "수정"){
 	        	inputComment.focus();
+	        	/////////////inputComment.value=
 	        }
 	        else if(evt.target.value == "삭제"){
 	        	var bool = confirm("정말 삭제하시겠습니까?");
@@ -271,11 +457,30 @@ window.addEventListener("load",function() {
 	    btnGoodTrueIcon.onclick = function(){
 	        btnGoodTrueIcon.classList.add("hidden");
 	        btnGoodFalseIcon.classList.remove("hidden");
+	        //good을 내림
+		     var request = new XMLHttpRequest(); 
+				request.open("POST", "../good-updown", true); 
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				request.onload = function () {	
+					var good = reviewDetailBottom.querySelector(".good");
+					var result = request.responseText;
+				}
+				request.send("updown=down&reviewId="+reviewDetailHiddenId.value);	
 	    };
 
 	    btnGoodFalseIcon.onclick = function(){
 	        btnGoodFalseIcon.classList.add("hidden");
 	        btnGoodTrueIcon.classList.remove("hidden");
+	        //good을 높힘
+	        var request = new XMLHttpRequest(); 
+			request.open("POST", "../good-updown", true); 
+			request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+			request.onload = function () {	
+				var good = reviewDetailBottom.querySelector(".good");
+				var result = request.responseText;
+				good.innerText = result;
+			}
+			request.send("updown=up&reviewId="+reviewDetailHiddenId.value);	
 	    };
 
 	    var btnSpeed=40;
@@ -304,7 +509,7 @@ window.addEventListener("load",function() {
 	        if(btnEtcColor==255){
 	            if(isUpdateBtnHiddened){
 	                var complainRightStr = window.getComputedStyle(btnComplainReview,null).getPropertyValue('right'); 
-	                var complainRight=JSON.parse(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
+	                var complainRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 	                
 	                complainRight=complainRight-btnSpeed/2;
 	                if(complainRight<=0){
@@ -317,10 +522,10 @@ window.addEventListener("load",function() {
 	            }
 	            else{
 	                var updateRightStr = window.getComputedStyle(btnUpdateReview,null).getPropertyValue('right'); 
-	                var updateRight=JSON.parse(updateRightStr.substring(0,updateRightStr.indexOf("p")));             
+	                var updateRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 	                
 	                var delRightStr = window.getComputedStyle(btnDelReview,null).getPropertyValue('right'); 
-	                var delRight=JSON.parse(delRightStr.substring(0,delRightStr.indexOf("p")));
+	                var delRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 	                
 	                if(delRight>0){
 	                    delRight=delRight-btnSpeed;
@@ -343,7 +548,7 @@ window.addEventListener("load",function() {
 	        else{
 	            if(isUpdateBtnHiddened){
 	                var complainRightStr = window.getComputedStyle(btnComplainReview,null).getPropertyValue('right'); 
-	                var complainRight=JSON.parse(complainRightStr.substring(0,complainRightStr.indexOf("p")));   
+	                var complainRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 	                complainRight=complainRight+btnSpeed/2;
 	                if(complainRight>=50){
 	                    complainRight=50;
@@ -354,10 +559,10 @@ window.addEventListener("load",function() {
 	            }
 	            else{
 	                var updateRightStr = window.getComputedStyle(btnUpdateReview,null).getPropertyValue('right'); 
-	                var updateRight=JSON.parse(updateRightStr.substring(0,updateRightStr.indexOf("p")));
+	                var updateRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 
 	                var delRightStr = window.getComputedStyle(btnDelReview,null).getPropertyValue('right'); 
-	                var delRight=JSON.parse(delRightStr.substring(0,delRightStr.indexOf("p")));
+	                var delRight = parseInt(complainRightStr.substring(0,complainRightStr.indexOf("p")));       
 
 	                if(updateRight<90){
 	                    updateRight=updateRight+btnSpeed;
@@ -381,7 +586,6 @@ window.addEventListener("load",function() {
 	    
 		///////////////////////img///////////////////////////////////////////////////////////
 	    var btnImgUpload=dialogImg.querySelector(".reg1-top input[type='button']");
-	    var basicImgSrc = "/images/regImg.png";
 	    //---------------------------------------------------------------------------------------		
 
 	    btnImgUpload.onclick = function(evt){
@@ -409,7 +613,7 @@ window.addEventListener("load",function() {
 	    	}	
 	    	
 	    	contentImgIndex=0;
-	    	setImgslide(contentImgIndex);
+	    	setContentImgslide(contentImgIndex);
 	    	showModal(dialogContent);
 	    	
 	    	
@@ -539,28 +743,6 @@ window.addEventListener("load",function() {
 			}	
 		};
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		dndSc.ondrop = function(evt){
 			evt.preventDefault();
 			evt.stopPropagation();
@@ -672,7 +854,7 @@ window.addEventListener("load",function() {
 	    var readyHash=false;
 	    //---------------------------------------------------------------------------------------
 	    
-	    var setImgslide = function(contentImgIndex){	
+	    var setContentImgslide = function(contentImgIndex){	
 	    	aLeftContentImg.classList.remove("hidden");
 	    	aRightContentImg.classList.remove("hidden");
 	    	if(contentImgIndex==0){
@@ -686,13 +868,13 @@ window.addEventListener("load",function() {
 	    aLeftContentImg.onclick = function(){
             event.preventDefault();
             contentImgIndex--;
-	    	setImgslide(contentImgIndex);
+            setContentImgslide(contentImgIndex);
 	    }
 	    
 	    aRightContentImg.onclick = function(){
             event.preventDefault();
             contentImgIndex++;
-	    	setImgslide(contentImgIndex);
+            setContentImgslide(contentImgIndex);
 	    }
 	    
 	    inputSpot.onkeydown = function() {
@@ -760,9 +942,6 @@ window.addEventListener("load",function() {
 	            textareaReviewContent.focus();
 	        }else{
 	            event.preventDefault();
-
-	        	alert("insert 시작합니다");
-
 	        	textareaReviewContent.value = textareaReviewContent.value+" ";
 				setHashTag();
 
@@ -772,9 +951,7 @@ window.addEventListener("load",function() {
 				requestReviewInsert.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
 				
 				requestReviewInsert.onload = function () {	//인설트 완료되고 들어옴 
-					
-					alert("requestReviewInsert.onload");
-					
+										
 					for(var i=0; i<fileSrcArr.length; i++){
 						var fd = new FormData();
 						fd.append("file", fileMap.get(fileSrcArr[i]));  
@@ -782,8 +959,7 @@ window.addEventListener("load",function() {
 						requestImgUpload.open("POST", "../review-img-upload", false);
 
 						requestImgUpload.onload = function () {	//이미지 업로드 완료되고 들어옴				
-							alert("requestImgUpload.onload");
-
+							resetModal();
 						};				
 						requestImgUpload.send(fd);			
 					}			
@@ -917,6 +1093,26 @@ window.addEventListener("load",function() {
 	    btnSend.onclick = function(evt){
 	        closeModal();
 	    } 
-	   
+	    
+	    ///////////////////////////////////////////////////////////////////////////////////////////////
+		var resetModal = function() {
+		    textareaReviewContent.value = "";
+		    inputReviewTitle.value = "";
+		    inputSpot.value="";
+		    inputComment.value="";
+	        var label = dialogContent.querySelector(".review-spot-list label");
+		    label.innerText="리뷰할 장소 선택 ";
+	        for (var i = 0; i < imgLi.length; i++) {
+				var tempImg = imgLi[i].querySelector("img");
+				if(tempImg!=null)
+		    	imgLi[i].removeChild(tempImg);
+			}
+			contentImgIndex=0;
+			detailImgIndex=0;
+			clickImgIndex = -1;
+			detailImgSrcList=null;
+			fileMap = new Map();
+			readyHash=false;
+		}
 
 });

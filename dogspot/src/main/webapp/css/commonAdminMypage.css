@@ -52,6 +52,17 @@ tbody td input{
     border: #002060 1px solid;
 }
 
+.etc div{
+    width: 40px;
+    height: 23px;
+    border-radius: 10px;
+    line-height: 25px;
+    font-weight: bold;
+    background: white;
+    color: #002060;
+    border: #002060 1px solid;
+}
+
 .page_move{
     display: flex;
     padding-top: 50px;

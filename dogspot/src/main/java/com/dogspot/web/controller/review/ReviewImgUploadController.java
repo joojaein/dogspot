@@ -34,7 +34,6 @@ public class ReviewImgUploadController extends HttpServlet{
 	    PrintWriter out = resp.getWriter();
       
 		String path = req.getServletContext().getRealPath("/reviewUpload");
-		System.out.println(path);
 		File file = new File(path);
 		if(!file.exists()) {
 			file.mkdirs(); // 없으면 디렉토리 생성
@@ -45,8 +44,8 @@ public class ReviewImgUploadController extends HttpServlet{
 		ReviewService service = new JdbcReviewService();
 		int reviewId = service.getLastReviewId();
 		String fileName = reviewId+tempName;
-		
-		service.insertReviewImg(fileName, reviewId);
+		int ord = service.getOrderNum(reviewId);
+		service.insertReviewImg(fileName, reviewId, ord);
 		
 		//String fileName = part.getSubmittedFileName();
 		String filePath = path+File.separator + fileName;

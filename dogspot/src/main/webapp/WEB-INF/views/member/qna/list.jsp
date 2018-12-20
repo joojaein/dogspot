@@ -93,27 +93,7 @@
 
 				</section>
 				<section>
-					<!-- <template class="row-template">
-                            <tr class="trhere">
-                                <td class="title"></td>
-                                <td class="id"></td>
-                                <td class="date"></td>
-                                <td class="etc">
-                                    <a href=""><input type="submit" value="수정" /> </a>
-                                    <input type="submit" value="삭제" />
-                                </td>
-                            </tr>
-							<tr class="contents"  style="display: none" >style="display: none"
-								<td class="detail"  colspan="4">123</td>
-							</tr>
-						</template> -->
-                        <!-- <template class="colspan-td">
-                        	<tr id="contents" style="display:none">
-                                <td colspan="4">
-                                    123
-                                </td>                        
-                            </tr>
-                        </template> -->
+			
                         <table id="table1">
                          <thead>
                             <td>제목</td>
@@ -125,17 +105,22 @@
                         <tbody>
                          <%  %>
 	                     <c:forEach var="q" items="${list}">
-          				<form action="" method="post" >
+	                    
+          				<form action="" method="post" > 
                             
-								<tr class="trhere">
+								<tr class="trhere" value="test">
+									
 									<td class="title">${q.title}</td>
 									<td class="writer">${q.regid}</td>
-									<td class="regdate">${q.regdate}</td>
+									<td class="regdate">${q.regdate}</td>					
+								    <td class="qid">${q.id}</td><!-- class="hidden" -->
 									<td class="etc">
-									<a href=""><input type="submit" value="수정" /> </a> 
-									<input type="submit" class="delbtn" value="삭제" /></td>
+									<%-- <input type="hidden" name="id" value="${q.id }" />  dataset-qid="${q.id}" --%>
+									<a href="listedit?id=${q.id}"><input type="button" value="수정"/></a>
+									<input type="submit" class="delbtn" name="delbtn" value="삭제" />
+									</td>
 								</tr>
-							</form>
+							</form> 
 	                        <tr class="contents"  style="display: none" >
 	                     		<td class="detaile" colspan="4">
 	                     		
