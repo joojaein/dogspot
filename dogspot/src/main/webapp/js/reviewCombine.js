@@ -28,13 +28,9 @@ window.addEventListener("load",function() {
 		}
 
 		modals.addEventListener("click", function(evt) {
-			if (evt.target.nodeName != "IMG")
-				return;
-			
-
-			if (evt.target.className.indexOf("modal-x")<0)
-				return;
-
+			if (evt.target.nodeName != "IMG") return;		
+			if (evt.target.className.indexOf("modal-x")<0) return;
+			resetModal();
 			closeModal();
 		}, true);
 
@@ -242,6 +238,7 @@ window.addEventListener("load",function() {
 		    	reviewDetailHiddenId.value=reviewId;	    	
 		    	setGoodBtnDetail("joojaein",reviewId);
 		    	setDetailImgSrcList(reviewId);
+		    	getCmtList(reviewId);
 		        showModal(dialogDetail);
 			};
 			
@@ -346,6 +343,25 @@ window.addEventListener("load",function() {
             setDetailImgslide(detailImgIndex);
 	    }
 	    
+	    inputComment.onkeydown = function() {
+	        if (event.keyCode === 13) {
+	            event.preventDefault();
+	           if(inputComment.value!=""){
+	  		     var request = new XMLHttpRequest(); 
+					request.open("POST", "../cmt-action", true); 
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+					request.onload = function () {	
+						var cmt = JSON.parse(request.responseText);
+						var cmtTmp=document.importNode(tmpReviewComment.content, true);
+					    bind_cmt(cmtTmp, cmt);
+					}
+					request.send("action=insert&regId=joojaein&reviewId="+ reviewDetailHiddenId.value+
+							"&content="+inputComment.value);	
+	           }
+	        }
+	    };
+	    
+	    
 	    var setReviewTopBtn = function(){
 	    	//if 내가 쓴 리뷰이라면 btnComplainReview 를 히든 처리
 	    	//else btnUpdateReview, btnDelReview 을 히든 처리
@@ -386,26 +402,44 @@ window.addEventListener("load",function() {
 	       //tempUpdate.classList.add("hidden");
 	    };
 	    
-	    var bind_cmt = function(cmt){
-	        var tempId = cmt.querySelector(".cmt-id");
-	        var tempContent = cmt.querySelector(".cmt-content");
-	        tempId.innerText="아이디";
-	        tempContent.innerText="내용";
-	        setCmtBtn(cmt);
-	        reviewDetailCenter.append(cmt);  
+	    var bind_cmt = function(cmtTmp, cmt){
+	        var cmtId = cmtTmp.querySelector("input[type='hidden']");
+	        var tempId = cmtTmp.querySelector(".cmt-id");
+	        var tempContent = cmtTmp.querySelector(".cmt-content");
+	        
+	        cmtId.value=cmt.id;
+	        tempId.innerText=cmt.regId;
+	        tempContent.innerText=cmt.content;
+	        
+	        setCmtBtn(cmtTmp);
+	        reviewDetailCenter.append(cmtTmp);  
 	    };
 	    
-	    for(var i=0;i<15;i++){
-	        var cmt=document.importNode(tmpReviewComment.content, true);
-	        bind_cmt(cmt);
-	    }
+	    var getCmtList = function(reviewId){
+		     var request = new XMLHttpRequest(); 
+				request.open("POST", "../get-comments", true); 
+				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+				request.onload = function () {	
+					var tempCmt = request.responseText;
+					if(request.responseText!=""){
+						var cmtList = JSON.parse(request.responseText);
+						for (var i = 0; i < cmtList.length; i++) {
+							 var cmtTmp=document.importNode(tmpReviewComment.content, true);
+						        bind_cmt(cmtTmp, cmtList[i]);
+						}	
+					}								
+				}
+				request.send("reviewId=" + reviewId);	
+	    };
 	    
+
 	    reviewDetailCenter.addEventListener("click", function(evt){
 	    	//댓글!!!!!!!
 	        if(evt.target.nodeName !="INPUT") return;
 
 	        if(evt.target.value == "수정"){
 	        	inputComment.focus();
+	        	/////////////inputComment.value=
 	        }
 	        else if(evt.target.value == "삭제"){
 	        	var bool = confirm("정말 삭제하시겠습니까?");
@@ -552,7 +586,6 @@ window.addEventListener("load",function() {
 	    
 		///////////////////////img///////////////////////////////////////////////////////////
 	    var btnImgUpload=dialogImg.querySelector(".reg1-top input[type='button']");
-	    var basicImgSrc = "/images/regImg.png";
 	    //---------------------------------------------------------------------------------------		
 
 	    btnImgUpload.onclick = function(evt){
@@ -926,6 +959,7 @@ window.addEventListener("load",function() {
 						requestImgUpload.open("POST", "../review-img-upload", false);
 
 						requestImgUpload.onload = function () {	//이미지 업로드 완료되고 들어옴				
+							resetModal();
 						};				
 						requestImgUpload.send(fd);			
 					}			
@@ -1059,6 +1093,26 @@ window.addEventListener("load",function() {
 	    btnSend.onclick = function(evt){
 	        closeModal();
 	    } 
-	   
+	    
+	    ///////////////////////////////////////////////////////////////////////////////////////////////
+		var resetModal = function() {
+		    textareaReviewContent.value = "";
+		    inputReviewTitle.value = "";
+		    inputSpot.value="";
+		    inputComment.value="";
+	        var label = dialogContent.querySelector(".review-spot-list label");
+		    label.innerText="리뷰할 장소 선택 ";
+	        for (var i = 0; i < imgLi.length; i++) {
+				var tempImg = imgLi[i].querySelector("img");
+				if(tempImg!=null)
+		    	imgLi[i].removeChild(tempImg);
+			}
+			contentImgIndex=0;
+			detailImgIndex=0;
+			clickImgIndex = -1;
+			detailImgSrcList=null;
+			fileMap = new Map();
+			readyHash=false;
+		}
 
 });

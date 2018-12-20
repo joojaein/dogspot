@@ -30,6 +30,7 @@
 					<div class="text-hashtag"></div>
 					<template id="review-comment-template">
 					<section class="comments list">
+						<input type="hidden" name="reviewId"/>
 						<div class="cmt-id"></div>
 						<div class="cmt-content"></div>
 						<input class="btn text-gray" type="button" value="수정">
@@ -57,7 +58,8 @@
 					</dl>
 					<div id="regdate"></div>
 					<hr class="review-hr">
-                    <input type="text" placeholder="댓글 달기..">
+                    <input type="text" class="reg" placeholder="댓글 달기..">
+                    <input type="text" class="update hidden" placeholder="댓글 달기..">
 				</section>
 			</section>
 		</section>

@@ -520,14 +520,47 @@ public class JdbcReviewService implements ReviewService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		System.out.println(result);
 		return result;
 	}
+	
+	;
+
 
 	@Override
-	public List<Cmt> getCmtList(String memberId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cmt> getCmtList(int reviewId) {
+		
+		List<Cmt> list = new ArrayList();
+		String sql = "select * from CMT WHERE REVIEWID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			while (rs.next()) {
+				Cmt cmt = new Cmt(
+						rs.getInt("ID"),
+						rs.getString("CONTENT"), 
+						rs.getString("REGID"), 
+						rs.getInt("REVIEWID"));
+			
+				list.add(cmt);
+			};
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	@Override
@@ -538,8 +571,29 @@ public class JdbcReviewService implements ReviewService {
 
 	@Override
 	public int insertCmt(Cmt cmt) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		
+		String sql = "insert into CMT(CONTENT, REGID, REVIEWID) VALUES ('"+cmt.getContent()+"', '"+cmt.getRegId()+"',"+cmt.getReviewId()+")";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int complete=0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			complete = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return complete;	
 	}
 
 	@Override
@@ -636,6 +690,12 @@ public class JdbcReviewService implements ReviewService {
 	public int insertWarningToMember(Member member) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Cmt> getCmtList(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

@@ -20,17 +20,14 @@ public class GetReviewController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		System.out.println("GetReviewController");
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 	    PrintWriter out = resp.getWriter();
 
 		String reviewId = req.getParameter("reviewId");
-		System.out.println("reviewId : "+reviewId);
 		ReviewService service = new JdbcReviewService();
 		HashMap<String, String> reviewData = service.getReviewDataView(Integer.parseInt(reviewId));
-		System.out.println("reviewData : "+reviewData);
 		
 		if(reviewData==null) {
 		    out.write("");

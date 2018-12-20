@@ -59,6 +59,7 @@ public interface ReviewService {
 	int getIsGood(int reviewId, String memberId);
 	//´ñ±Û
 	List<Cmt> getCmtList(String memberId);
+	List<Cmt> getCmtList(int reviewId);
 	List<Cmt> getCmtList(String memberId, int page);
 	int insertCmt(Cmt cmt);
 	int updateCmt(int cmtId, Cmt cmt);
