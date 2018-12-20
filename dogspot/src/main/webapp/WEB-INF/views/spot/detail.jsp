@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,46 +82,98 @@
 
                         </div>  -->
 
+	                
+	                  
 					<section class="spot-detail height-full" id="spot-info">
 						<div class="list">
-							<div id="detail-title">혜정이네 집</div>
+							<div class="detail-id hidden">${spot.id}</div>
+							<div class="detail-title">${spot.name}</div>
 
-							<div id="detail-sub">
-								<span>최근 업데이트: 2018.09.21</span> <input type="button"
-									name="modify" value="수정요청" class="empty-btn" />
+							<div class ="detail-sub">
+								<span>최근 업데이트: </span>
+								<span class="update-date">${spot.regDate}</span>
+								<input type="button" name="modify" value="수정요청" class="empty-btn" />
 							</div>
 						</div>
 						<div class="left content">
-							<span class="content-bold">주소&nbsp;</span> <span class="content">인천시
-								계양구 계산새로</span>
+							<span class="content-bold">주소&nbsp;</span> 
+							<span class="content detail-addr">${spot.addr}</span>
 						</div>
 						<div class="left content">
-							<span class="content-bold">연락처&nbsp;</span> <span class="content">010-XXXX-XXXX</span>
-						</div>
-
-						<div class="left content">
-							<span class="content-bold">영업시간&nbsp;</span> <span
-								class="content">00:00~23:59</span>
+							<span class="content-bold">연락처&nbsp;</span> 
+							<span class="content detail-phone">${spot.phone}</span>
 						</div>
 
 						<div class="left content">
-							<span class="content-bold">장소&nbsp;</span> <span class="content"><img
-								src="../../images/cafe.png" class="detail-icon">&nbsp;카페</span>
+							<span class="content-bold">영업시간&nbsp;</span> 
+							<span class="content detail-time">${spot.time}</span>
+							<span class="content detail-time-etc">${spot.time_etc}</span>
+						</div>
+						
+						<div class="left content">
+							<span class="content-bold">장소&nbsp;</span> <span class="content">
+							
+						
+						<c:if test="${1==spot.themeid}">
+	                      	<img src="../../images/cafe.png" class="detail-icon detail-theme">&nbsp;카페</span>
+	                     </c:if>
+	                     <c:if test="${2==spot.themeid}">
+	                      	<img src="../../images/restaurant.png" class="detail-icon detail-theme">&nbsp;식당</span>
+	                     </c:if>
+	                     <c:if test="${3==spot.themeid}">
+	                      	<img src="../../images/play.png" class="detail-icon detail-theme">&nbsp;놀이터</span>
+	                     </c:if>
+	                     <c:if test="${4==spot.themeid}">
+	                      	<img src="../../images/house.png" class="detail-icon detail-theme">&nbsp;숙박</span>
+	                     </c:if>
+                      
+						</div>
+						
+						<div class="left content">
+							<span class="content-bold">장소분류&nbsp;</span> 
+							<span class="content detail-theme_etc">${spot.theme_etc}</span>
 						</div>
 
 						<div class="left content">
-							<span class="content-bold">입장가능&nbsp;</span> <span
-								class="content"><img src="../../images/small.png"
-								class="detail-icon">&nbsp;소형견</span>
+							<span class="content-bold">입장가능&nbsp;</span> <span class="content">
+							
+								<c:if test="${'소'==spot.dogsize}">
+			                      	<img src="../../images/smaill.png" class="detail-icon detail-dogsize">&nbsp;소형견&nbsp;</span>
+			                     </c:if>
+								
+								<c:if test="${'소중'==spot.dogsize}">
+			                      	<img src="../../images/small.png" class="detail-icon detail-dogsize">&nbsp;</span>
+			                      	<img src="../../images/medium.png" class="detail-icon detail-dogsize">&nbsp;소형견, 중형견&nbsp;</span>
+			                     </c:if>
+								
+								
+								<c:if test="${'소중대'==spot.dogsize}">
+			                      	<img src="../../images/small.png" class="detail-icon detail-dogsize">&nbsp;</span>
+			                      	<img src="../../images/medium.png" class="detail-icon detail-dogsize">&nbsp;</span>
+			                      	<img src="../../images/big.png" class="detail-icon detail-dogsize">&nbsp;소형견, 중형견, 대형견&nbsp;</span>
+			                     </c:if>
+							
+								<span class="content detail-dogsize-etc">&nbsp;${spot.dogsize_etc}&nbsp;</span>
+								<span class="content detail-dogweight-etc">&nbsp;${spot.dogweight_etc}</span>
 						</div>
 
 						<div class="left content">
-							<span class="content-bold">가격&nbsp;</span> <span class="content">10,000원~20,000원</span>
+							<span class="content-bold">가격&nbsp;</span> 
+							<span class="content detail-minprice">${spot.price_min}</span>
+							<span class="content">원&nbsp;~</span>
+							<span class="content detail-maxprice">${spot.price_max}</span>
+							<span class="content">원&nbsp;</span>
+							<span class="content detail-price-etc">${spot.price_etc}</span>
 						</div>
 
 						<div class="left content">
 							<span class="content-bold">URL&nbsp;</span> <span class="content"><a
-								href="https://www.hyejeong.com">https://www.hyejeong.com</a></span>
+								href="${spot.url}" class="detail-url">${spot.url}</a></span>
+						</div>
+						
+						<div class="left content">
+							<span class="content-bold">기타&nbsp;</span> 
+							<span class="content detail-etc">${spot.etc}</span>
 						</div>
 
 						<div class="left">
@@ -126,18 +181,8 @@
 							<span class="content-bold">지도</span>
 							<div id="map" class="bottom" style="width: 100%; height: 600px;"></div>
 						</div>
-						<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=65ee4b1a2ddf7bd055b10893e94709bc"></script>
-                            <script>
-                                var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                                    mapOption = { 
-                                        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                                        level: 3 // 지도의 확대 레벨
-                                    };
-                            
-                                // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-                                var map = new daum.maps.Map(mapContainer, mapOption); 
-                            </script> -->
-
+						
+						
 						<div class="left">
 							<span class="content-bold">작성된 리뷰 13개</span>
 
@@ -243,8 +288,8 @@
 			<section>
 				<h1 class="hidden">수정요청 모달</h1>
 				<div id="modal-title">수정 요청</div>
-				<input type="text" id="modal-small-box" placeholder="제목" />
-				<textarea placeholder="내용" id="modal-big-box" style="resize: none"></textarea>
+				<input type="text" id="modal-small-box" placeholder="제목" autocomplete="off" />
+				<textarea placeholder="내용" id="modal-big-box" autocomplete="off" style="resize: none"></textarea>
 				<input type="submit" id="send-btn" class="full-btn" value="보내기" />
 			</section>
 

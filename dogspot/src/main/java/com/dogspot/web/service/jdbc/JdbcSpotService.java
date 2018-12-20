@@ -105,7 +105,58 @@ public class JdbcSpotService implements SpotService {
 	@Override
 	public Spot getSpot(int spotId) {
 		// TODO Auto-generated method stub
-		return null;
+	      //String sql = "SELECT * FROM (SELECT ROWNUM num,SPOT.* FROM SPOT) WHERE num BETWEEN ? and ?";
+		  String sql = "select * from spot where id=?";
+	      String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl"; 
+	      Spot spot = null;
+	      
+	      try {
+	    
+	         Class.forName("oracle.jdbc.driver.OracleDriver");
+	         Connection con = DriverManager.getConnection(url,"c##dogspot","dogspot872");
+	         //Statement st = con.createStatement();
+	         //ResultSet rs = st.executeQuery(sql);
+	         
+	         PreparedStatement st = con.prepareStatement(sql);
+	         st.setInt(1, spotId);
+	         //st.setInt(2, end);
+	         
+	         ResultSet rs =st.executeQuery();
+	         
+	         while(rs.next()) {   
+	            spot = new Spot(
+	                  rs.getInt("id"),
+	                  rs.getString("name"),
+	                  rs.getString("addr"),
+	                  rs.getString("phone"),
+	                  rs.getString("time"),
+	                  rs.getString("time_etc"),
+	                  rs.getString("dogsize"),
+	                  rs.getString("dogsize_etc"),
+	                  rs.getString("dogweight"),
+	                  rs.getString("dogweight_etc"),
+	                  rs.getString("price_min"),
+	                  rs.getString("price_max"),
+	                  rs.getString("price_etc"),
+	                  rs.getString("url"),
+	                  rs.getString("etc"),
+	                  rs.getDate("regdate"),
+	                  rs.getInt("themeid"),
+	                  rs.getString("theme_etc"));
+	         }
+	         
+	         rs.close();
+	         st.close();
+	         con.close();   
+	      
+	      } catch (ClassNotFoundException e) {
+	         e.printStackTrace();
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      
+	      return spot;
 	}
 
 	@Override
@@ -127,9 +178,50 @@ public class JdbcSpotService implements SpotService {
 	}
 
 	@Override
-	public int insertSpotRequest(SpotRequest spotRequest, String memberId) {
+	public int insertSpotRequest(int spotId, String memberId, String title, String content) {
 		// TODO Auto-generated method stub
-		return 0;
+
+		String sql = "insert into spot_request (spotid,memberid,title,content) values "
+				+ "("+spotId+",'"+memberId+"','"+title+"','"+content+"')";
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+		int result = 0;
+
+		try {
+
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery(sql);
+
+			//PreparedStatement st = con.prepareStatement(sql);
+			//st.setInt(1, spotId);
+			//st.setString(2, memberId);
+
+			//ResultSet rs = st.executeQuery();
+
+			if(rs.next())
+				result=1;
+			/*while (rs.next()) {
+				SpotRequest spotreq = new SpotRequest(
+						rs.getInt("spotid"), 
+						rs.getString("memberid"), 
+						rs.getString("title"),
+						rs.getString("content")
+						);
+			}*/
+
+			rs.close();
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return result;
 	}
 
 	@Override

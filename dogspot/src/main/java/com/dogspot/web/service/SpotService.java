@@ -32,7 +32,7 @@ public interface SpotService {
 	List<Review> getReviewList(int spotId);
 	List<SpotImg> getSpotImgList(int spotId);
 	int insertRecent(int spotId, String memberId);
-	int insertSpotRequest(SpotRequest spotRequest, String memberId);
+	int insertSpotRequest(int spotId, String memberId, String title, String content);
 	
 	//¡¡æ∆ø‰
 	List<Good> getGoodList(String reviewId);
