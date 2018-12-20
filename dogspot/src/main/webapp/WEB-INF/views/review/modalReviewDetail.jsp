@@ -16,7 +16,6 @@
 					<ul class="list">
 						<input class="btn" type="button" value="수정">
 						<input class="btn" type="button" value="삭제">
-						<input class="btn" type="button" value="신고">
 						<input class="btn" type="button" value="...">
 					</ul>
 				</section>
@@ -30,12 +29,10 @@
 					<div class="text-hashtag"></div>
 					<template id="review-comment-template">
 					<section class="comments list">
-						<input type="hidden" name="reviewId"/>
 						<div class="cmt-id"></div>
 						<div class="cmt-content"></div>
 						<input class="btn text-gray" type="button" value="수정">
 						<input class="btn text-gray" type="button" value="삭제">
-						<input class="btn text-gray" type="button" value="신고">
 					</section>
 					</template>
 				</section>
@@ -58,8 +55,7 @@
 					</dl>
 					<div id="regdate"></div>
 					<hr class="review-hr">
-                    <input type="text" class="reg" placeholder="댓글 달기..">
-                    <input type="text" class="update hidden" placeholder="댓글 달기..">
+                    <input type="text" placeholder="댓글 달기..">
 				</section>
 			</section>
 		</section>

@@ -2,9 +2,7 @@ package com.dogspot.web.controller.review;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,37 +15,24 @@ import com.dogspot.web.service.ReviewService;
 import com.dogspot.web.service.jdbc.JdbcReviewService;
 import com.google.gson.Gson;
 
-@WebServlet("/get-comments")
-public class GetCommentsController extends HttpServlet{
+@WebServlet("/review-hit")
+public class HitController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 	    PrintWriter out = resp.getWriter();
-
-	    String action = req.getParameter("action");
-	    String reviewId = req.getParameter("reviewId");
-
 	    
-	    List<Cmt> cmtList = new ArrayList();
+	    String id = req.getParameter("id");
 
 		ReviewService service = new JdbcReviewService();
-		cmtList = service.getCmtList(Integer.parseInt(reviewId));
-	    if(action.equals("count")) {
-	    	out.print(cmtList.size());
-	    }
-	    else {
-	    	if(cmtList.size()==0) {
-				out.write("");
-			}
-	    	else {
-				Gson gson = new Gson();
-				String json = gson.toJson(cmtList);
-				out.write(json);
-			}			
-	    }
+		service.updateHit(Integer.parseInt(id));
+
+		out.write("true");
+	    
 	}
 }
 

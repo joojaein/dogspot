@@ -39,21 +39,19 @@ public class CmtController extends HttpServlet{
 			
 			Gson gson = new Gson();
 			String json = gson.toJson(cmt);
-			out.write(json);			
-			return;
-			
+			out.write(json);	
 	    }
 	    else if(action.equals("delete")) {
-	    	
+	    	String id = req.getParameter("id");
+	    	service.deleteCmt(Integer.parseInt(id));
+			out.write("true");	
 	    }
 	    else if(action.equals("update")) {
-	    	
+	    	String id = req.getParameter("id");
+			String content = req.getParameter("content");
+			service.updateCmt(Integer.parseInt(id), content);	
+			out.write("true");	
 	    }
-		
-		
-
-
-
 	}
 }
 

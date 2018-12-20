@@ -193,62 +193,71 @@ window.addEventListener("load",function() {
 	        event.stopPropagation();
 	    }, true);   
 	    
-	    reviewList.addEventListener("click", function (evt) {
-	        evt.preventDefault();
 
-	        if (evt.target.className != "hover-parency") return;
-	        
-	        var regId = dialogDetail.querySelector("#regId");
-	        var name = dialogDetail.querySelector("#name");
-	        var title = dialogDetail.querySelector("#title");
-	        var content = dialogDetail.querySelector("#content");
-	        var regdate = dialogDetail.querySelector("#regdate");
-	        var hashtag = dialogDetail.querySelector(".text-hashtag");
-	        
-	        var good = dialogDetail.querySelector(".good");
-	        var cmt = dialogDetail.querySelector(".cmt");
-	        var hit = dialogDetail.querySelector(".hit");
 
-	        var reviewId = 0;
-	        var divs = reviewList.querySelectorAll(".review-div");
-	        for(var i=0; i<divs.length; i++){
-	        	if(divs[i].querySelector(".hover-parency") == evt.target){
-	        		var id = divs[i].querySelector(".hiddenId");
-	        		reviewId = id.innerText;
-	        		break;
-	        	}
-	        }
+	    reviewList.addEventListener("click",function(evt) {
+			evt.preventDefault();
+			if (evt.target.className != "hover-parency") return;
 
-	        const requestGetReview = new XMLHttpRequest(); 	
-	        requestGetReview.open("POST", "/get-review-data", true); 
-	        requestGetReview.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-	        
-	        requestGetReview.onload = function () {	
-				var review = JSON.parse(requestGetReview.responseText);
-				regId.innerText=review.regId;
-				name.innerText = review.name;
-				title.innerText = review.title;
-				content.innerText = review.content;
-				hashtag.innerText = review.hash;
-				good.innerText = review.good;
-				cmt.innerText = review.cmt;
-				hit.innerText = review.hit;
-				regdate.innerText = review.regdate;
-				
-		    	reviewDetailHiddenId.value=reviewId;	    	
-		    	setGoodBtnDetail("joojaein",reviewId);
-		    	setDetailImgSrcList(reviewId);
-		    	getCmtList(reviewId);
-		        showModal(dialogDetail);
+			var regId = dialogDetail.querySelector("#regId");
+			var name = dialogDetail.querySelector("#name");
+			var title = dialogDetail.querySelector("#title");
+			var content = dialogDetail.querySelector("#content");
+			var regdate = dialogDetail.querySelector("#regdate");
+			var hashtag = dialogDetail.querySelector(".text-hashtag");
+
+			var good = dialogDetail.querySelector(".good");
+			var cmt = dialogDetail.querySelector(".cmt");
+			var hit = dialogDetail.querySelector(".hit");
+
+			var reviewId = 0;
+			var divs = reviewList.querySelectorAll(".review-div");
+			for (var i = 0; i < divs.length; i++) {
+				if (divs[i].querySelector(".hover-parency") == evt.target) {
+					var id = divs[i].querySelector(".hiddenId");
+					reviewId = id.innerText;
+					break;
+				}
+			}
+			var requestHit = new XMLHttpRequest();
+			requestHit.open("POST","../review-hit", true);
+			requestHit.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+			requestHit.onload = function() {
+
+				var requestGetReview = new XMLHttpRequest();
+				requestGetReview.open("POST","/get-review-data", true);
+				requestGetReview.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+				requestGetReview.onload = function() {
+					var review = JSON.parse(requestGetReview.responseText);
+					regId.innerText = review.regId;
+					name.innerText = review.name;
+					title.innerText = review.title;
+					content.innerText = review.content;
+					hashtag.innerText = review.hash;
+					good.innerText = review.good;
+					cmt.innerText = review.cmt;
+					hit.innerText = review.hit;
+					regdate.innerText = review.regdate;
+					reviewDetailHiddenId.value = reviewId;
+					setGoodBtnDetail("joojaein",reviewId);
+					setDetailImgSrcList(reviewId);
+					getCmtList(reviewId);
+					var sibDiv = evt.target.previousSibling.previousSibling;
+					var hitInt = sibDiv.querySelector(".hit-int");
+					hitInt.innerText=review.hit;
+					showModal(dialogDetail);
+				};
+				requestGetReview.send("reviewId="+ reviewId);
 			};
-			
-			requestGetReview.send("reviewId="+reviewId);	        
-	    }, true); 
+			requestHit.send("id=" + reviewId);
+		}, true);
+
 	    
 	    
-	    btnAddReview.onclick = function(evt){
-	        showModal(dialogImg);
-	    };
+		btnAddReview.onclick = function(evt) {
+			showModal(dialogImg);
+		};
 	    
 	    var setDetailImgSrcList = function(reviewId){
 	    	var request = new XMLHttpRequest(); 
@@ -347,16 +356,67 @@ window.addEventListener("load",function() {
 	        if (event.keyCode === 13) {
 	            event.preventDefault();
 	           if(inputComment.value!=""){
-	  		     var request = new XMLHttpRequest(); 
-					request.open("POST", "../cmt-action", true); 
-					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-					request.onload = function () {	
-						var cmt = JSON.parse(request.responseText);
-						var cmtTmp=document.importNode(tmpReviewComment.content, true);
-					    bind_cmt(cmtTmp, cmt);
-					}
-					request.send("action=insert&regId=joojaein&reviewId="+ reviewDetailHiddenId.value+
-							"&content="+inputComment.value);	
+	        	   
+	        	 if(inputComment.classList.contains("edit")){
+	        		 var request = new XMLHttpRequest(); 
+						request.open("POST", "../cmt-action", true); 
+						request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+						request.onload = function () {	
+							var contents = reviewDetailCenter.querySelectorAll(".cmt-content");
+							for(var i=0; i<contents.length; i++){
+								if(contents[i].classList.contains("underline")){
+									cdontents[i].innerText = inputComment.value;
+									inputComment.value="";
+									contents[i].classList.remove("underline");
+									inputComment.classList.remove("edit")
+								}
+							}
+						}
+						request.send("action=update&id="+inputComment.name+"&content="+inputComment.value);
+	        	 }
+	        	 else{
+	        		 var request = new XMLHttpRequest(); 
+						request.open("POST", "../cmt-action", true); 
+						request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+						request.onload = function () {	
+							var cmt = JSON.parse(request.responseText);
+							var cmtTmp=document.importNode(tmpReviewComment.content, true);
+						    bind_cmt(cmtTmp, cmt);
+							inputComment.value="";
+							//상세모달과 리스트에 댓글 카운트 숫자 셋팅해주기
+							var countReq = new XMLHttpRequest(); 
+							countReq.open("POST", "../get-comments", true); 
+							countReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+							countReq.onload = function () {	
+								var cnt = countReq.responseText;
+								var reviewId=reviewDetailHiddenId.value;
+								
+								var tempDivs = reviewList.querySelectorAll(".review-div");
+						        for(var i=0; i<tempDivs.length; i++){
+						        	var div = tempDivs[i].querySelector(".hiddenId");
+						        	if(div.innerText==reviewDetailHiddenId.value){
+						        		var tempCmtInt = tempDivs[i].querySelector(".cmt-int");
+						        		tempCmtInt.innerText = cnt;
+						        		break;
+						        	}
+						        }
+								
+						        var detailCmt = reviewDetailBottom.querySelector(".cmt");
+						        detailCmt.innerText = cnt;
+								
+								
+								
+								
+								
+							};
+							countReq.send("action=count&reviewId="+reviewDetailHiddenId.value);
+							
+						}
+						request.send("action=insert&regId=joojaein&reviewId="+ reviewDetailHiddenId.value+
+								"&content="+inputComment.value);
+	        	 }  
+	        	   
+	  		     	
 	           }
 	        }
 	    };
@@ -386,9 +446,6 @@ window.addEventListener("load",function() {
 	        		alert("취소");
 	        	}
 	        }
-	        else if(evt.target.value == "신고"){
-	        	showModal(dialogReviewComplain);
-	        }
 	   }, true);
 
 	    var setCmtBtn = function(cmt){
@@ -403,11 +460,10 @@ window.addEventListener("load",function() {
 	    };
 	    
 	    var bind_cmt = function(cmtTmp, cmt){
-	        var cmtId = cmtTmp.querySelector("input[type='hidden']");
 	        var tempId = cmtTmp.querySelector(".cmt-id");
 	        var tempContent = cmtTmp.querySelector(".cmt-content");
-	        
-	        cmtId.value=cmt.id;
+	        var tempUpdate = cmtTmp.querySelector("input[value='수정']");
+	        tempUpdate.name=cmt.id;
 	        tempId.innerText=cmt.regId;
 	        tempContent.innerText=cmt.content;
 	        
@@ -429,7 +485,7 @@ window.addEventListener("load",function() {
 						}	
 					}								
 				}
-				request.send("reviewId=" + reviewId);	
+				request.send("action=null&reviewId=" + reviewId);	
 	    };
 	    
 
@@ -439,31 +495,54 @@ window.addEventListener("load",function() {
 
 	        if(evt.target.value == "수정"){
 	        	inputComment.focus();
-	        	/////////////inputComment.value=
+	        	inputComment.name=evt.target.name;
+	        	var tempContent = evt.target.previousSibling.previousSibling;
+	        	inputComment.value=tempContent.innerText;
+	        	tempContent.classList.add("underline");
+	        	inputComment.classList.add("edit");
 	        }
 	        else if(evt.target.value == "삭제"){
-	        	var bool = confirm("정말 삭제하시겠습니까?");
-	        	if(bool){
-	        		alert("삭제");
-	        	}else{
-	        		alert("취소");
+	        	var bool = confirm("댓글을 삭제하시겠습니까?");
+	        	if(bool){  
+	        		var id = evt.target.previousSibling.previousSibling.name;
+	        		var request = new XMLHttpRequest(); 
+					request.open("POST", "../cmt-action", true); 
+					request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+					request.onload = function () {	
+						var temp = evt.target.parentNode;
+						reviewDetailCenter.removeChild(temp);
+					}
+					request.send("action=delete&id="+id);
 	        	}
 	        }
-	        else if(evt.target.value == "신고"){
-	        	showModal(dialogCommentComplain);
-	        }
 	   }, true);
-
+	    
 	    btnGoodTrueIcon.onclick = function(){
 	        btnGoodTrueIcon.classList.add("hidden");
 	        btnGoodFalseIcon.classList.remove("hidden");
+	        var goodInt;
+	        var tempDivs = reviewList.querySelectorAll(".review-div");
+	        for(var i=0; i<tempDivs.length; i++){
+	        	var div = tempDivs[i].querySelector(".hiddenId");
+	        	if(div.innerText==reviewDetailHiddenId.value){
+	        		var tempTrue = tempDivs[i].querySelector(".good-true-icon");
+	        		var tempFalse = tempDivs[i].querySelector(".good-false-icon");
+	        		goodInt=tempDivs[i].querySelector(".good-int");
+	        		tempTrue.classList.add("hidden");
+	        		tempFalse.classList.remove("hidden");
+	        		break;
+	        	}
+	        }
+	        
 	        //good을 내림
 		     var request = new XMLHttpRequest(); 
 				request.open("POST", "../good-updown", true); 
 				request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-				request.onload = function () {	
+				request.onload = function () {
 					var good = reviewDetailBottom.querySelector(".good");
 					var result = request.responseText;
+					good.innerText = result;
+					goodInt.innerText=result;
 				}
 				request.send("updown=down&reviewId="+reviewDetailHiddenId.value);	
 	    };
@@ -471,6 +550,20 @@ window.addEventListener("load",function() {
 	    btnGoodFalseIcon.onclick = function(){
 	        btnGoodFalseIcon.classList.add("hidden");
 	        btnGoodTrueIcon.classList.remove("hidden");
+	        var goodInt;
+	        var tempDivs = reviewList.querySelectorAll(".review-div");
+	        for(var i=0; i<tempDivs.length; i++){
+	        	var div = tempDivs[i].querySelector(".hiddenId");
+	        	if(div.innerText==reviewDetailHiddenId.value){
+	        		var tempTrue = tempDivs[i].querySelector(".good-true-icon");
+	        		var tempFalse = tempDivs[i].querySelector(".good-false-icon");
+	        		goodInt=tempDivs[i].querySelector(".good-int");
+	        		tempFalse.classList.add("hidden");
+	        		tempTrue.classList.remove("hidden");
+	        		break;
+	        	}
+	        }
+	        
 	        //good을 높힘
 	        var request = new XMLHttpRequest(); 
 			request.open("POST", "../good-updown", true); 
@@ -479,6 +572,7 @@ window.addEventListener("load",function() {
 				var good = reviewDetailBottom.querySelector(".good");
 				var result = request.responseText;
 				good.innerText = result;
+				goodInt.innerText=result;
 			}
 			request.send("updown=up&reviewId="+reviewDetailHiddenId.value);	
 	    };
@@ -1106,7 +1200,11 @@ window.addEventListener("load",function() {
 				var tempImg = imgLi[i].querySelector("img");
 				if(tempImg!=null)
 		    	imgLi[i].removeChild(tempImg);
-			}
+			}       
+	        var comments = reviewDetailCenter.querySelectorAll(".comments");
+	        for(var i=0; i<comments.length; i++){
+	        	reviewDetailCenter.removeChild(comments[i]);
+	        }   
 			contentImgIndex=0;
 			detailImgIndex=0;
 			clickImgIndex = -1;

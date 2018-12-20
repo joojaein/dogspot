@@ -62,10 +62,10 @@ public interface ReviewService {
 	List<Cmt> getCmtList(int reviewId);
 	List<Cmt> getCmtList(String memberId, int page);
 	int insertCmt(Cmt cmt);
-	int updateCmt(int cmtId, Cmt cmt);
-	
+	int updateCmt(int cmtId, String content);
+	int deleteCmt(int cmtId);
 	//조회수
-	int insertHit(int reviewId, String memberId);
+	int updateHit(int reviewId);
 	int getHit(int reviewId);
 	
 	//신고
