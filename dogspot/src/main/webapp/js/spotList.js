@@ -31,7 +31,19 @@ window.addEventListener("load", function(){
 	var main = document.querySelector("#wid-front");
     var favoBtns = document.querySelector(".favorite");
     var input = document.querySelector("#wid-front input");
+    var length = document.querySelector(".list-length");
     
+    var getReviewCnt = function(spotid){
+    	var request = new XMLHttpRequest(); 	
+		request.open("POST", "../spot-review-cnt", true); 
+		request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		
+		request.onload = function(){
+			
+		}
+    	
+		request.send("spotid="+spotid);
+    };
 	var bind_spotList = function(tmp,spotData){
 		var theme_img;	
 		tmpMainImg=tmp.querySelector(".img-list");
@@ -75,7 +87,7 @@ window.addEventListener("load", function(){
           	tmpSizeImg3.src="/images/big.png";
          }
        
-        
+        //getReviewCnt(spotData.id);
         tmpMainImg.src="/images/room6.png";
         tmpTitle.innerText=spotData.name;
         tmpTitle.href= "detail?id="+spotData.id;
@@ -118,8 +130,8 @@ window.addEventListener("load", function(){
 	
 			var max = spotFilterList.length;
 			if(max>testCnt+10) max = testCnt+10;
-		
-		   
+			length.innerText=max+"개의 검색결과";
+			
 		    main.addEventListener("click",function(e){
 		    	if(e.target.nodeName != "INPUT") return;
 		    	
@@ -134,7 +146,7 @@ window.addEventListener("load", function(){
                 }
 		    },true);
 			
-
+		    
 			for(var i=testCnt; i<max; i++){
     	        var tmp=document.importNode(tmpSpotList.content, true);
     	        bind_spotList(tmp,spotFilterList[i]);
@@ -146,7 +158,7 @@ window.addEventListener("load", function(){
 	    	}
 			radio(minsArr,maxsArr,addrsArr,themesArr);
 		}
-				
+	
 		request.send("search="+search+"&local="+local+
 				"&theme="+theme+"&size="+size+
 				"&min-price="+min_price+"&max-price="+max_price);
@@ -158,6 +170,7 @@ window.addEventListener("load", function(){
     };
 
     sendSpotList();
+    
     
     function getCurrentScrollPercentage(){
 	    var scrolled_value = window.scrollY

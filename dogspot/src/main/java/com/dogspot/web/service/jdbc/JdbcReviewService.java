@@ -597,15 +597,78 @@ public class JdbcReviewService implements ReviewService {
 	}
 
 	@Override
-	public int updateCmt(int cmtId, Cmt cmt) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateCmt(int cmtId, String content) {
+		String sql = "UPDATE CMT SET CONTENT='"+content+"' WHERE ID ="+cmtId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int complete=0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			complete = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return complete;	
 	}
 
 	@Override
-	public int insertHit(int reviewId, String memberId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteCmt(int cmtId) {
+		String sql = "DELETE CMT WHERE ID="+cmtId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int complete=0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			complete = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return complete;	
+	}
+
+	@Override
+	public int updateHit(int reviewId) {
+		String sql = "UPDATE REVIEW SET HIT=HIT+1 WHERE ID="+reviewId;
+		String url = "jdbc:oracle:thin:@211.238.142.251:1521:orcl";
+
+		int complete=0;
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "c##dogspot", "dogspot872");
+			Statement st = con.createStatement();
+			complete = st.executeUpdate(sql);
+
+			st.close();
+			con.close();
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return complete;	
 	}
 
 	@Override

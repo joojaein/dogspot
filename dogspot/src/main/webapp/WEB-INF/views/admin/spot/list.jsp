@@ -28,7 +28,7 @@
 
 						<ul>
 							<li><a href="">통계 관리</a></li>
-							<li><a href="">데이터 관리</a></li>
+							<li><a href="" class="idx-page">데이터 관리</a></li>
 							<li><a href="">회원 요청</a></li>
 							<li><a href="">문의 관리</a></li>
 							<li><a href="">회원 관리</a></li>
@@ -47,8 +47,8 @@
 					<div id="mypage-title">데이터 관리</div>
 
 					<div class="data-func">
-						<input type="text" name="search" class="data-search" /> <input
-							type="button" name="insert" value="추가" class="empty-btn" />
+						<a href="/admin/spot/reg"><input type="text" name="search" class="data-search" /> <input
+							type="button" name="insert" value="추가" class="empty-btn" /></a>
 					</div>
 
 				</section>

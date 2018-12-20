@@ -58,7 +58,7 @@
                         <div>프로필</div>
                         <ul>
                             <li><a href="">통계관리</a></li>
-                            <li><a href="">데이터관리</a></li>
+                            <li><a href="" class="idx-page">데이터관리</a></li>
                             <li><a href="">회원요청</a></li>
                             <li><a href="">문의관리</a></li>
                             <li><a href="">회원관리</a></li>

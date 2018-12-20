@@ -54,7 +54,9 @@ select:focus {
     color: #f00 !important;
 }
 
-
+.underline{
+	text-decoration: underline;
+}
 
 /* input.placeholderred::-webkit-input-placeholder {
    color: red;
